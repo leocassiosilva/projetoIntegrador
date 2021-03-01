@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'accounts',
     'core',
+    'product',
     'django.contrib.admin',
 ]
 
@@ -77,9 +78,13 @@ WSGI_APPLICATION = 'projetoIntegrador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bd_integrador',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+     }
 }
 
 # Password validation
