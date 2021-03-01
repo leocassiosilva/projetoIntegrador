@@ -1,0 +1,38 @@
+{% extends 'cadastro_user.html' %}
+{% block title %} Login{% endblock title %}
+{% block card-title %}Login{% endblock card-title %}
+{% block login %}<a href="/accounts/cadastrar/">Cadastrar</a>{% endblock login %}
+
+{% block content %}
+
+
+<form method="post" class="form">
+    {% csrf_token %}
+
+    <div class="form-row">
+
+        <div class="form-group col-lg-12 mb-3">
+            <label>E-mail</label>
+            <input class="form-control" id="id_username" name="username"
+                   type="email"
+                   placeholder="Digite seu e-mail" required>
+
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-lg-12 mb-3">
+            <label>Senha</label>
+            <input class="form-control" type="password" name="password" autocomplete="current-password" id="id_password"
+                   placeholder="Digite sua senha"
+                   autocomplete="off" required>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+
+{% endblock %}

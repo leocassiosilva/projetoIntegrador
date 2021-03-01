@@ -51,21 +51,20 @@ class CustomUsuario(AbstractUser):
     rua = models.CharField('Rua', max_length=100, blank=True, null=True)
     bairro = models.CharField('Bairro', max_length=100, blank=True, null=True)
     logadouro = models.CharField('Logadouro', max_length=100, blank=True, null=True)
-    numero = models.CharField('Cep', max_length=30, blank=True, null=True)
-
+    numero = models.CharField('Numero', max_length=30, blank=True, null=True)
     is_staff = models.BooleanField("Membro da equipe", default=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
+    def __str__(self):
+        return self.email
 
-def __str__(self):
-    return self.email
+    class Meta:
+        db_table = "usuario"
+        managed = True
 
-
-class Meta:
-    db_table = "usuario"
-    managed = True
+    objects = UsuarioManager()
 
 
 class ProdutorAtivoManager(UsuarioManager):
