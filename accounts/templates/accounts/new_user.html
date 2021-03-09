@@ -1,127 +1,139 @@
 {% extends 'cadastro_user.html' %}
 {% block title %}Cadastro de Usuario{% endblock title %}
-{% block card-title %}Registre-se{% endblock card-title %}
 {% block login %}<a href="/accounts/login/">Entrar</a>{% endblock login %}
 
 {% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card card-outline card-info">
+            <div class="card-header text-center">
+                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
 
-<form method="post">
-    {%csrf_token%}
-    <h4>Informações Pessoais</h4>
-    <hr>
-    <div class="form-row">
-        <div class="form-group col-lg-6 mb-3">
-            <label>Nome</label>
-            <input class="form-control" id="first_name" name="first_name"
-                   type="text" value="{{request.POST.first_name}}"
-                   placeholder="Digite seu primeiro nome"
-                   autocomplete="off" required>
-        </div>
-        <div class="form-group col-lg-6 mb-3">
-            <label>Sobrenome</label>
-            <input class="form-control" id="last_name" name="last_name"
-                   type="text" value="{{request.POST.last_name}}"
-                   placeholder="Digite o sobrenome"
-                   autocomplete="off" required>
+                <h4 class="text-center">Registre-se</h4>
+
+                <form method="post">
+                    {%csrf_token%}
+                    <h4>Informações Pessoais</h4>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label>Nome</label>
+                            <input class="form-control" id="first_name" name="first_name"
+                                   type="text" value="{{request.POST.first_name}}"
+                                   placeholder="Digite seu primeiro nome"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                            <label>Sobrenome</label>
+                            <input class="form-control" id="last_name" name="last_name"
+                                   type="text" value="{{request.POST.last_name}}"
+                                   placeholder="Digite o sobrenome"
+                                   autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-lg-12 mb-3">
+                            <label>E-mail</label>
+                            <input class="form-control" id="username" name="username"
+                                   type="email" value="{{request.POST.username}}"
+                                   placeholder="Digite seu e-mail" autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label>Senha</label>
+                            <input class="form-control" id="password1" name="password1"
+                                   type="password" value="{{request.POST.password1}}"
+                                   placeholder="Digite sua senha"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                            <label>Confirmar Senha</label>
+                            <input class="form-control" id="password2" name="password2"
+                                   type="password" value="{{request.POST.password2}}"
+                                   placeholder="Digite a sua senha novamente"
+                                   autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_telefone">Teleforne</label>
+                            <input class="form-control" id="id_telefone" name="telefone"
+                                   type="text" value="{{request.POST.telefone}}"
+                                   placeholder="Digite seu telefone" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_tipo">Tipo de usuario</label>
+                            <select class="form-control" id="id_tipo"
+                                    name="tipo"
+                                    value="{{request.POST.tipo}}"
+                                    data-placeholder="Escolha o tipo de usuario">
+                                <option value="">Escolha o usuario</option>
+                                {% for tipo in tipos %}
+                                <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <h4>Informações de Endereço</h4>
+                    <hr>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_cep">Cep</label>
+                            <input class="form-control" id="id_cep" name="cep"
+                                   type="text" value="{{request.POST.cep}}"
+                                   placeholder="Digite seu cep" required>
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_cidade">Cidade</label>
+                            <input class="form-control" id="id_cidade" name="cidade"
+                                   type="text" value="{{request.POST.cep}}"
+                                   placeholder="Digite sua cidade" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_rua">Rua</label>
+                            <input class="form-control" id="id_rua" name="rua"
+                                   type="text" value="{{request.POST.rua}}"
+                                   placeholder="Digite o nome da rua" required>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_logadouro">Logadouro</label>
+                            <input class="form-control" id="id_logadouro" name="logadouro"
+                                   type="text" value="{{request.POST.logadouro}}"
+                                   placeholder="Digite o logadouro" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_bairro">Bairro</label>
+                            <input class="form-control" id="id_bairro" name="bairro"
+                                   type="text" value="{{request.POST.bairro}}"
+                                   placeholder="Digite o bairro" required>
+                        </div>
+                        <div class="form-group col-lg-6 mb-3">
+                            <label for="id_numero">Numero</label>
+                            <input class="form-control" name="numero" id="id_numero"
+                                   type="text" value="{{request.POST.numero}}"
+                                   placeholder="Digite o numero">
+                        </div>
+                    </div>
+
+                    <input class="btn btn-info" type="submit" value="Cadastrar">
+                </form>
+            </div>
         </div>
     </div>
-    <div class="form-row">
-
-        <div class="form-group col-lg-12 mb-3">
-            <label>E-mail</label>
-            <input class="form-control" id="username" name="username"
-                   type="email" value="{{request.POST.username}}"
-                   placeholder="Digite seu e-mail" autocomplete="off" required>
-        </div>
-    </div>
-
-    <div class="form-row">
-
-        <div class="form-group col-lg-6 mb-3">
-            <label>Senha</label>
-            <input class="form-control" id="password1" name="password1"
-                   type="password" value="{{request.POST.password1}}"
-                   placeholder="Digite sua senha"
-                   autocomplete="off" required>
-        </div>
-        <div class="form-group col-lg-6 mb-3">
-            <label>Confirmar Senha</label>
-            <input class="form-control" id="password2" name="password2"
-                   type="password" value="{{request.POST.password2}}"
-                   placeholder="Digite a sua senha novamente"
-                   autocomplete="off" required>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_telefone">Teleforne</label>
-            <input class="form-control" id="id_telefone" name="telefone"
-                   type="text" value="{{request.POST.telefone}}"
-                   placeholder="Digite seu telefone" autocomplete="off" required>
-        </div>
-
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_tipo">Tipo de usuario</label>
-            <select class="form-control" id="id_tipo"
-                    name="tipo"
-                    value="{{request.POST.tipo}}"
-                    data-placeholder="Escolha o tipo de usuario">
-                <option value="">Escolha o usuario</option>
-                {% for tipo in tipos %}
-                <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-    <h4>Informações de Endereço</h4>
-    <hr>
-
-    <div class="form-row">
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_cep">Cep</label>
-            <input class="form-control" id="id_cep" name="cep"
-                   type="text" value="{{request.POST.cep}}"
-                   placeholder="Digite seu cep" required>
-        </div>
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_cidade">Cidade</label>
-            <input class="form-control" id="id_cidade" name="cidade"
-                   type="text" value="{{request.POST.cep}}"
-                   placeholder="Digite sua cidade" required>
-        </div>
-    </div>
-    <div class="form-row">
-
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_rua">Rua</label>
-            <input class="form-control" id="id_rua" name="rua"
-                   type="text" value="{{request.POST.rua}}"
-                   placeholder="Digite o nome da rua" required>
-        </div>
-
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_logadouro">Logadouro</label>
-            <input class="form-control" id="id_logadouro" name="logadouro"
-                   type="text" value="{{request.POST.logadouro}}"
-                   placeholder="Digite o logadouro" required>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_bairro">Bairro</label>
-            <input class="form-control" id="id_bairro" name="bairro"
-                   type="text" value="{{request.POST.bairro}}"
-                   placeholder="Digite o bairro" required>
-        </div>
-        <div class="form-group col-lg-6 mb-3">
-            <label for="id_numero">Numero</label>
-            <input class="form-control" name="numero" id="id_numero"
-                   type="text" value="{{request.POST.numero}}"
-                   placeholder="Digite o numero">
-        </div>
-    </div>
-
-    <input type="submit" value="Cadastrar">
-</form>
+</div>
 {% endblock %}

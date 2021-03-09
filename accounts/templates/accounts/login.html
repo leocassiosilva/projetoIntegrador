@@ -1,38 +1,51 @@
 {% extends 'cadastro_user.html' %}
 {% block title %} Login{% endblock title %}
-{% block card-title %}Login{% endblock card-title %}
+{% block card-title %}<h4 class="text-center">Login</h4>{% endblock card-title %}
 {% block login %}<a href="/accounts/cadastrar/">Cadastrar</a>{% endblock login %}
 
 {% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card card-outline card-info">
+            <div class="card-header text-center">
+                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
+
+                <h4 class="text-center">Login</h4>
 
 
-<form method="post" class="form">
-    {% csrf_token %}
+                <form method="post" class="form">
+                    {% csrf_token %}
 
-    <div class="form-row">
+                    <div class="form-row">
 
-        <div class="form-group col-lg-12 mb-3">
-            <label>E-mail</label>
-            <input class="form-control" id="id_username" name="username"
-                   type="email"
-                   placeholder="Digite seu e-mail" required>
+                        <div class="form-group col-lg-12 mb-3">
+                            <label>E-mail</label>
+                            <input class="form-control" id="id_username" name="username"
+                                   type="email"
+                                   placeholder="Digite seu e-mail" required>
 
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-lg-12 mb-3">
+                            <label>Senha</label>
+                            <input class="form-control" type="password" name="password" autocomplete="current-password"
+                                   id="id_password"
+                                   placeholder="Digite sua senha"
+                                   autocomplete="off" required>
+
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+            </div>
         </div>
-
     </div>
-
-    <div class="form-row">
-
-        <div class="form-group col-lg-12 mb-3">
-            <label>Senha</label>
-            <input class="form-control" type="password" name="password" autocomplete="current-password" id="id_password"
-                   placeholder="Digite sua senha"
-                   autocomplete="off" required>
-
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
-
+</div>
 
 {% endblock %}
