@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = "accounts.CustomUsuario"
 
+ROLEPERMISSIONS_MODULE = 'projetoIntegrador.roles'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'projetoIntegrador.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':  [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +87,7 @@ DATABASES = {
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432',
-     }
+    }
 }
 
 # Password validation
@@ -140,4 +142,3 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sigoorientacoes@gmail.com'
 EMAIL_HOST_PASSWORD = '#'
 EMAIL_PORT = 587
-
