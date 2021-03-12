@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'accounts',
     'core',
     'product',
+    'webpage',
     'django.contrib.admin',
     'rolepermissions',
 ]
