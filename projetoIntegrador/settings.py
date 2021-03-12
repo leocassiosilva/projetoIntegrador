@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'product',
     'django.contrib.admin',
     'rolepermissions',
+    'widget_tweaks',
 ]
 
 AUTH_USER_MODEL = "accounts.CustomUsuario"
