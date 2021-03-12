@@ -2,7 +2,7 @@
 {% block contentPagina %}
 {% load widget_tweaks %}
 
-<h1 class="m-0">Cadastrar Categorias</h1>
+<h1 class="m-0">Cadastrar Categoria</h1>
 
 {% endblock %}
 {% block title %}
@@ -10,15 +10,10 @@
 {% endblock %}
 {% block content %}
 
-<form action="" method="POST">
-    {% csrf_token %}
+<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Quick Example</h3>
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset>
             {% for field in form %}
@@ -36,7 +31,5 @@
             </div>
         </fieldset>
     </form>
-    </div>
-</form>
-
+</div>
 {% endblock %}
