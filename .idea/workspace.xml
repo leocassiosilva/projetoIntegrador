@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7119ee-3685-401d-92ea-0188d4f0223f" name="Default Changelist" comment="criando pagina inicial do sistema">
-      <change beforePath="$PROJECT_DIR$/templates/webpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/webpage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/templates/register/product_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpage/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpage/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webpage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -151,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615649587197</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="criando pagina inicial do sistema">
+      <created>1615649641476</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1615649641476</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,10 +201,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="80" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1615573167690" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1615649206255">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1615649651209">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615649206255" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615649651209" />
     <state x="465" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1615371124272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -1,6 +1,7 @@
-from django.views.generic.edit import CreateView  # UpdateView
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from .models import Product, Category
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 # Create
@@ -14,5 +15,36 @@ class CategoryCreate(CreateView):
 class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'category', 'quantity', 'description', 'price', 'image']
-    template_name = 'register/formProduct.html'
     success_url = reverse_lazy('index')
+
+
+class ProductListView(ListView):
+    template_name = 'register/product_list.html'
+    model = Product
+
+    def get_queryset(self):
+        # produtos = Product.objects.all()
+        produtos = Product.objects.order_by('nome').filter(id_usuario=self.request.user)
+        print(produtos)
+        return produtos
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = Product
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('produtos_lista')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+
+    def get_success_url(self):
+        return reverse('produtos_lista')
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    #fields = [colocar fields]

@@ -5,4 +5,4 @@ from accounts.models import CustomUsuario
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'home.html')

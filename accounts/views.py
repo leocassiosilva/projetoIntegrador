@@ -4,7 +4,6 @@ from django.contrib.auth.views import LoginView, PasswordResetView, PasswordRese
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 
-
 # Create your views here.
 from django.urls import reverse
 from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
@@ -37,7 +36,6 @@ class CriarVendedor(SuccessMessageMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['tipos'] = list(TipoUsuarios.objects.all())
         return context
-
 
 
 class UpdateUsuario(SuccessMessageMixin, UpdateView):
