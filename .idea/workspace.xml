@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b7119ee-3685-401d-92ea-0188d4f0223f" name="Default Changelist" comment="addcadastro de vendedor">
+    <list default="true" id="9b7119ee-3685-401d-92ea-0188d4f0223f" name="Default Changelist" comment="criando pagina inicial do sistema">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/new_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/new_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cadastro_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cadastro_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/webpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/webpage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615630740701</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="criando pagina inicial do sistema">
+      <created>1615646490196</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615646490196</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,7 +168,8 @@
     <MESSAGE value="roles e webpage" />
     <MESSAGE value="add git ignore" />
     <MESSAGE value="addcadastro de vendedor" />
-    <option name="LAST_COMMIT_MESSAGE" value="addcadastro de vendedor" />
+    <MESSAGE value="criando pagina inicial do sistema" />
+    <option name="LAST_COMMIT_MESSAGE" value="criando pagina inicial do sistema" />
   </component>
   <component name="WindowStateProjectService">
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1615322572858">
@@ -175,10 +180,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="470" y="80" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1615573167690" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1615630782497">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1615649206255">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615630782497" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615649206255" />
     <state x="465" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1615371124272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
