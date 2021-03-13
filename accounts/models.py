@@ -44,7 +44,6 @@ class TipoUsuarios(models.Model):
 
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
-    tipo = models.ForeignKey(TipoUsuarios, models.DO_NOTHING, db_column='id_tipo_usuario', blank=True, null=True)
     telefone = models.CharField('Telefone', max_length=15)
     cep = models.CharField('Cep', max_length=20, blank=True, null=True)
     cidade = models.CharField('Cidade', max_length=100, blank=True, null=True)

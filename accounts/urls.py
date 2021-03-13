@@ -1,10 +1,11 @@
 from django.urls import path, include
 
 from .views import CriarUsuario, UserLogin, LogoutView, IndexView, UpdateUsuario, PasswordReset, PasswordResetDone, \
-    PasswordResetConfirm, PasswordResetCompleteView, PasswordChange
+    PasswordResetConfirm, PasswordResetCompleteView, PasswordChange, CriarVendedor
 
 urlpatterns = [
     path('cadastrar/', CriarUsuario.as_view(), name='cadastrar'),
+    path('vendedor/', CriarVendedor.as_view(), name='cadastrar_vendedor'),
     path('login/', UserLogin.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('index/', IndexView.as_view(), name='index'),

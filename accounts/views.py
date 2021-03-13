@@ -26,6 +26,20 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
         return context
 
 
+class CriarVendedor(SuccessMessageMixin, CreateView):
+    model = CustomUsuario
+    form_class = CustomUsuarioCriarForm
+    template_name = 'accounts/new_user.html'
+    success_url = '/accounts/login'
+    success_message = 'Bem vindo! Faça login para começar '
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tipos'] = list(TipoUsuarios.objects.all())
+        return context
+
+
+
 class UpdateUsuario(SuccessMessageMixin, UpdateView):
     model = CustomUsuario
     fields = (
