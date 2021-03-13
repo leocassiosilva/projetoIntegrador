@@ -35,11 +35,18 @@
                     </div>
                     <div class="form-row">
 
-                        <div class="form-group col-lg-12 mb-3">
+                        <div class="form-group col-lg-7 mb-3">
                             <label>E-mail</label>
                             <input class="form-control" id="username" name="username"
                                    type="email" value="{{request.POST.username}}"
                                    placeholder="Digite seu e-mail" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-group col-lg-5 mb-3">
+                            <label for="id_telefone">Teleforne</label>
+                            <input type="text" class="form-control" id="id_telefone" name="telefone"
+                                   data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
+                                   inputmode="text" value="{{request.POST.telefone}}">
                         </div>
                     </div>
 
@@ -61,14 +68,6 @@
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-lg-6 mb-3">
-                            <label for="id_telefone">Teleforne</label>
-                            <input class="form-control" id="id_telefone" name="telefone"
-                                   type="text" value="{{request.POST.telefone}}"
-                                   placeholder="Digite seu telefone" autocomplete="off" required>
-                        </div>
-                    </div>
                     <h4>Informações de Endereço</h4>
                     <hr>
 

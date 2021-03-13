@@ -20,14 +20,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{% static '/admin/dist/css/adminlte.min.css' %}">
 </head>
 <body class="hold-transition layout-top-nav">
-<div class="wrapper">
+<div class="wrapper" style="background-color:#f4f6f9;">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="background-color:#60ad3b;">
         <div class="container">
             <a href="{% static '/admin/index3.html' %}" class="navbar-brand">
                 <img src="{% static '/admin/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"
                      class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">ComaBEM</span>
+                <span class="brand-text font-weight-light text-white">ComaBEM</span>
             </a>
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,24 +36,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                 <!-- Left navbar links -->
-                <ul class="navbar-nav ml-auto text-white">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="index3.html" class="nav-link">Home</a>
+                        <a href="index3.html" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">O que é ? </a>
+                        <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Como utilizar</a>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false" class="nav-link dropdown-toggle">Minha Conta</a>
+                           aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
+                                class="fas fa-users"></i> Minha Conta</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                            <li><a href="#" class="dropdown-item">Cliente</a></li>
+                            <li><a href="#" class="dropdown-item ">Cliente</a></li>
                             <li><a href="#" class="dropdown-item">Vendedor</a></li>
-
-
                             <!-- End Level two -->
                         </ul>
                     </li>
@@ -65,124 +62,166 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </nav>
     <!-- /.navbar -->
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="min-height: 1286.25px; margin-top:100px;">
 
         <!-- Content Header (Page header) -->
         <div class="content-header">
 
-            <div class="card bg-dark text-white">
-                <img src="..." class="card-img" alt="...">
-                <div class="card-img-overlay">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text">Last updated 3 mins ago</p>
+            <div class="container-fluid">
+                <h2 class="text-center display-4">Coma Bem</h2>
+                <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <form action="simple-results.html">
+                            <div class="input-group">
+                                <input type="search" class="form-control "
+                                       placeholder="Informe o nome do produto">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn  btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
-            <div class="container">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                            <li class="breadcrumb-item active">Top Navigation</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="content">
+        <div class="content" style="margin-top:100px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-4">
                         <div class="card">
+                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                                 class="card-img-top">
+
+                            <!-- /.card-header -->
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's
-                                    content.
-                                </p>
-
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <ul>
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Consectetur adipiscing elit</li>
+                                    <li>Integer molestie lorem at massa</li>
+                                    <li>Facilisis in pretium nisl aliquet</li>
+                                    <li>Nulla volutpat aliquam velit
+                                        <ul>
+                                            <li>Phasellus iaculis neque</li>
+                                            <li>Purus sodales ultricies</li>
+                                            <li>Vestibulum laoreet porttitor sem</li>
+                                            <li>Ac tristique libero volutpat at</li>
+                                        </ul>
+                                    </li>
+                                    <li>Faucibus porta lacus fringilla vel</li>
+                                    <li>Aenean sit amet erat nunc</li>
+                                    <li>Eget porttitor lorem</li>
+                                </ul>
                             </div>
+                            <!-- /.card-body -->
                         </div>
-
-                        <div class="card card-primary card-outline">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up the bulk of the
-                                    card's
-                                    content.
-                                </p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div><!-- /.card -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.col-md-6 -->
-                    <div class="col-lg-6">
+                    <!-- ./col -->
+                    <div class="col-md-4">
                         <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title m-0">Featured</h5>
-                            </div>
+                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                                 class="card-img-top">
+
+                            <!-- /.card-header -->
                             <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
-
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <ol>
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Consectetur adipiscing elit</li>
+                                    <li>Integer molestie lorem at massa</li>
+                                    <li>Facilisis in pretium nisl aliquet</li>
+                                    <li>Nulla volutpat aliquam velit
+                                        <ol>
+                                            <li>Phasellus iaculis neque</li>
+                                            <li>Purus sodales ultricies</li>
+                                            <li>Vestibulum laoreet porttitor sem</li>
+                                            <li>Ac tristique libero volutpat at</li>
+                                        </ol>
+                                    </li>
+                                    <li>Faucibus porta lacus fringilla vel</li>
+                                    <li>Aenean sit amet erat nunc</li>
+                                    <li>Eget porttitor lorem</li>
+                                </ol>
                             </div>
+                            <!-- /.card-body -->
                         </div>
-
-                        <div class="card card-primary card-outline">
-                            <div class="card-header">
-                                <h5 class="card-title m-0">Featured</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title">Special title treatment</h6>
-
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.col-md-6 -->
+                    <!-- ./col -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                                 class="card-img-top">
+
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Consectetur adipiscing elit</li>
+                                    <li>Integer molestie lorem at massa</li>
+                                    <li>Facilisis in pretium nisl aliquet</li>
+                                    <li>Nulla volutpat aliquam velit
+                                        <ul>
+                                            <li>Phasellus iaculis neque</li>
+                                            <li>Purus sodales ultricies</li>
+                                            <li>Vestibulum laoreet porttitor sem</li>
+                                            <li>Ac tristique libero volutpat at</li>
+                                        </ul>
+                                    </li>
+                                    <li>Faucibus porta lacus fringilla vel</li>
+                                    <li>Aenean sit amet erat nunc</li>
+                                    <li>Eget porttitor lorem</li>
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
+                <hr class="featurette-divider">
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <div class="content" style="margin-top:20px;">
+        <div class="container">
+            <div class="row">
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                <div class="col-md-7">
+                    <h2 class="text-center display-6">Comida Organica</h2>
 
+                    <p class="lead">Texto Aqui</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="img-fluid pad" data-src="holder.js/500x500/auto" alt="500x500"
+                         style="width: 500px; height: 400px;"
+                         src="{% static '/admin/dist/img/photo1.png' %}"
+                         data-holder-rendered="true" alt="Photo">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer"  style="margin-top:20px;">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
             Anything you want
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+        reserved.
     </footer>
 </div>
 <!-- ./wrapper -->
