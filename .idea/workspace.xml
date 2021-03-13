@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7119ee-3685-401d-92ea-0188d4f0223f" name="Default Changelist" comment="criando pagina inicial do sistema">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/templates/register/formCategory.html" beforeDir="false" afterPath="$PROJECT_DIR$/product/templates/register/formCategory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/templates/register/formProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/product/templates/register/formProduct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/views.py" afterDir="false" />
+>>>>>>> 7ce6047720517fa53d89a6fa540a332be1e75739
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +56,36 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../projetoLicitacaoWeb" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="projetoIntegrador" type="Python.DjangoServer" factoryName="Django server">
+      <module name="projetoIntegrador" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615291635732</updated>
+      <workItem from="1615655977329" duration="863000" />
     </task>
     <task id="LOCAL-00001" summary="template">
       <created>1615310190513</created>
@@ -161,6 +198,9 @@
     <option name="localTasksCounter" value="15" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -184,23 +224,5 @@
     <MESSAGE value="addcadastro de vendedor" />
     <MESSAGE value="criando pagina inicial do sistema" />
     <option name="LAST_COMMIT_MESSAGE" value="criando pagina inicial do sistema" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1615322572858">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1615322572858" />
-    <state x="470" y="80" key="VCS.ChangeListViewerDialog" timestamp="1615573167690">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="470" y="80" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1615573167690" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1615649651209">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1615649651209" />
-    <state x="465" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1615371124272">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="465" y="98" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1366.728@0.0.1366.728" timestamp="1615371124272" />
   </component>
 </project>

@@ -15,6 +15,7 @@ class CategoryCreate(CreateView):
 class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'category', 'quantity', 'description', 'price', 'image']
+    template_name = 'register/formProduct.html'
     success_url = reverse_lazy('index')
 
 
