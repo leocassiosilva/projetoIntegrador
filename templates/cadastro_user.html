@@ -19,15 +19,74 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{% static '/admin/dist/css/adminlte.min.css' %}">
 </head>
-<body class="hold-transition">
-<div class="container" style="margin-top: 70px;">
+<body class="hold-transition layout-top-nav">
+<div class="wrapper" style="background-color:#f4f6f9;">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="background-color:#60ad3b;">
+        <div class="container">
+            <a href="{% static '/admin/index3.html' %}" class="navbar-brand">
+                <img src="{% static '/admin/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo"
+                     class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light text-white">ComaBEM</span>
+            </a>
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <!-- Bloco para colocar o conteúdo-->
-    {% block content %}
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
+                    </li>
 
-    {% endblock content %}
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
+                                class="fas fa-users"></i> Minha Conta</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="{% url 'cadastrar' %}" class="dropdown-item ">Cliente</a></li>
+                            <li><a href="{% url 'cadastrar_vendedor' %}" class="dropdown-item">Vendedor</a></li>
+                            <!-- End Level two -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Entrar</a>
+                    </li>
+                </ul>
+            </div>
 
 
+        </div>
+    </nav>
+    <!-- /.navbar -->
+    <div class="container" style="margin-top: 70px;">
+
+        <!-- Bloco para colocar o conteúdo-->
+        {% block content %}
+
+        {% endblock content %}
+
+    </div>
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    <!-- Main Footer -->
+    <footer class="main-footer" style="margin-top:20px;">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+        reserved.
+    </footer>
 </div>
 <!-- /.register-box -->
 <link rel="stylesheet" href="{% static '/admin/dist/css/adminlte.min.css' %}">
@@ -43,6 +102,10 @@
 <script>
 
     $('#id_telefone').mask('(00) 0000-00009');
+
+
+
+
 </script>
 </body>
 </html>

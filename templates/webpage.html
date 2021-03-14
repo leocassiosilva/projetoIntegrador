@@ -4,7 +4,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Left navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="index3.html" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
+                        <a href="{% url 'home' %}" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
@@ -49,15 +49,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                            aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
                                 class="fas fa-users"></i> Minha Conta</a>
                         <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                            <li><a href="#" class="dropdown-item ">Cliente</a></li>
-                            <li><a href="#" class="dropdown-item">Vendedor</a></li>
+                            <li><a href="{% url 'cadastrar' %}" class="dropdown-item ">Cliente</a></li>
+                            <li><a href="{% url 'cadastrar_vendedor' %}" class="dropdown-item">Vendedor</a></li>
                             <!-- End Level two -->
                         </ul>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>
+                            Entrar</a>
+                    </li>
                 </ul>
             </div>
-
-
         </div>
     </nav>
     <!-- /.navbar -->
@@ -88,14 +91,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </div>
         <!-- /.content-header -->
+        <div class="content" style="background-color:white;">
 
+        </div>
         <!-- Main content -->
         <div class="content" style="margin-top:100px;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                            <img src="{% static 'img/16.png' %}" alt="Photo 1" class="img-fluid"
                                  class="card-img-top">
 
                             <!-- /.card-header -->
@@ -125,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- ./col -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                            <img src="{% static '/img/1.png' %}" alt="Photo 1" class="img-fluid"
                                  class="card-img-top">
 
                             <!-- /.card-header -->
@@ -155,7 +160,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- ./col -->
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="{% static '/admin/dist/img/photo1.png' %}" alt="Photo 1" class="img-fluid"
+                            <img src="{% static '/img/13.png' %}" alt="Photo 1" class="img-fluid"
                                  class="card-img-top">
 
                             <!-- /.card-header -->
@@ -215,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <i class="fas fa-chevron-up"></i>
     </a>
     <!-- Main Footer -->
-    <footer class="main-footer"  style="margin-top:20px;">
+    <footer class="main-footer" style="margin-top:20px;">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
             Anything you want
