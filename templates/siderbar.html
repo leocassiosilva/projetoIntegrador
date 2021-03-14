@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -56,13 +57,13 @@
                     </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{% url 'cadastrarProduto' %}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Produto</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{% url 'cadastrarCategoria' %}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categorias</p>
                             </a>
