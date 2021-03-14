@@ -4,7 +4,6 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField('Nome', max_length=100)
-
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
 

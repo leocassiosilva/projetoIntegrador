@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
+
+from .forms import ProductForm
 from .models import Product, Category
 from django.urls import reverse_lazy, reverse
 
@@ -24,16 +26,16 @@ class ProductListView(ListView):
     model = Product
 
     def get_queryset(self):
-        # produtos = Product.objects.all()
-        produtos = Product.objects.order_by('nome').filter(id_usuario=self.request.user)
+        produtos = Product.objects.all()
+        #produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
         print(produtos)
         return produtos
 
 
 class ProductUpdateView(UpdateView):
     model = Product
-    form_class = Product
-    template_name_suffix = '_update_form'
+    form_class = ProductForm
+    template_name = 'register/product_update.html'
 
     def get_success_url(self):
         return reverse('produtos_lista')
