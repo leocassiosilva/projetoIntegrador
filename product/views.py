@@ -27,7 +27,7 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         produtos = Product.objects.all()
-        #produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        # produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
         print(produtos)
         return produtos
 
@@ -43,6 +43,7 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
+    template_name = 'register/product_delete.html'
 
     def get_success_url(self):
         return reverse('produtos_lista')
@@ -50,7 +51,8 @@ class ProductDeleteView(DeleteView):
 
 class ProductDetailView(DetailView):
     model = Product
-    #fields = [colocar fields]
+    # fields = [colocar fields]
+
 
 class ProductListViewProdutos(ListView):
     template_name = 'register/produtos_list.html'
@@ -58,6 +60,6 @@ class ProductListViewProdutos(ListView):
 
     def get_queryset(self):
         produtos = Product.objects.all()
-        #produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        # produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
         print(produtos)
         return produtos

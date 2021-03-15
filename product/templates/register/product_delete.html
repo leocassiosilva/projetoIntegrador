@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contentPagina %}
+{% load widget_tweaks %}
+<h1 class="m-0">Lista de Produtos</h1>
+{% endblock %}
+{% block title %}
+<title>COMA | Lista de Produtos</title>
+{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Excluir Produto</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <h2>Você realmente tem o desejo de excluir o Produto</h2> <h1>{{ object }}?</h1>
+            {{form}}
+            <input class="btn btn-danger" type="submit" value="Confirmar">
+        </form>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+{% endblock %}

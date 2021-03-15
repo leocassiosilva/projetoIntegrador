@@ -7,25 +7,25 @@
 <title>COMA | Cadastro de Produtos</title>
 {% endblock %}
 {% block content %}
+<div class="card card-primary">
+    <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 
-<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
-    <div class="card card-primary">
         <div class="card-header">
         </div>
         {% csrf_token %}
         <fieldset>
             {% for field in form %}
             <div class="form-group{% if field.errors %} has-error{% endif %}">
-              <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
-              <div class="col-md">
-                {% render_field field class='form-control' %}
-              </div>
+                <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
+                <div class="col-md">
+                    {% render_field field class='form-control' %}
+                </div>
             </div>
             {% endfor %}
             <div class="form-group">
-              <div class="col-md-9 col-md-offset-3">
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-              </div>
+                <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
             </div>
         </fieldset>
     </form>
