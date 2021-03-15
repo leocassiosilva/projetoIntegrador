@@ -51,3 +51,13 @@ class ProductDeleteView(DeleteView):
 class ProductDetailView(DetailView):
     model = Product
     #fields = [colocar fields]
+
+class ProductListViewProdutos(ListView):
+    template_name = 'register/produtos_list.html'
+    model = Product
+
+    def get_queryset(self):
+        produtos = Product.objects.all()
+        #produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        print(produtos)
+        return produtos

@@ -32,10 +32,12 @@
                     <thead>
                     <tr>
                         <th>Nome</th>
+
                         <th>Categoria</th>
                         <th>Descrição</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
+                        <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,6 +48,14 @@
                         <td>{{ produto.description }}</td>
                         <td>{{ produto.quantity }}</td>
                         <td>{{ produto.price }}</td>
+                        <td>
+                            <div class="btn-group float-right">
+                                <a class="btn mr-6" style="color:black;"
+                                   href="{%url 'produto_update' trabalho.id%}"><i class="fas fa-edit"
+                                                                                   title="Editar Trabalho"></i></a>
+                            </div>
+                            {{ produto.id }}
+                        </td>
                     </tr>
                     {% endfor %}
 
