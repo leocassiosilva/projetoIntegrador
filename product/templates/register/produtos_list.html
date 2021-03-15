@@ -14,7 +14,6 @@
          {%for produto in object_list%}
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
-
                         {% if produto.image %}
                             <img src="{{ produto.image.url }}"/>
                         {% else %}
@@ -36,7 +35,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card-footer">
                         <div class="text-right">
                             <a href="#" class="btn btn-sm bg-teal">
