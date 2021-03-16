@@ -77,3 +77,15 @@ class ProductListViewProdutos(ListView):
         # produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
         print(produtos)
         return produtos
+
+
+class ProdutoSeach(ListView):
+    model = Product
+    template_name = 'register/buscar_produto.html'
+
+    def get_queryset(self):
+        term = self.request.GET.get('term')
+        print(term)
+        produtos = Product.objects.filter(name=term)
+        print(produtos)
+        return produtos

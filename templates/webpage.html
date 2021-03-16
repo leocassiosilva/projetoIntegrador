@@ -71,9 +71,9 @@
                 <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <form action="simple-results.html">
+                        <form action="{% url 'busca_produto' %}">
                             <div class="input-group">
-                                <input type="search" class="form-control "
+                                <input type="search" name="term" id="term" class="form-control "
                                        placeholder="Informe o nome do produto">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn  btn-default">
@@ -238,5 +238,13 @@
 <script src="{% static '/admin/dist/js/adminlte.min.js' %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static '/admin/dist/js/demo.js' %}"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+     $("#licitacao_tit")
+});
+
+</script>
 </body>
 </html>
