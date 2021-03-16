@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'core',
     'product',
     'webpage',
-    'django.contrib.admin',
     'rolepermissions',
+    'django.contrib.admin',
     'widget_tweaks',
 ]
 
@@ -142,8 +142,8 @@ STATICFILES_DIRS = [
 
 # Login e Logout#
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'accounts/index'
-LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'cadastrarProduto'
+LOGOUT_REDIRECT_URL = ''
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

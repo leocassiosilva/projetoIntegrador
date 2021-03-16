@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -15,6 +16,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)
     category = models.ForeignKey('product.Category', verbose_name='Categoria', on_delete=models.CASCADE)
@@ -24,6 +26,7 @@ class Product(models.Model):
     image = models.ImageField(
         'Imagem', upload_to='products', blank=True, null=True
     )
+    id_usuario = models.ForeignKey("accounts.CustomUsuario", on_delete=models.CASCADE, db_column="id_usuario")
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
@@ -35,4 +38,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-

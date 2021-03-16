@@ -1,12 +1,12 @@
 from rolepermissions.roles import AbstractUserRole
 
 
-class Produtor(AbstractUserRole):
+class Vendedor(AbstractUserRole):
     available_permissions = {
-        'create_produtos': True,
+        'create_vendedor': True,
     }
 
 class Cliente(AbstractUserRole):
     available_permissions = {
-        'create_produtos': True,
+        'create_cliente': True,
     }
