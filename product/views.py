@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
@@ -8,7 +9,6 @@ from .models import Product, Category
 from django.urls import reverse_lazy, reverse
 
 
-# Create
 class CategoryCreate(CreateView):
     model = Category
     fields = ['name']
@@ -16,7 +16,7 @@ class CategoryCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-class ProductCreate(HasRoleMixin, CreateView):
+class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
     fields = ['name', 'category', 'quantity', 'description', 'price', 'image']
     template_name = 'register/formProduct.html'
@@ -32,7 +32,7 @@ class ProductCreate(HasRoleMixin, CreateView):
         return reverse('produtos_list')
 
 
-class ProductListView(HasRoleMixin, ListView):
+class ProductListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'register/product_list.html'
     model = Product
     allowed_roles = 'vendedor'
@@ -43,7 +43,7 @@ class ProductListView(HasRoleMixin, ListView):
         return produtos
 
 
-class ProductUpdateView(HasRoleMixin, UpdateView):
+class ProductUpdateView(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'register/product_update.html'
@@ -53,7 +53,7 @@ class ProductUpdateView(HasRoleMixin, UpdateView):
         return reverse('produtos_lista')
 
 
-class ProductDeleteView(HasRoleMixin, DeleteView):
+class ProductDeleteView(LoginRequiredMixin, HasRoleMixin, DeleteView):
     model = Product
     template_name = 'register/product_delete.html'
     allowed_roles = 'vendedor'
@@ -62,9 +62,10 @@ class ProductDeleteView(HasRoleMixin, DeleteView):
         return reverse('produtos_lista')
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, HasRoleMixin, DetailView):
     model = Product
     # fields = [colocar fields]
+    allowed_roles = 'vendedor'
 
 
 class ProductListViewProdutos(ListView):
@@ -73,6 +74,6 @@ class ProductListViewProdutos(ListView):
 
     def get_queryset(self):
         produtos = Product.objects.all()
-        #produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        # produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
         print(produtos)
         return produtos
