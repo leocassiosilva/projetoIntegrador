@@ -6,9 +6,7 @@ from .models import CustomUsuario
 class CustomUsuarioCriarForm(UserCreationForm):
     class Meta:
         model = CustomUsuario
-        fields = (
-            'username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro',
-            'numero')
+        fields = ('username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro','numero')
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -24,9 +22,7 @@ class CustomUsuarioCriarForm(UserCreationForm):
 class FormVendedor(UserCreationForm):
     class Meta:
         model = CustomUsuario
-        fields = (
-            'username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro',
-            'numero')
+        fields = ('username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro', 'numero')
 
     def save(self, commit=True):
         user = super().save(commit=False)

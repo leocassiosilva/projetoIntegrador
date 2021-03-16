@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -19,11 +20,6 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tipos'] = list(TipoUsuarios.objects.all())
-        return context
-
 
 class CriarVendedor(SuccessMessageMixin, CreateView):
     model = CustomUsuario
@@ -32,21 +28,15 @@ class CriarVendedor(SuccessMessageMixin, CreateView):
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tipos'] = list(TipoUsuarios.objects.all())
-        return context
 
-
-class UpdateUsuario(SuccessMessageMixin, UpdateView):
+class UpdateUsuario(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUsuario
-    fields = (
-        'username', 'first_name', 'last_name', 'tipo', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro',
-        'numero')
+    fields = ('first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro',
+              'numero')
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
-        return reverse('index')
+        return reverse('home')
 
 
 class UserLogin(SuccessMessageMixin, LoginView):
@@ -54,7 +44,7 @@ class UserLogin(SuccessMessageMixin, LoginView):
     success_url = 'accounts/index'
 
 
-class LogoutView(RedirectView):
+class LogoutView(LoginRequiredMixin, RedirectView):
     url = '/accounts/login/'
 
     def get(self, request, *args, **kwargs):
@@ -83,7 +73,7 @@ class PasswordResetCompleteView(SuccessMessageMixin, PasswordResetCompleteView):
     template_name = 'accounts/login.html'
 
 
-class PasswordChange(SuccessMessageMixin, PasswordChangeView):
-    template_name = 'accounts/password-change.html'
+class PasswordChange(LoginRequiredMixin, SuccessMessageMixin, PasswordChangeView):
+    template_name = 'accounts/password_change.html'
     success_url = '/accounts/index'
     success_message = "Senha alterada com sucesso!"

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import CategoryCreate, ProductCreate, ProductListView, ProductUpdateView, ProductListViewProdutos, \
-    ProductDeleteView, ProdutoSeach
+    ProductDeleteView, ProdutoSeach, autoCompleteProdutos
 
 urlpatterns = [
     path('cadastrarCategoria/', CategoryCreate.as_view(), name='cadastrarCategoria'),

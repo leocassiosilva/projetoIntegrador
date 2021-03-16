@@ -1,4 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
@@ -21,15 +23,13 @@ class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     fields = ['name', 'category', 'quantity', 'description', 'price', 'image']
     template_name = 'register/formProduct.html'
     allowed_roles = 'vendedor'
+    success_url = '/product/lista'
 
     def form_valid(self, form):
         product = form.save(commit=False)
         product.id_usuario = self.request.user
         product.save()
         return super(ProductCreate, self).form_valid(form)
-
-    def get_success_url(self):
-        return reverse('produtos_list')
 
 
 class ProductListView(LoginRequiredMixin, HasRoleMixin, ListView):
@@ -39,7 +39,6 @@ class ProductListView(LoginRequiredMixin, HasRoleMixin, ListView):
 
     def get_queryset(self):
         produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
-        print(produtos)
         return produtos
 
 
@@ -89,3 +88,11 @@ class ProdutoSeach(ListView):
         produtos = Product.objects.filter(name=term)
         print(produtos)
         return produtos
+
+
+def autoCompleteProdutos(request):
+    if request.is_ajax():
+        term = request.GET.get('search')
+        queryset = Product.objects.filter(name=term)
+        response_content = list(queryset.values());
+        return JsonResponse(response_content, safe=False)

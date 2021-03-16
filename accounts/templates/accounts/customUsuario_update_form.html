@@ -1,10 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+<title>COMA | Atualizar Cadastro</title>
+{% endblock %}
 
-</body>
-</html>
+{% block contentPagina %}
+<h1 class="m-0">Atualizar Cadastro</h1>
+{% endblock %}
+
+{% block content %}
+<div class="card card-primary">
+    <div class="card-body">
+
+        <h4 class="text-center">Registre-se</h4>
+
+        <form method="post">
+            {%csrf_token%}
+            <h4>Informações Pessoais</h4>
+            <hr>
+            <div class="form-row">
+                <div class="form-group col-lg-4 mb-3">
+                    <label>Nome</label>
+                    <input class="form-control" id="first_name" name="first_name"
+                           type="text" value="{{ form.first_name.value }}"
+                           placeholder="Digite seu primeiro nome"
+                           autocomplete="off" required>
+                </div>
+                <div class="form-group col-lg-4 mb-3">
+                    <label>Sobrenome</label>
+                    <input class="form-control" id="last_name" name="last_name"
+                           type="text" value="{{ form.last_name.value }}"
+                           placeholder="Digite o sobrenome"
+                           autocomplete="off" required>
+                </div>
+
+                <div class="form-group col-lg-4 mb-3">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone"
+                           data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
+                           inputmode="text" value="{{ form.telefone.value }}">
+                </div>
+
+            </div>
+
+            <h4>Informações de Endereço</h4>
+            <hr>
+
+            <div class="form-row">
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="cep">Cep</label>
+                    <input class="form-control" id="cep" name="cep"
+                           type="text" value="{{ form.cep.value }}"
+                           placeholder="Digite seu cep" required>
+                </div>
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="cidade">Cidade</label>
+                    <input class="form-control" id="cidade" name="cidade"
+                           type="text" value="{{ form.telefone.cidade }}"
+                           placeholder="Digite sua cidade" required>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="rua">Rua</label>
+                    <input class="form-control" id="rua" name="rua"
+                           type="text" value="{{ form.rua.value }}"
+                           placeholder="Digite o nome da rua" required>
+                </div>
+
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="logadouro">Logadouro</label>
+                    <input class="form-control" id="logadouro" name="logadouro"
+                           type="text" value="{{ form.logadouro.value }}"
+                           placeholder="Digite o logadouro" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="bairro">Bairro</label>
+                    <input class="form-control" id="bairro" name="bairro"
+                           type="text" value="{{ form.bairro.value }}"
+                           placeholder="Digite o bairro" required>
+                </div>
+                <div class="form-group col-lg-6 mb-3">
+                    <label for="numero">Numero</label>
+                    <input class="form-control" name="numero" id="numero"
+                           type="text" value="{{ form.numero.value }}"
+                           placeholder="Digite o numero">
+                </div>
+            </div>
+            <input class="btn btn-info" type="submit" value="Atualizar">
+        </form>
+    </div>
+</div>
+{% endblock %}
