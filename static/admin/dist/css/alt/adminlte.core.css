@@ -11343,7 +11343,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 .layout-top-nav .wrapper .main-header .brand-image {
   margin-top: -.5rem;
   margin-right: .2rem;
-  height: 33px;
+  height: 50px;
 }
 
 .layout-top-nav .wrapper .main-sidebar {
