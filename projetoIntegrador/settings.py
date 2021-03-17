@@ -142,7 +142,7 @@ STATICFILES_DIRS = [
 
 # Login e Logout#
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'cadastrarProduto'
+LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = ''
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
