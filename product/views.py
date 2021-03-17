@@ -78,15 +78,16 @@ class ProductListViewProdutos(ListView):
     model = Product
 
     def get_queryset(self):
-        produtos = Product.objects.all()
-        # produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        term = self.request.GET.get('term')
+        print(term)
+        produtos = Product.objects.filter(name=term)
         print(produtos)
         return produtos
 
 
 class ProdutoSeach(ListView):
     model = Product
-    template_name = 'register/buscar_produto.html'
+    template_name = 'register/produtos_list.html'
 
     def get_queryset(self):
         term = self.request.GET.get('term')
