@@ -39,7 +39,7 @@
                         <th>Descrição</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
-                        <th>Ações</th>
+                        <th style="text-align:center;">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,20 +50,15 @@
                         <td>{{ produto.description }}</td>
                         <td>{{ produto.quantity }}</td>
                         <td>{{ produto.price }}</td>
-                        <td>
-                            <div class="btn-group float-right">
-                                <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
+                        <td style="text-align:center;">
+                               <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
                                     <i class="fas fa-trash-alt" title="Excluir Produto"></i></a>
-                            </div>
-                            <div class="btn-group float-right">
-                                <a class="btn" style="color:black;"
+                              <a class="btn" style="color:black;"
                                    href="{%url 'produto_update' produto.id%}"><i class="fas fa-edit"
                                                                                  title="Editar Produto"></i></a>
-                            </div>
                         </td>
                     </tr>
                     {% endfor %}
-
                     </tbody>
                 </table>
             </div>
