@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect
+from django.views import generic
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
@@ -32,15 +33,20 @@ class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
         return super(ProductCreate, self).form_valid(form)
 
 
-class ProductListView(LoginRequiredMixin, HasRoleMixin, ListView):
+class ProductListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
     template_name = 'register/product_list.html'
     model = Product
     allowed_roles = 'vendedor'
 
     def get_queryset(self):
-        produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
-        return produtos
-
+        queryset = Product.objects.all()
+        term = self.request.GET.get('term', '')
+        if term:
+            queryset = queryset.filter(
+                name__icontains=term
+            )
+        return queryset
+product_list = ProductListView.as_view()
 
 class ProductUpdateView(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Product
