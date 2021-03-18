@@ -22,13 +22,25 @@ class UsuarioViewTestCase(TestCase):
 
     # Esse precisa fazer o login
     def test_update(self):
-        response = self.client.get(reverse('atualizar/1/'))
+        response = self.client.get(reverse('atualizar'))
         self.assertEquals(response.status_code, 200)
 
     # Esse teste server para testar o password reset
-    def test_update(self):
-        response = self.client.get(reverse('atualizar/1/'))
+    def test_reset_password(self):
+        response = self.client.get(reverse('password-reset/'))
         self.assertEquals(response.status_code, 200)
 
-    # path('password-reset/', PasswordReset.as_view(), name='password-reset'),
-    # path('password_reset/done/', PasswordResetDone.as_view(), name='password_reset_done'),
+    # Esse teste server para testar o password reset
+    def test_reset_password(self):
+        response = self.client.get(reverse('password_reset_done'))
+        self.assertEquals(response.status_code, 200)
+
+    # Esse teste server para testar o password reset
+    def test_password_reset_complete(self):
+        response = self.client.get(reverse('password_reset_complete'))
+        self.assertEquals(response.status_code, 200)
+
+    # Esse teste server para testar o ppassword-change
+    def test_password_change(self):
+        response = self.client.get(reverse('password-change'))
+        self.assertEquals(response.status_code, 302)
