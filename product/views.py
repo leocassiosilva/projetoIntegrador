@@ -30,6 +30,7 @@ class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
         product = form.save(commit=False)
         product.id_usuario = self.request.user
         product.save()
+        print("d")
         return super(ProductCreate, self).form_valid(form)
 
 
@@ -39,14 +40,11 @@ class ProductListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
     allowed_roles = 'vendedor'
 
     def get_queryset(self):
-        queryset = Product.objects.all()
-        term = self.request.GET.get('term', '')
-        if term:
-            queryset = queryset.filter(
-                name__icontains=term
-            )
-        return queryset
-product_list = ProductListView.as_view()
+        # produtos = Product.objects.all()
+        produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
+        print(self.request.user)
+        return produtos
+
 
 class ProductUpdateView(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Product
@@ -78,10 +76,7 @@ class ProductListViewProdutos(ListView):
     model = Product
 
     def get_queryset(self):
-        term = self.request.GET.get('term')
-        print(term)
-        produtos = Product.objects.filter(name=term)
-        print(produtos)
+        produtos = Product.objects.all()
         return produtos
 
 

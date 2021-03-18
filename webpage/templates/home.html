@@ -1,1 +1,162 @@
 {% extends 'webpage.html' %}
+{% load static %}
+{% block title %}
+<title>COMA | Pagina Incial</title>
+{% endblock %}
+{% block content %}
+<div class="content-wrapper" style="min-height: 1286.25px; margin-top:100px;">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+
+        <div class="container-fluid">
+            <h2 class="text-center display-4">Coma Bem</h2>
+            <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form role="search" action="{% url 'lista_produtos' %}">
+                        <div class="input-group">
+                            <input name="term" type="text" class="form-control "
+                                   placeholder="Informe o nome do produto">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn  btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content-header -->
+    <div class="content" style="background-color:white;">
+
+    </div>
+    <!-- Main content -->
+    <div class="content" style="margin-top:100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'img/16.png' %}" alt="Photo 1" class="img-fluid"
+                             class="card-img-top">
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet</li>
+                                <li>Consectetur adipiscing elit</li>
+                                <li>Integer molestie lorem at massa</li>
+                                <li>Facilisis in pretium nisl aliquet</li>
+                                <li>Nulla volutpat aliquam velit
+                                    <ul>
+                                        <li>Phasellus iaculis neque</li>
+                                        <li>Purus sodales ultricies</li>
+                                        <li>Vestibulum laoreet porttitor sem</li>
+                                        <li>Ac tristique libero volutpat at</li>
+                                    </ul>
+                                </li>
+                                <li>Faucibus porta lacus fringilla vel</li>
+                                <li>Aenean sit amet erat nunc</li>
+                                <li>Eget porttitor lorem</li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./col -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static '/img/1.png' %}" alt="Photo 1" class="img-fluid"
+                             class="card-img-top">
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <ol>
+                                <li>Lorem ipsum dolor sit amet</li>
+                                <li>Consectetur adipiscing elit</li>
+                                <li>Integer molestie lorem at massa</li>
+                                <li>Facilisis in pretium nisl aliquet</li>
+                                <li>Nulla volutpat aliquam velit
+                                    <ol>
+                                        <li>Phasellus iaculis neque</li>
+                                        <li>Purus sodales ultricies</li>
+                                        <li>Vestibulum laoreet porttitor sem</li>
+                                        <li>Ac tristique libero volutpat at</li>
+                                    </ol>
+                                </li>
+                                <li>Faucibus porta lacus fringilla vel</li>
+                                <li>Aenean sit amet erat nunc</li>
+                                <li>Eget porttitor lorem</li>
+                            </ol>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./col -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static '/img/13.png' %}" alt="Photo 1" class="img-fluid"
+                             class="card-img-top">
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>Lorem ipsum dolor sit amet</li>
+                                <li>Consectetur adipiscing elit</li>
+                                <li>Integer molestie lorem at massa</li>
+                                <li>Facilisis in pretium nisl aliquet</li>
+                                <li>Nulla volutpat aliquam velit
+                                    <ul>
+                                        <li>Phasellus iaculis neque</li>
+                                        <li>Purus sodales ultricies</li>
+                                        <li>Vestibulum laoreet porttitor sem</li>
+                                        <li>Ac tristique libero volutpat at</li>
+                                    </ul>
+                                </li>
+                                <li>Faucibus porta lacus fringilla vel</li>
+                                <li>Aenean sit amet erat nunc</li>
+                                <li>Eget porttitor lorem</li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- ./col -->
+            </div>
+            <hr class="featurette-divider">
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<div class="content" style="margin-top:20px;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-7">
+                <h2 class="text-center display-6">Comida Organica</h2>
+
+                <p class="lead">Os Alimentos Orgânicos são aqueles alimentos cultivados de maneira sustentável
+                    mediante a agricultura biológica (ou orgânica).
+                    Esse sistema não utiliza agrotóxicos, adubos químicos, aditivos sintéticos, antibióticos,
+                    hormônios, nem técnicas de engenharia alimentar.
+                    As técnicas de engenharia são desenvolvidas nos alimentos geneticamente modificados, os
+                    alimentos transgênicos.
+                    Em outras palavras, os alimentos orgânicos são aqueles que estão isentos de produtos químicos,
+                    ou seja, de insumos artificiais.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="img-fluid pad" data-src="holder.js/500x500/auto" alt="600x600"
+                     style="width: 500px; height: 400px;"
+                     src="{% static '/img/organico.png' %}"
+                     data-holder-rendered="true" alt="Photo">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

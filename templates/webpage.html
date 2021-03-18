@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block title %}
     <title>ComaBem | Pagina Inicial</title>
+    {% endblock title %}
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -22,7 +25,7 @@
         <div class="container">
             <a href="" class="navbar-brand">
                 <img src="{% static '/img/ComaBEM.png' %}" alt="AdminLTE Logo"
-                     class="brand-image img-circle elevation-3" >
+                     class="brand-image img-circle elevation-3">
             </a>
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +38,16 @@
                     <li class="nav-item">
                         <a href="{% url 'home' %}" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
                     </li>
+                    -->
+
+                    <li class="nav-item">
+                        <a href="{% url 'produtos_disponiveis' %}" class="nav-link text-white"><i class="nav-icon fas fa-seedling"></i> Produtos</a>
+                    </li>
+
 
                     <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
@@ -59,171 +69,17 @@
         </div>
     </nav>
     <!-- /.navbar -->
+    {% block content %}
 
-    <div class="content-wrapper" style="min-height: 1286.25px; margin-top:100px;">
+    {% endblock content %}
 
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-
-            <div class="container-fluid">
-                <h2 class="text-center display-4">Coma Bem</h2>
-                <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <form role="search" action="{% url 'lista_produtos' %}">
-                            <div class="input-group">
-                                <input name="term" type="text" class="form-control "
-                                       placeholder="Informe o nome do produto">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn  btn-default">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.content-header -->
-        <div class="content" style="background-color:white;">
-
-        </div>
-        <!-- Main content -->
-        <div class="content" style="margin-top:100px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{% static 'img/16.png' %}" alt="Photo 1" class="img-fluid"
-                                 class="card-img-top">
-
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Consectetur adipiscing elit</li>
-                                    <li>Integer molestie lorem at massa</li>
-                                    <li>Facilisis in pretium nisl aliquet</li>
-                                    <li>Nulla volutpat aliquam velit
-                                        <ul>
-                                            <li>Phasellus iaculis neque</li>
-                                            <li>Purus sodales ultricies</li>
-                                            <li>Vestibulum laoreet porttitor sem</li>
-                                            <li>Ac tristique libero volutpat at</li>
-                                        </ul>
-                                    </li>
-                                    <li>Faucibus porta lacus fringilla vel</li>
-                                    <li>Aenean sit amet erat nunc</li>
-                                    <li>Eget porttitor lorem</li>
-                                </ul>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{% static '/img/1.png' %}" alt="Photo 1" class="img-fluid"
-                                 class="card-img-top">
-
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <ol>
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Consectetur adipiscing elit</li>
-                                    <li>Integer molestie lorem at massa</li>
-                                    <li>Facilisis in pretium nisl aliquet</li>
-                                    <li>Nulla volutpat aliquam velit
-                                        <ol>
-                                            <li>Phasellus iaculis neque</li>
-                                            <li>Purus sodales ultricies</li>
-                                            <li>Vestibulum laoreet porttitor sem</li>
-                                            <li>Ac tristique libero volutpat at</li>
-                                        </ol>
-                                    </li>
-                                    <li>Faucibus porta lacus fringilla vel</li>
-                                    <li>Aenean sit amet erat nunc</li>
-                                    <li>Eget porttitor lorem</li>
-                                </ol>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{% static '/img/13.png' %}" alt="Photo 1" class="img-fluid"
-                                 class="card-img-top">
-
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>Consectetur adipiscing elit</li>
-                                    <li>Integer molestie lorem at massa</li>
-                                    <li>Facilisis in pretium nisl aliquet</li>
-                                    <li>Nulla volutpat aliquam velit
-                                        <ul>
-                                            <li>Phasellus iaculis neque</li>
-                                            <li>Purus sodales ultricies</li>
-                                            <li>Vestibulum laoreet porttitor sem</li>
-                                            <li>Ac tristique libero volutpat at</li>
-                                        </ul>
-                                    </li>
-                                    <li>Faucibus porta lacus fringilla vel</li>
-                                    <li>Aenean sit amet erat nunc</li>
-                                    <li>Eget porttitor lorem</li>
-                                </ul>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- ./col -->
-                </div>
-                <hr class="featurette-divider">
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <div class="content" style="margin-top:20px;">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-7">
-                    <h2 class="text-center display-6">Comida Organica</h2>
-
-                    <p class="lead">Os Alimentos Orgânicos são aqueles alimentos cultivados de maneira sustentável mediante a agricultura biológica (ou orgânica).
-                                    Esse sistema não utiliza agrotóxicos, adubos químicos, aditivos sintéticos, antibióticos, hormônios, nem técnicas de engenharia alimentar.
-                                    As técnicas de engenharia são desenvolvidas nos alimentos geneticamente modificados, os alimentos transgênicos.
-                                    Em outras palavras, os alimentos orgânicos são aqueles que estão isentos de produtos químicos, ou seja, de insumos artificiais.</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="img-fluid pad" data-src="holder.js/500x500/auto" alt="600x600"
-                         style="width: 500px; height: 400px;"
-                         src="{% static '/img/organico.png' %}"
-                         data-holder-rendered="true" alt="Photo">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
     </a>
     <!-- Main Footer -->
     <footer class="main-footer" style="margin-top:20px;">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2014-2021 F&L System</strong>
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -242,10 +98,6 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <script type="text/javascript">
-
-$(document).ready(function () {
-     $("#licitacao_tit")
-});
 
 
 </script>

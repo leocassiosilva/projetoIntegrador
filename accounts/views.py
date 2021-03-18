@@ -24,7 +24,7 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
 class CriarVendedor(SuccessMessageMixin, CreateView):
     model = CustomUsuario
     form_class = CustomUsuarioCriarForm
-    template_name = 'accounts/new_user.html'
+    template_name = 'accounts/new_vendedor.html'
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
 
