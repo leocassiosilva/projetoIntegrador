@@ -46,9 +46,8 @@ class CadastraViewTesteCase(TestCase):
         self.client = Client()
         self.register_url = reverse('accounts:cadastrar')
 
-    def test_login_error(self):
-        data = {'email': 'leocassio3@gmail.com',
-                'username': 'leocassio3@gmail.com',
+    def test_cadastro_error(self):
+        data = {'username': 'leocassio3@gmail.com',
                 'first_name': 'Leo',
                 'last_name': 'Silva',
                 'telefone': '6565465465',
@@ -61,4 +60,27 @@ class CadastraViewTesteCase(TestCase):
                 'password': 'mnbvcxz987654321'}
         response = self.client.post(self.register_url, data)
         self.assertFormError(response, 'form', 'email', 'Este campo é obrigatorio.')
-        #self.assertEquals(response.status_code, 200)
+
+        # self.assertEquals(response.status_code, 200)
+
+    def setUp(self):
+        self.client = Client()
+        self.register_url1 = reverse('cadastrar')
+
+    def test_cadastro_sucess(self):
+        data = {'email': 'leocassio3@gmail.com',
+                'username': 'leocassio3@gmail.com',
+                'first_name': 'Leo',
+                'last_name': 'Silva',
+                'telefone': '6565465465',
+                'cep': '654454',
+                'cidade': 'natal',
+                'rua': 'sadsadsad',
+                'bairro': 'sdsdsd',
+                'logadouro': 'dsads',
+                'numero': 'sdadssasd',
+                'password': 'mnbvcxz987654321'}
+        response = self.client.post(self.register_url1, data)
+        self.assertEquals(response.status_code, 200)
+
+
