@@ -72,6 +72,16 @@
     <!-- /.navbar -->
     <div class="container" style="margin-top: 70px;">
 
+        {% block messages %}
+
+            {% for message in messages %}
+
+                <div class="aler alert-{{ message.tags}}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+        {% endblock messages%}
         <!-- Bloco para colocar o conteúdo-->
         {% block content %}
 

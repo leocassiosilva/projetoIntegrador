@@ -4,10 +4,11 @@ from django.contrib.auth.views import LoginView, PasswordResetView, PasswordRese
     PasswordResetCompleteView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
-
+from django.contrib import messages
 # Create your views here.
 from django.urls import reverse
 from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
+from rolepermissions.roles import assign_role
 
 from accounts.forms import CustomUsuarioCriarForm
 from accounts.models import CustomUsuario, TipoUsuarios
@@ -19,6 +20,19 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
     template_name = 'accounts/new_user.html'
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
+
+    def save(self,request, commit=True, ):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.email = self.cleaned_data["username"]
+
+        if commit:
+            user.save()
+            assign_role(user, 'cliente')
+        else:
+            messages.error("Formulario Invalido")
+        return user
+
 
 
 class CriarVendedor(SuccessMessageMixin, CreateView):

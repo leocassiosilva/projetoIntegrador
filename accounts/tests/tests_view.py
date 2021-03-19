@@ -1,5 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
+from django.conf import settings
+from model_mommy import mommy
+
+from accounts.models import CustomUsuario
 
 
 # teste para view de cadastro de usuario
@@ -67,6 +71,7 @@ class CadastraViewTesteCase(TestCase):
         self.client = Client()
         self.register_url1 = reverse('cadastrar')
 
+    # Esse teste não funciona, tentei mais ele não vai
     def test_cadastro_sucess(self):
         data = {'email': 'leocassio3@gmail.com',
                 'username': 'leocassio3@gmail.com',
@@ -80,7 +85,7 @@ class CadastraViewTesteCase(TestCase):
                 'logadouro': 'dsads',
                 'numero': 'sdadssasd',
                 'password': 'mnbvcxz987654321'}
-        response = self.client.post(self.register_url1, data)
-        self.assertEquals(response.status_code, 200)
-
-
+        response = self.client.post(self.register_url, data)
+        index_url = reverse('login')
+        self.assertRedirects(response, index_url)
+        self.assertEquals(CustomUsuario.objects.count(), 1)
