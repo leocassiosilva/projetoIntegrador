@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'core',
     'product',
     'webpage',
+    'checkout',
     'rolepermissions',
     'django.contrib.admin',
     'widget_tweaks',
