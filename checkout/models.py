@@ -9,9 +9,9 @@ class CarrinhoManager(models.Manager):
 
 class CarrinhoItem(models.Model):
     carrinho_key = models.CharField('Chave do Carrinho', max_length=40, db_index=True)
-    produto = models.ForeignKey('product.Product', verbose_name='Produto')
+    produto = models.ForeignKey('product.Product', models.DO_NOTHING, db_column='id_produto', blank=True, null=True)
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
-    preco = models.DecimalField('Preco', decimal_places=2, max_length=8)
+    preco = models.DecimalField('Preco', decimal_places=10,  max_digits=12)
 
     object = CarrinhoManager()
 
