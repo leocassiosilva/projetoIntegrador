@@ -58,10 +58,10 @@ class ProductListTestCase(TestCase):
     def test_view_ok(self):
         response = self.client.get(self.url)
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'product/product_list.html')
+        self.assertTemplateUsed(response, 'register/product_list.html')
 
     def test_context(self):
         response = self.client.get(self.url)
-        self.assertTrue('produtos_lista' in response.context)
-        product_list = response.context['produtos_lista']
+        self.assertTrue('product_list' in response.context)
+        product_list = response.context['product_list']
         self.assertEquals(product_list.count(), 10)

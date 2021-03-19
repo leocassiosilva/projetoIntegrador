@@ -47,16 +47,16 @@ class CadastraViewTesteCase(TestCase):
         self.register_url = reverse('accounts:cadastrar')
 
     def test_cadastro_error(self):
-        data = {'username': 'leocassio3@gmail.com',
-                'first_name': 'Leo',
-                'last_name': 'Silva',
-                'telefone': '6565465465',
+        data = {'username': 'francisco@gmail.com',
+                'first_name': 'Francisco',
+                'last_name': 'Leocassio',
+                'telefone': '(84)00000-0000',
                 'cep': '654454',
-                'cidade': 'natal',
-                'rua': 'sadsadsad',
-                'bairro': 'sdsdsd',
-                'logadouro': 'dsads',
-                'numero': 'sdadssasd',
+                'cidade': 'Natal',
+                'rua': 'Das Almas',
+                'bairro': 'Centro',
+                'logadouro': 'Casa',
+                'numero': 'S/N',
                 'password': 'mnbvcxz987654321'}
         response = self.client.post(self.register_url, data)
         self.assertFormError(response, 'form', 'email', 'Este campo é obrigatorio.')
@@ -68,17 +68,17 @@ class CadastraViewTesteCase(TestCase):
         self.register_url1 = reverse('cadastrar')
 
     def test_cadastro_sucess(self):
-        data = {'email': 'leocassio3@gmail.com',
-                'username': 'leocassio3@gmail.com',
-                'first_name': 'Leo',
-                'last_name': 'Silva',
-                'telefone': '6565465465',
+        data = {'email': 'francisco@gmail.com',
+                'username': 'francisco@gmail.com',
+                'first_name': 'Francisco',
+                'last_name': 'Leocassio',
+                'telefone': '(84)00000-0000',
                 'cep': '654454',
-                'cidade': 'natal',
-                'rua': 'sadsadsad',
-                'bairro': 'sdsdsd',
-                'logadouro': 'dsads',
-                'numero': 'sdadssasd',
+                'cidade': 'Natal',
+                'rua': 'Das Almas',
+                'bairro': 'Centro',
+                'logadouro': 'Casa',
+                'numero': 'S/N',
                 'password': 'mnbvcxz987654321'}
         response = self.client.post(self.register_url1, data)
         self.assertEquals(response.status_code, 200)
