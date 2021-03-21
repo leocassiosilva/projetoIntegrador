@@ -3,5 +3,4 @@ from . import views
 
 urlpatterns = [
     re_path('^adicionar/(?P<slug>[\w_-]+)/$', views.create_cartitem, name='criar_carrinhoitem'),
-
 ]
