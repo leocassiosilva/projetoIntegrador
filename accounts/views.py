@@ -21,18 +21,6 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
 
-    def save(self, request, commit=True, ):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        user.email = self.cleaned_data["username"]
-
-        if commit:
-            user.save()
-            assign_role(user, 'cliente')
-        else:
-            messages.error("Formulario Invalido")
-        return user
-
 
 class CriarVendedor(SuccessMessageMixin, CreateView):
     model = CustomUsuario
