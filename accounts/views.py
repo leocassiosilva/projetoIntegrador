@@ -11,7 +11,7 @@ from django.views.generic import CreateView, RedirectView, TemplateView, UpdateV
 from rolepermissions.roles import assign_role
 
 from accounts.forms import CustomUsuarioCriarForm
-from accounts.models import CustomUsuario, TipoUsuarios
+from accounts.models import CustomUsuario
 
 
 class CriarUsuario(SuccessMessageMixin, CreateView):
@@ -21,7 +21,7 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
 
-    def save(self,request, commit=True, ):
+    def save(self, request, commit=True, ):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         user.email = self.cleaned_data["username"]
@@ -32,7 +32,6 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
         else:
             messages.error("Formulario Invalido")
         return user
-
 
 
 class CriarVendedor(SuccessMessageMixin, CreateView):

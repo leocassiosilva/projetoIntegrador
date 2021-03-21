@@ -30,18 +30,6 @@ class UsuarioManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class TipoUsuarios(models.Model):
-    id = models.AutoField(primary_key=True, db_column="id_tipo_usuario")
-    nome = models.CharField(max_length=100)
-
-    def __str__(self):
-        return '{}'.format(self.nome)
-
-    class Meta:
-        db_table = "tipo_usuario"
-        managed = True
-
-
 class CustomUsuario(AbstractUser):
     email = models.EmailField('E-mail', unique=True)
     telefone = models.CharField('Telefone', max_length=15)
@@ -64,13 +52,3 @@ class CustomUsuario(AbstractUser):
         managed = True
 
     objects = UsuarioManager()
-
-
-class ProdutorAtivoManager(UsuarioManager):
-    def get_queryset(self):
-        return super().get_queryset().filter(id=1, is_active=True)
-
-
-class ConsumidorAtivoManager(UsuarioManager):
-    def get_queryset(self):
-        return super().get_queryset().filter(tipo=2, is_active=True)

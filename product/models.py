@@ -19,6 +19,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)
+    slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('product.Category', verbose_name='Categoria', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField('Quantidade', default=1)
     description = models.TextField('Descrição', blank=True)
