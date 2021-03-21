@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('', include('webpage.urls')),
     path('core', include('core.urls')),
+    path('checkout', include('checkout.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('product/', include('product.urls')),
