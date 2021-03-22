@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class CarrinhoManager(models.Manager):
 
     def add_item(self, carrinho_key, product):
