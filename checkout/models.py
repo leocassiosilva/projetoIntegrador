@@ -23,7 +23,7 @@ class CarrinhoItem(models.Model):
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
     preco = models.DecimalField('Preco', decimal_places=10, max_digits=12)
 
-    object = CarrinhoManager()
+    objects = CarrinhoManager()
 
     class Meta:
         verbose_name = 'Item do carrinho'
