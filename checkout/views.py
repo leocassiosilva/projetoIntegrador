@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from django.contrib import messages
 from product.models import Product
 from .models import CarrinhoItem
@@ -20,5 +20,12 @@ class CreateCarrinhoItemView(RedirectView):
             messages.success(self.request, 'Produto atualizado com sucesso')
         return product.get_absolute_url()
 
+
 create_cartitem = CreateCarrinhoItemView.as_view()
 
+
+class CartItemView(TemplateView):
+    template_name = 'checkout/cart.html'
+
+
+cart_item = CartItemView.as_view()

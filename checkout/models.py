@@ -12,7 +12,7 @@ class CarrinhoManager(models.Manager):
         else:
             created = True
             carrinhoItem = CarrinhoItem.objects.create(
-                carrinho_key=carrinho_key, product=product, preco=product.preco
+                carrinho_key=carrinho_key, product=product, preco=product.price
             )
         return carrinhoItem, created
 
@@ -21,7 +21,7 @@ class CarrinhoItem(models.Model):
     carrinho_key = models.CharField('Chave do Carrinho', max_length=40, db_index=True)
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='Produto')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
-    preco = models.DecimalField('Preco', decimal_places=10, max_digits=12)
+    preco = models.DecimalField('Preco', decimal_places=3, max_digits=13)
 
     objects = CarrinhoManager()
 

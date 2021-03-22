@@ -10,7 +10,7 @@ from django.urls import reverse
 from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
 from rolepermissions.roles import assign_role
 
-from accounts.forms import CustomUsuarioCriarForm
+from accounts.forms import CustomUsuarioCriarForm, FormVendedor
 from accounts.models import CustomUsuario
 
 
@@ -24,7 +24,7 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
 
 class CriarVendedor(SuccessMessageMixin, CreateView):
     model = CustomUsuario
-    form_class = CustomUsuarioCriarForm
+    form_class = FormVendedor
     template_name = 'accounts/new_vendedor.html'
     success_url = '/accounts/login'
     success_message = 'Bem vindo! Faça login para começar '
