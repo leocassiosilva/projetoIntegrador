@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView
 from django.contrib import messages
 from product.models import Product
@@ -18,7 +19,7 @@ class CreateCarrinhoItemView(RedirectView):
             messages.success(self.request, 'Produto adicionado com sucesso')
         else:
             messages.success(self.request, 'Produto atualizado com sucesso')
-        return product.get_absolute_url()
+        return reverse('cart_item')
 
 
 create_cartitem = CreateCarrinhoItemView.as_view()
