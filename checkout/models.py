@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class CarrinhoManager(models.Manager):
 
     def add_item(self, carrinho_key, product):
@@ -12,7 +11,7 @@ class CarrinhoManager(models.Manager):
         else:
             created = True
             carrinhoItem = CarrinhoItem.objects.create(
-                carrinho_key=carrinho_key, product=product, preco=product.preco
+                carrinho_key=carrinho_key, product=product, preco=product.price
             )
         return carrinhoItem, created
 

@@ -98,3 +98,10 @@ def autoCompleteProdutos(request):
         queryset = Product.objects.filter(name=term)
         response_content = list(queryset.values());
         return JsonResponse(response_content, safe=False)
+
+def product(request, slug):
+    product = Product.objects.get(slug=slug)
+    context = {
+        'product': product
+    }
+    return render(request, 'register/produtos_list.html', context)
