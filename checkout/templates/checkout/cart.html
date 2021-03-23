@@ -1,25 +1,20 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
+{% block contentPagina %}
 {% load widget_tweaks %}
-
+<h1 class="m-0">Carrinho de Compras</h1>
+{% endblock %}
 {% block title %}
-Carrinho de Compras
+<title>COMA | Carrinho de Compras</title>
 {% endblock %}
 
 {% block container %}
-<ol class="breadcrumb">
-  <li><a href="{% url 'index' %}">Início</a></li>
-  <li class="active">Carrinho de Compras</li>
-</ol>
-<div class="page-header">
-    <h1>Carrinho de Compras</h1>
-</div>
+
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-12 col-md-offset-2">
         <form class="" action="" method="post">
             {% csrf_token %}
             {{ formset.management_form }}
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="background: white">
                 <thead>
                     <th>
                         ID
@@ -33,18 +28,18 @@ Carrinho de Compras
                     <th style="width: 10%;">
                         Quantidade
                     </th>
-                    <th>
-
+                    <th class="text-center">
+                        Ação
                     </th>
                 </thead>
                 <tbody>
                     {% for form in formset %}
                     <tr>
                         <td>
-                            {{ form.instance.produto.pk }}
+                            {{ form.instance.product.pk }}
                         </td>
                         <td>
-                            {{ form.instance.produto }}
+                            {{ form.instance.product }}
                         </td>
                         <td>
                             R$ {{ form.instance.preco|floatformat:"2" }}
@@ -61,9 +56,9 @@ Carrinho de Compras
                 </tbody>
             </table>
             <p class="text-right">
-                <a href="{% url 'book_list' %}" class="pull-left btn btn-default">Continuar Compras</a>
+                <a href="{% url 'produtos_disponiveis' %}" class="pull-left btn btn-default">Continuar Compras</a>
                 <button type="submit" class="btn btn-success" name="button">Atualizar Carrinho</button></li>
-                <a href="{% url 'checkout' %}" class="btn btn-info">Finalizar Compra</a>
+                <a href="" class="btn btn-info">Finalizar Compra</a>
             </p>
         </form>
     </div>
