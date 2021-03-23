@@ -6,6 +6,27 @@
 {% block content %}
 <div class="row">
     <div class="col-md-6 offset-md-3">
+        {% if form.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <button type="button" class="btn btn-danger toastrDefaultError">
+            <strong>{{ error|escape }}</strong>
+        </button>
+
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+         <button type="button" class="btn btn-danger toastrDefaultError">
+            <strong>{{ error|escape }}</strong>
+        </button>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="row" style="margin-top:10px;">
+    <div class="col-md-6 offset-md-3">
         <div class="card card-outline card-info">
             <div class="card-header text-center">
                 <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
