@@ -85,7 +85,12 @@
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
+            <li class="nav-item">
+                 <a class="nav-link" href="{% url 'cart_item' %}">
+                     <i class="fas fa-shopping-cart"></i> Meu Carrinho</a>
+            </li>
             <li class="nav-item dropdown">
+
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fas fa-user-edit"></i> Minha Conta
                 </a>
@@ -139,9 +144,8 @@
                     <!-- Left col -->
                     <section class="col-lg-12 connectedSortable">
                         <!-- Bloco para colocar o conteudo -->
-                        {% block content %}
-
-                        {% endblock content %}
+                        {% block content %}{% endblock content %}
+                        {% block container %}{% endblock %}
                     </section>
                     <!-- /.Left col -->
                     <!-- right col (We are only adding the ID to make the widgets sortable)-->
