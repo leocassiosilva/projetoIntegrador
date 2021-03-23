@@ -10,11 +10,16 @@
 {% block container %}
 
 <div class="row">
-    <div class="col-md-12 col-md-offset-2">
+<div class="col-12">
+<div class="card">
+<div class="card-header">
+    <h3 class="card-title">Meu Carrinho</h3>
+<div style="text-align:center;">
+    <div class="card-body table-responsive p-0 ">
         <form class="" action="" method="post">
             {% csrf_token %}
             {{ formset.management_form }}
-            <table class="table table-bordered" style="background: white">
+            <table class="table table-hover text-nowrap" style="background: white">
                 <thead>
                     <th>
                         ID
@@ -47,7 +52,7 @@
                         <td>
                             {% render_field form.quantidade class='form-control' %}
                         </td>
-                        <td class="text-center">
+                        <td>
                             <button value="on" type="submit" name="{{ form.DELETE.html_name }}" class="btn btn-danger btn-sm">Remover</button>
                             {{ form.id }}
                         </td>
@@ -62,5 +67,9 @@
             </p>
         </form>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}
