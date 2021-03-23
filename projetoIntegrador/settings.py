@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rolepermissions',
     'django.contrib.admin',
     'widget_tweaks',
+    'easy_thumbnails',
 ]
 
 AUTH_USER_MODEL = "accounts.CustomUsuario"
@@ -154,3 +155,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'comabemrn@gmail.com'
 EMAIL_HOST_PASSWORD = '#'
 EMAIL_PORT = 587
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'product_image': {'size': (600, 600), 'crop': True},
+    },
+}
