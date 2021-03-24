@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
 from rolepermissions.mixins import HasRoleMixin
+from django.db import models
 
 from .forms import ProductForm
 from .models import Product, Category
@@ -80,24 +81,19 @@ class ProductListViewProdutos(ListView):
         return produtos
 
 
-class ProdutoSeach(ListView):
+class ProdutoSeach(generic.ListView):
     model = Product
     template_name = 'register/produtos_list.html'
 
     def get_queryset(self):
-        term = self.request.GET.get('term')
-        print(term)
-        produtos = Product.objects.filter(name=term)
-        print(produtos)
-        return produtos
+        queryset = Product.objects.all()
+        term = self.request.GET.get('term', '')
+        if term:
+            queryset = queryset.filter(
+                models.Q(name__icontains=term) | models.Q(category__name__icontains=term)
+            )
+        return queryset
 
-
-def autoCompleteProdutos(request):
-    if request.is_ajax():
-        term = request.GET.get('search')
-        queryset = Product.objects.filter(name=term)
-        response_content = list(queryset.values());
-        return JsonResponse(response_content, safe=False)
 
 def product(request, slug):
     product = Product.objects.get(slug=slug)
