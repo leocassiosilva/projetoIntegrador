@@ -90,11 +90,12 @@
                      <i class="fas fa-shopping-cart"></i> Meu Carrinho</a>
             </li>
             <li class="nav-item dropdown">
-
+                {% if user.is_authenticated %}
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fas fa-user-edit"></i> Minha Conta
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
                     <a class="dropdown-item" href="{% url 'atualizar' user.id%}"><i
                             class="fas fa-user-circle fa-2x"></i> Atualizar Conta</a>
                     <div class="dropdown-divider"></div>
@@ -110,6 +111,8 @@
                  <a class="nav-link" href="{% url 'logout' %}" href="accounts/logout/"><i
                                 class="fas fa-sign-in-alt"></i> Sair</a>
             </li>
+            {% else %}
+            {% endif %}
         </ul>
     </nav>
     <!-- /.navbar -->

@@ -6,7 +6,6 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
 from rolepermissions.mixins import HasRoleMixin
-from django.db import models
 
 from .forms import ProductForm
 from .models import Product, Category
@@ -81,7 +80,7 @@ class ProductListViewProdutos(ListView):
         return produtos
 
 
-class ProdutoSeach(generic.ListView):
+class ProdutoSeach(ListView):
     model = Product
     template_name = 'register/produtos_list.html'
 
