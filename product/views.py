@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views import generic
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
@@ -22,10 +22,16 @@ class CategoryCreate(CreateView):
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
-    fields = ['name', 'slug', 'category', 'quantity', 'description', 'price', 'data_entrega' ,'image']
+    fields = ['name', 'slug', 'category', 'quantity', 'description', 'price', 'data_entrega', 'image']
     template_name = 'register/formProduct.html'
     allowed_roles = 'vendedor'
     success_url = '/product/lista'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = list(Category.objects.all())
+        print(context)
+        return context
 
     def form_valid(self, form):
         product = form.save(commit=False)
@@ -43,7 +49,6 @@ class ProductListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
     def get_queryset(self):
         # produtos = Product.objects.all()
         produtos = Product.objects.order_by('name').filter(id_usuario=self.request.user)
-        print(self.request.user)
         return produtos
 
 

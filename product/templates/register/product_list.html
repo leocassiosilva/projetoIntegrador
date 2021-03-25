@@ -41,6 +41,7 @@
                         <th>Descrição</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
+                        <th>Data Entrega</th>
                         <th style="text-align:center;">Ações</th>
                     </tr>
                     </thead>
@@ -52,6 +53,7 @@
                         <td>{{ produto.description }}</td>
                         <td>{{ produto.quantity }}</td>
                         <td>R$ {{ produto.price }}</td>
+                        <td>{{ produto.data_entrega }}</td>
                         <td style="text-align:center;">
                                <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
                                     <i class="fas fa-trash-alt" title="Excluir Produto"></i></a>
