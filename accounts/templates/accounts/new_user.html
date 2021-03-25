@@ -1,5 +1,6 @@
 {% extends 'cadastro_user.html' %}
-{% block title %}Cadastro de Usuario{% endblock title %}
+{% load static %}
+{% block title %}Coma Bem | Cadastro do Cliente{% endblock title %}
 {% block login %}<a href="/accounts/login/">Entrar</a>{% endblock login %}
 
 {% block content %}
@@ -7,7 +8,7 @@
     <div class="col-md-8 offset-md-2">
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <img src="{% static '/img/PNG1.png' %}" style="max-height: 100px;">
             </div>
             <div class="card-body">
 
@@ -43,7 +44,7 @@
                         </div>
 
                         <div class="form-group col-lg-5 mb-3">
-                            <label for="id_telefone">Teleforne</label>
+                            <label for="id_telefone">Telefone</label>
                             <input type="text" class="form-control" id="id_telefone" name="telefone"
                                    data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
                                    inputmode="text" value="{{request.POST.telefone}}">

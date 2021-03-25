@@ -75,6 +75,7 @@ class ProductDetailView(LoginRequiredMixin, HasRoleMixin, DetailView):
 class ProductListViewProdutos(ListView):
     template_name = 'register/produtos_list.html'
     model = Product
+    paginate_by = 6
 
     def get_queryset(self):
         produtos = Product.objects.all()
@@ -84,6 +85,7 @@ class ProductListViewProdutos(ListView):
 class ProdutoSeach(ListView):
     model = Product
     template_name = 'register/produtos_list.html'
+    paginate_by = 6
 
     def get_queryset(self):
         queryset = Product.objects.all()

@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="{% static '/img/pngico.ico' %}">
     {% block title %}
-    <title>ComaBem | Pagina Inicial</title>
+    <title>COMA BEM | Pagina Inicial</title>
     {% endblock title %}
 
     <!-- Google Font: Source Sans Pro -->
@@ -24,8 +24,7 @@
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="background-color:#60ad3b;">
         <div class="container">
             <a href="" class="navbar-brand">
-                <img src="{% static '/img/ComaBEM.png' %}" alt="AdminLTE Logo"
-                     class="brand-image img-circle elevation-3">
+                <img src="{% static '/img/PNG.png' %}"  style="max-height: 40px;">
             </a>
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +34,7 @@
             <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav ml-auto">
+
                     <li class="nav-item">
                         <a href="{% url 'home' %}" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
                     </li>
