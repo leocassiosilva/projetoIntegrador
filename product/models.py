@@ -28,6 +28,7 @@ class Product(models.Model):
         'Imagem', upload_to='products', blank=True, null=True
     )
     id_usuario = models.ForeignKey("accounts.CustomUsuario", on_delete=models.CASCADE, db_column="id_usuario")
+    data_entrega = models.DateField(blank=True, null=True, db_column="data_entrega")
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)

@@ -22,7 +22,7 @@ class CategoryCreate(CreateView):
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
-    fields = ['name', 'slug', 'category', 'quantity', 'description', 'price', 'image']
+    fields = ['name', 'slug', 'category', 'quantity', 'description', 'price', 'data_entrega' ,'image']
     template_name = 'register/formProduct.html'
     allowed_roles = 'vendedor'
     success_url = '/product/lista'
