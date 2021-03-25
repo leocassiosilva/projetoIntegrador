@@ -1,4 +1,5 @@
 {% extends 'cadastro_user.html' %}
+{% load static %}
 {% block title %} Login{% endblock title %}
 {% block card-title %}<h4 class="text-center">Login</h4>{% endblock card-title %}
 {% block login %}<a href="/accounts/cadastrar/">Cadastrar</a>{% endblock login %}
@@ -29,7 +30,7 @@
     <div class="col-md-6 offset-md-3">
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <img src="{% static '/img/logo4.png' %}" style="max-height: 150px;">
             </div>
             <div class="card-body">
 

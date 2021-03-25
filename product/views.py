@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView  # UpdateView
 from rolepermissions.checkers import has_permission
 from rolepermissions.mixins import HasRoleMixin
+from django.db import models
 
 from .forms import ProductForm
 from .models import Product, Category
