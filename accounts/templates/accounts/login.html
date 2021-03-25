@@ -5,26 +5,24 @@
 {% block login %}<a href="/accounts/cadastrar/">Cadastrar</a>{% endblock login %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        {% if form.errors %}
-        {% for field in form %}
-        {% for error in field.errors %}
-        <button type="button" class="btn btn-danger toastrDefaultError">
-            <strong>{{ error|escape }}</strong>
-        </button>
 
-        {% endfor %}
-        {% endfor %}
-        {% for error in form.non_field_errors %}
-         <button type="button" class="btn btn-danger toastrDefaultError">
-            <strong>{{ error|escape }}</strong>
-        </button>
-        {% endfor %}
-        {% endif %}
+
+{% if form.errors %}
+<div class="row" style="margin-top:10px;">
+    <div class="col-md-6 offset-md-3">
+        <div class="alert alert-danger" role="alert">
+
+            <b class="text-center">
+                {% if form.errors.items|length == 1 %}Por Favor, Corrija o Erro Abaixo.{% else %}Por
+                Favor, Corrija os Erros Abaixo.{% endif %}
+            </b>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
 </div>
-
+{% endif %}
 
 <div class="row" style="margin-top:10px;">
     <div class="col-md-6 offset-md-3">
@@ -43,11 +41,22 @@
                     <div class="form-row">
 
                         <div class="form-group col-lg-12 mb-3">
-                            <label>E-mail</label>
+                            <label>E-mail{% if form.username.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="id_username" name="username"
                                    type="email"
-                                   placeholder="Digite seu e-mail" required>
+                                   placeholder="Digite seu e-mail">
+                            <div class="form-row text-danger small">
+                                {% for erro in form.username.errors %}
+                                {% if erro|escape == "Este campo é obrigatório." %}
+                                <strong>E-mail um campo é obrigatório.</strong>
+                                {% else %}
+                                <strong>{{erro}}</strong>
+                                {% endif %}
 
+                                {% endfor %}
+                            </div>
                         </div>
 
                     </div>
@@ -55,11 +64,19 @@
                     <div class="form-row">
 
                         <div class="form-group col-lg-12 mb-3">
-                            <label>Senha</label>
+                            <label>Senha{% if form.username.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" type="password" name="password" autocomplete="current-password"
                                    id="id_password"
                                    placeholder="Digite sua senha"
-                                   autocomplete="off" required>
+                                   autocomplete="off">
+
+                            <div class="form-row text-danger small">
+                                {% if form.password.errors %}
+                                <strong>Senha é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Entrar</button>

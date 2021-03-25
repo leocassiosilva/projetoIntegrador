@@ -20,52 +20,100 @@
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-lg-6 mb-3">
-                            <label>Nome</label>
+
+                            <label>Nome{% if form.first_name.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="first_name" name="first_name"
                                    type="text" value="{{request.POST.first_name}}"
                                    placeholder="Digite seu primeiro nome"
-                                   autocomplete="off" required>
+                                   autocomplete="off">
+                            <div class="form-row text-danger small">
+                                {% if form.first_name.errors %}
+                                <strong>Nome é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                         <div class="form-group col-lg-6 mb-3">
-                            <label>Sobrenome</label>
+                            <label>Sobrenome{% if form.last_name.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="last_name" name="last_name"
                                    type="text" value="{{request.POST.last_name}}"
                                    placeholder="Digite o sobrenome"
-                                   autocomplete="off" required>
+                                   autocomplete="off">
+                            <div class="form-row text-danger small">
+                                {% if form.last_name.errors %}
+                                <strong>Sobrenome é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
-
                         <div class="form-group col-lg-7 mb-3">
-                            <label>E-mail</label>
+                            <label>E-mail{% if form.username.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="username" name="username"
                                    type="email" value="{{request.POST.username}}"
-                                   placeholder="Digite seu e-mail" autocomplete="off" required>
+                                   placeholder="Digite seu e-mail" autocomplete="off">
+
+                            <div class="form-row text-danger small">
+                                {% for erro in form.username.errors %}
+                                {% if erro|escape == "Este campo é obrigatório." %}
+                                <strong>E-mail é um campo é obrigatório.</strong>
+                                {% else %}
+                                <strong>{{erro}}</strong>
+                                {% endif %}
+
+                                {% endfor %}
+                            </div>
                         </div>
 
                         <div class="form-group col-lg-5 mb-3">
-                            <label for="id_telefone">Telefone</label>
+                            <label for="id_telefone">Telefone{% if form.telefone.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input type="text" class="form-control" id="id_telefone" name="telefone"
                                    data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
                                    inputmode="text" value="{{request.POST.telefone}}">
+                            <div class="form-row text-danger small">
+                                {% if form.telefone.errors %}
+                                <strong>Telefone é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
 
                         <div class="form-group col-lg-6 mb-3">
-                            <label>Senha</label>
+                            <label>Senha{% if form.password1.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="password1" name="password1"
                                    type="password" value="{{request.POST.password1}}"
                                    placeholder="Digite sua senha"
-                                   autocomplete="off" required>
+                                   autocomplete="off">
+                            <div class="form-row text-danger small">
+                                {% if form.password1.errors %}
+                                <strong>Senha é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                         <div class="form-group col-lg-6 mb-3">
-                            <label>Confirmar Senha</label>
+                            <label>Confirmar Senha{% if form.password2.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
                             <input class="form-control" id="password2" name="password2"
                                    type="password" value="{{request.POST.password2}}"
                                    placeholder="Digite a sua senha novamente"
-                                   autocomplete="off" required>
+                                   autocomplete="off">
+                            <div class="form-row text-danger small">
+                                {% if form.password2.errors %}
+                                <strong>Confirmar senha é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
 
@@ -77,13 +125,25 @@
                             <label for="id_cep">Cep</label>
                             <input class="form-control" id="id_cep" name="cep"
                                    type="text" value="{{request.POST.cep}}"
-                                   placeholder="Digite seu cep" required>
+                                   placeholder="Digite seu cep">
+
+                            <div class="form-row text-danger small">
+                                {% if form.cep.errors %}
+                                <strong>Cep é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                         <div class="form-group col-lg-6 mb-3">
                             <label for="id_cidade">Cidade</label>
                             <input class="form-control" id="id_cidade" name="cidade"
-                                   type="text" value="{{request.POST.cep}}"
-                                   placeholder="Digite sua cidade" required>
+                                   type="text" value="{{request.POST.cidade}}"
+                                   placeholder="Digite sua cidade">
+
+                            <div class="form-row text-danger small">
+                                {% if form.cidade.errors %}
+                                <strong>Cidade é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -92,14 +152,25 @@
                             <label for="id_rua">Rua</label>
                             <input class="form-control" id="id_rua" name="rua"
                                    type="text" value="{{request.POST.rua}}"
-                                   placeholder="Digite o nome da rua" required>
+                                   placeholder="Digite o nome da rua">
+                            <div class="form-row text-danger small">
+                                {% if form.rua.errors %}
+                                <strong>Rua é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
 
                         <div class="form-group col-lg-6 mb-3">
                             <label for="id_logadouro">Logadouro</label>
                             <input class="form-control" id="id_logadouro" name="logadouro"
                                    type="text" value="{{request.POST.logadouro}}"
-                                   placeholder="Digite o logadouro" required>
+                                   placeholder="Digite o logadouro">
+
+                            <div class="form-row text-danger small">
+                                {% if form.logadouro.errors %}
+                                <strong>Logadouro é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -107,13 +178,23 @@
                             <label for="id_bairro">Bairro</label>
                             <input class="form-control" id="id_bairro" name="bairro"
                                    type="text" value="{{request.POST.bairro}}"
-                                   placeholder="Digite o bairro" required>
+                                   placeholder="Digite o bairro">
+                            <div class="form-row text-danger small">
+                                {% if form.bairro.errors %}
+                                <strong>Bairro é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                         <div class="form-group col-lg-6 mb-3">
                             <label for="id_numero">Numero</label>
                             <input class="form-control" name="numero" id="id_numero"
                                    type="text" value="{{request.POST.numero}}"
                                    placeholder="Digite o numero">
+                            <div class="form-row text-danger small">
+                                {% if form.numero.errors %}
+                                <strong>Numero é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
 

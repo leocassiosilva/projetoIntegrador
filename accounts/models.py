@@ -31,6 +31,10 @@ class UsuarioManager(BaseUserManager):
 
 
 class CustomUsuario(AbstractUser):
+    first_name = models.CharField(verbose_name=('Nome'), max_length=100, blank=False,
+                                  help_text=('Nome é um campo obrigatorio'))
+    last_name = models.CharField(verbose_name=('Sobrenome'), max_length=100, blank=False,
+                                 help_text=('Sobrenome é obrigatorio'))
     email = models.EmailField('E-mail', unique=True)
     telefone = models.CharField('Telefone', max_length=15)
     cep = models.CharField('Cep', max_length=20, blank=True, null=True)
