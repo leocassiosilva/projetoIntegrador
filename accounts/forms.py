@@ -44,7 +44,7 @@ class FormVendedor(UserCreationForm):
 
         if commit:
             user.save()
-            assign_role(user, 'produtor')
+            assign_role(user, 'vendedor')
             data = {'usuario': user, }
             plain_text = render_to_string('accounts/emails/email.txt', data)
             html_email = render_to_string('accounts/emails/email.html', data)
