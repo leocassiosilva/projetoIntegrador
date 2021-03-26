@@ -1,3 +1,6 @@
+from itertools import product
+from secrets import token_urlsafe
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -22,7 +25,7 @@ class CategoryCreate(CreateView):
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
-    fields = ['name', 'slug', 'category', 'quantity', 'description', 'price', 'data_entrega', 'image']
+    fields = ['name', 'category', 'quantity', 'description', 'price', 'data_entrega', 'image']
     template_name = 'register/formProduct.html'
     allowed_roles = 'vendedor'
     success_url = '/product/lista'
@@ -30,14 +33,14 @@ class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categorias'] = list(Category.objects.all())
-        print(context)
         return context
 
     def form_valid(self, form):
         product = form.save(commit=False)
         product.id_usuario = self.request.user
+        token = token_urlsafe(16)
+        product.slug = token
         product.save()
-        print("d")
         return super(ProductCreate, self).form_valid(form)
 
 

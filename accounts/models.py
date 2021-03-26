@@ -46,6 +46,10 @@ class CustomUsuario(AbstractUser):
     nome_banca = models.CharField(verbose_name=('NomeBanca'), max_length=100, blank=False,
                                   help_text=('Nome da Banca é um campo obrigatorio'))
     is_staff = models.BooleanField("Membro da equipe", default=True)
+    image = models.ImageField(
+        'Imagem', upload_to='cliente', blank=True, null=True
+    )
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']

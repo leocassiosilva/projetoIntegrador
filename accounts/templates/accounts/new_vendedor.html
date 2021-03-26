@@ -86,23 +86,6 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-lg-12 mb-3">
-                            <label>Nome da Banca{% if form.nome_banca.errors %}
-                                <strong class="text-danger">*</strong>
-                                {% endif %}</label>
-                            <input class="form-control" id="nome_banca" name="nome_banca"
-                                   type="text" value="{{request.POST.nome_banca}}"
-                                   placeholder="Digite o nome da sua banca" autocomplete="off">
-
-                            <div class="form-row text-danger small">
-                                {% if form.nome_banca.errors %}
-                                <strong>Nome da banca é um campo obrigatório.</strong>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
 
                         <div class="form-group col-lg-6 mb-3">
                             <label>Senha{% if form.password1.errors %}
@@ -133,6 +116,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <h4>Informações da Banca</h4>
+                    <hr>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 mb-3">
+                            <label>Nome da Banca{% if form.nome_banca.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
+                            <input class="form-control" id="nome_banca" name="nome_banca"
+                                   type="text" value="{{request.POST.nome_banca}}"
+                                   placeholder="Digite o nome da sua banca" autocomplete="off">
+
+                            <div class="form-row text-danger small">
+                                {% if form.nome_banca.errors %}
+                                <strong>Nome da banca é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-6 mb-3">
+                            <div class="form-group">
+                                <label for="id_image" class="col-md-6 control-label">Imagem da Banca</label>
+                                <div class="col-md">
+                                    <input type="file" name="image" accept="image/*" class="form-control" id="id_image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <h4>Informações de Endereço</h4>
                     <hr>
@@ -227,6 +240,8 @@ $(document).ready(function() {
     $('#id_cep').mask('(00) 00000-0000');
     $('#id_telefone').mask('(00) 00000-0000');
 });
+
+
 
 </script>
 {% endblock %}
