@@ -45,6 +45,7 @@ class ProductListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
     template_name = 'register/product_list.html'
     model = Product
     allowed_roles = 'vendedor'
+    paginate_by = 10
 
     def get_queryset(self):
         # produtos = Product.objects.all()
