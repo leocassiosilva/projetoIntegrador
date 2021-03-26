@@ -19,7 +19,7 @@ class CriarUsuario(SuccessMessageMixin, CreateView):
     form_class = CustomUsuarioCriarForm
     template_name = 'accounts/new_user.html'
     success_url = '/accounts/login'
-    success_message = 'Bem vindo! Faça login para começar '
+#    success_message = 'Bem vindo! Faça login para começar '
 
 
 class CriarVendedor(SuccessMessageMixin, CreateView):
@@ -27,7 +27,7 @@ class CriarVendedor(SuccessMessageMixin, CreateView):
     form_class = FormVendedor
     template_name = 'accounts/new_vendedor.html'
     success_url = '/accounts/login'
-    success_message = 'Bem vindo! Faça login para começar '
+#    success_message = 'Bem vindo! Faça login para começar '
 
 
 class UpdateUsuario(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

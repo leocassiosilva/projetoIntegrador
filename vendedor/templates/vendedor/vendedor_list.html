@@ -1,6 +1,7 @@
 {% extends 'webpage.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load pagination %}
 {% block contentPagina %}
 {% load widget_tweaks %}
 <h1 class="m-0">Vendedor</h1>
@@ -63,7 +64,7 @@
                                     <h3 class="lead">Proprietario da banca</h3>
                                     <div class="bg-gray py-2 px-3 mt-4">
                                         <h2 class="mb-0">
-                                            R$ {{ vendedor.first_name }}
+                                            {{ vendedor.first_name }} {{ vendedor.last_name }}
                                         </h2>
                                     </div>
                                 </div>
@@ -72,10 +73,10 @@
                         <div class="card-footer">
                             <div class="text-right">
                                 <a href="#" class="btn btn-sm bg-teal">
-                                    <i class="fas fa-comments"></i>
+                                    <i class="fas fa-comments"></i> Contato
                                 </a>
                                 <a href="{% url 'produtos_vendedor' vendedor.id %}" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-cart-plus"></i> Adicionar
+                                    <i class="fas fa-store"></i> Visitar
                                 </a>
                             </div>
                         </div>
@@ -84,6 +85,7 @@
                 </div>
                 {% endfor %}
             </div>
+        {% pagination request paginator page_obj %}
         </div>
     </div>
 </div>

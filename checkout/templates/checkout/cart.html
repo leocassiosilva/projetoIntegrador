@@ -8,9 +8,13 @@
 {% endblock %}
 
 {% block container %}
-
 <div class="row">
 <div class="col-12">
+{% for message in messages %}
+    <div class="aler alert-{{ message.tags}}">
+        {{ message }}
+    </div>
+{% endfor %}
 <div class="card">
 <div class="card-header">
     <h3 class="card-title">Meu Carrinho</h3>

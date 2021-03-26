@@ -1,6 +1,7 @@
 {% extends 'webpage.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load pagination %}
 {% block contentPagina %}
 {% load widget_tweaks %}
 <h1 class="m-0">Lista de Produtos</h1>
@@ -84,6 +85,7 @@
                 </div>
                 {% endfor %}
             </div>
+        {% pagination request paginator page_obj %}
         </div>
     </div>
 </div>

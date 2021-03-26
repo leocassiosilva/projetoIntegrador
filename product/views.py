@@ -114,8 +114,8 @@ def product(request, slug):
 class ProductVendedorListViewProdutos(ListView):
     template_name = 'register/vendedor_produtos_list.html'
     model = Product
-
-
+    paginate_by = 6
+    
     def get_queryset(self):
         pk = self.kwargs.get("pk")
         produtos = Product.objects.filter(id_usuario=pk)
