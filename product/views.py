@@ -108,3 +108,16 @@ def product(request, slug):
         'product': product
     }
     return render(request, 'register/produtos_list.html', context)
+
+
+class ProductVendedorListViewProdutos(ListView):
+    template_name = 'register/vendedor_produtos_list.html'
+    model = Product
+
+
+    def get_queryset(self):
+        pk = self.kwargs.get("pk")
+        produtos = Product.objects.filter(id_usuario=pk)
+        print(produtos)
+        print(pk)
+        return produtos

@@ -43,6 +43,8 @@ class CustomUsuario(AbstractUser):
     bairro = models.CharField('Bairro', max_length=100, blank=True, null=True)
     logadouro = models.CharField('Logadouro', max_length=100, blank=True, null=True)
     numero = models.CharField('Numero', max_length=30, blank=True, null=True)
+    nome_banca = models.CharField(verbose_name=('NomeBanca'), max_length=100, blank=False,
+                                  help_text=('Nome da Banca é um campo obrigatorio'))
     is_staff = models.BooleanField("Membro da equipe", default=True)
 
     USERNAME_FIELD = 'email'

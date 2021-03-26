@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'product',
     'webpage',
     'checkout',
+    'vendedor',
     'rolepermissions',
     'django.contrib.admin',
     'widget_tweaks',
@@ -153,7 +154,7 @@ DEFAULT_FROM_EMAIL = 'Nome <sigoorientacoes@gmail.com>'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'comabemrn@gmail.com'
-EMAIL_HOST_PASSWORD = '#'
+EMAIL_HOST_PASSWORD = 'mnbvcxz987654321'
 EMAIL_PORT = 587
 
 THUMBNAIL_ALIASES = {

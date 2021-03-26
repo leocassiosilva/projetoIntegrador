@@ -1,0 +1,90 @@
+{% extends 'webpage.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block contentPagina %}
+{% load widget_tweaks %}
+<h1 class="m-0">Vendedor</h1>
+{% endblock %}
+{% block title %}
+<title>Coma Bem | Vendedores</title>
+{% endblock %}
+{% block content %}
+<div class="content-wrapper" style="min-height: 1286.25px; margin-top:100px;">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+
+        <div class="container-fluid">
+            <div class="text-center">
+                <img src="{% static '/img/PNG2.png' %}"   style="width:43%;">
+            </div>
+            <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form role="search" action="{% url 'lista_produtos' %}">
+                        <div class="input-group">
+                            <input name="term" type="text" class="form-control "
+                                   placeholder="Informe o nome do produto">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn  btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.content-header -->
+    <div class="content" style="background-color:white;">
+
+    </div>
+    <!-- Main content -->
+    <div class="content" style="margin-top:100px;">
+        <div class="container">
+            <div class="row">
+                {%for vendedor in object_list%}
+                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                    <div class="thumbnail">
+                    <div class="card bg-light d-flex flex-fill">
+                        {% if vendedor.image %}
+                        <img src="{{ produto.image|thumbnail_url:'product_image' }}"/>
+                        {% else %}
+                        <img src="http://placehold.it/350x250" alt=""/>
+                        {% endif %}
+                        <div class="card-header text-center border-bottom-0">
+                            <h2 class="lead"><b>{{ vendedor.nome_banca }}</b></h2>
+                        </div>
+                        <div class="card-body pt-0">
+                            <hr>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="lead">Proprietario da banca</h3>
+                                    <div class="bg-gray py-2 px-3 mt-4">
+                                        <h2 class="mb-0">
+                                            R$ {{ vendedor.first_name }}
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+                                <a href="#" class="btn btn-sm bg-teal">
+                                    <i class="fas fa-comments"></i>
+                                </a>
+                                <a href="{% url 'produtos_vendedor' vendedor.id %}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-cart-plus"></i> Adicionar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

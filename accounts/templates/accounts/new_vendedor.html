@@ -14,7 +14,7 @@
 
                 <h4 class="text-center">Registre-se</h4>
 
-               <form method="post">
+                <form method="post">
                     {%csrf_token%}
                     <h4>Informações Pessoais</h4>
                     <hr>
@@ -61,7 +61,7 @@
                             <div class="form-row text-danger small">
                                 {% for erro in form.username.errors %}
                                 {% if erro|escape == "Este campo é obrigatório." %}
-                                <strong>E-mail: Esse campo é obrigatório.</strong>
+                                <strong>E-mail é um campo é obrigatório.</strong>
                                 {% else %}
                                 <strong>{{erro}}</strong>
                                 {% endif %}
@@ -80,6 +80,23 @@
                             <div class="form-row text-danger small">
                                 {% if form.telefone.errors %}
                                 <strong>Telefone é um campo obrigatório.</strong>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 mb-3">
+                            <label>Nome da Banca{% if form.nome_banca.errors %}
+                                <strong class="text-danger">*</strong>
+                                {% endif %}</label>
+                            <input class="form-control" id="nome_banca" name="nome_banca"
+                                   type="text" value="{{request.POST.nome_banca}}"
+                                   placeholder="Digite o nome da sua banca" autocomplete="off">
+
+                            <div class="form-row text-danger small">
+                                {% if form.nome_banca.errors %}
+                                <strong>Nome da banca é um campo obrigatório.</strong>
                                 {% endif %}
                             </div>
                         </div>
@@ -210,5 +227,6 @@ $(document).ready(function() {
     $('#id_cep').mask('(00) 00000-0000');
     $('#id_telefone').mask('(00) 00000-0000');
 });
+
 </script>
 {% endblock %}
