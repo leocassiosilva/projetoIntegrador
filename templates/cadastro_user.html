@@ -43,8 +43,7 @@
                        <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
                    </li> -->
                     <li class="nav-item">
-                        <a href="{% url 'produtos_disponiveis' %}" class="nav-link text-white"><i
-                                class="nav-icon fas fa-seedling"></i> Produtos</a>
+                         <a href="{% url 'vendedor_banca' %}" class="nav-link text-white"><i class="nav-icon fas fa-store"></i> Bancas</a>
                     </li>
 
 
@@ -74,12 +73,7 @@
 
         {% block messages %}
 
-        {% for message in messages %}
 
-        <div class="aler alert-{{ message.tags}}">
-            {{ message }}
-        </div>
-        {% endfor %}
 
         {% endblock messages%}
         <!-- Bloco para colocar o conteúdo-->
