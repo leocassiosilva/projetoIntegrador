@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'webpage',
     'checkout',
     'vendedor',
+    'pedidos',
     'rolepermissions',
     'django.contrib.admin',
     'widget_tweaks',

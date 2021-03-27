@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('', include('webpage.urls')),
     path('core', include('core.urls')),
+    path('pedidos', include('pedidos.urls')),
     path('vendedor/', include('vendedor.urls')),
     path('checkout/', include('checkout.urls')),
     path('accounts/', include('accounts.urls')),
