@@ -5,25 +5,32 @@
     <!-- Brand Logo -->
     <a href="{% url 'home' %}" class="brand-link">
         <img src="{% static '/img/PNG2.png' %}"
-             style="max-height: 70px;">
+            style="width:100%;">
         <!--<span class="brand-text font-weight-light">ComaBEM</span>-->
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                <a  class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
-            </div>
+        <div class="user-panel ">
+            <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" >
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            {{ user.first_name }} {{ user.last_name }}
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            </nav>
         </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
                 <li class="nav-item menu-open">
                     <a href="{% url 'index' %}"  class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -32,19 +39,33 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-seedling"></i>
                         <p>
                             Produto
                             <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">4</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{% url 'cadastrarMedida' %}" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>Cadastrar Medidas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'cadastrarCategoria' %}" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>Cadastrar Categorias</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{% url 'cadastrarProduto' %}" class="nav-link">
                                 <i class="nav-icon far fa-plus-square"></i>
-                                <p>Cadastrar</p>
+                                <p>Cadastrar Produtos</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -54,14 +75,14 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
                 <li class="nav-item">
-                    <a class="nav-link">
-                        <i class="nav-icon fas fa-filter"></i>
-                        <p>
-                            Opções
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
-                        </p>
+                    <a class="nav-link" href="{% url 'cart_item' %}">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                Meu Carrinho
+                            </p>
                     </a>
                 </li>
             </ul>

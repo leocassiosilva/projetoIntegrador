@@ -50,7 +50,7 @@
                     <div class="thumbnail">
                     <div class="card bg-light d-flex flex-fill">
                         {% if vendedor.image %}
-                        <img src="{{ produto.image|thumbnail_url:'product_image' }}"/>
+                        <img src="{{ vendedor.image|thumbnail_url:'product_image' }}"/>
                         {% else %}
                         <img src="http://placehold.it/350x250" alt=""/>
                         {% endif %}

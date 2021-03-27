@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
 from rolepermissions.roles import assign_role
- 
+
 from accounts.forms import CustomUsuarioCriarForm, FormVendedor
 from accounts.models import CustomUsuario
 
@@ -42,7 +42,6 @@ class UpdateUsuario(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class UserLogin(SuccessMessageMixin, LoginView):
     template_name = 'accounts/login.html'
-    success_url = 'accounts/index'
 
 
 class LogoutView(LoginRequiredMixin, RedirectView):
