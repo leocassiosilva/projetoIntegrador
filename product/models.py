@@ -16,11 +16,25 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Medida(models.Model):
+    name = models.CharField('Nome', max_length=100)
+    created = models.DateTimeField('Criado em', auto_now_add=True)
+    modified = models.DateTimeField('Modificado em', auto_now=True)
+
+    class Meta:
+        verbose_name = 'Medida'
+        verbose_name_plural = 'Medidas'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('product.Category', verbose_name='Categoria', on_delete=models.CASCADE)
+    medida = models.ForeignKey('product.Medida', verbose_name='Medida', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField('Quantidade', default=1)
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)

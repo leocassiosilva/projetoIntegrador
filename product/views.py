@@ -12,7 +12,7 @@ from rolepermissions.mixins import HasRoleMixin
 from django.db import models
 
 from .forms import ProductForm
-from .models import Product, Category
+from .models import Product, Category, Medida
 from django.urls import reverse_lazy, reverse
 
 
@@ -22,10 +22,15 @@ class CategoryCreate(CreateView):
     template_name = 'register/formCategory.html'
     success_url = reverse_lazy('index')
 
+class MedidaCreate(CreateView):
+    model = Medida
+    fields = ['name']
+    template_name = 'register/formMedida.html'
+    success_url = reverse_lazy('index')
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
-    fields = ['name', 'category', 'quantity', 'description', 'price', 'data_entrega', 'image']
+    fields = ['name', 'category', 'medida', 'quantity', 'description', 'price', 'data_entrega', 'image']
     template_name = 'register/formProduct.html'
     allowed_roles = 'vendedor'
     success_url = '/product/lista'
@@ -33,6 +38,7 @@ class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categorias'] = list(Category.objects.all())
+        context['medidas'] = list(Medida.objects.all())
         return context
 
     def form_valid(self, form):

@@ -48,22 +48,34 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-
+                <div class="col-md-4">
                     <div class="form-group">
-                        <label for="id_quantity" class="col-md-3 control-label">Quantidade</label>
+                        <label for="id_quantity" class="col-md-6 control-label">Quantidade</label>
                         <div class="col-md">
                             <input type="number" name="quantity" value="1" min="0" class="form-control" required=""
                                    id="id_quantity">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="id_price" class="col-md-3 control-label">Preço</label>
                         <div class="col-md">
                             <input type="number" name="price" step="0.01" class="form-control" required=""
                                    id="id_price">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-md">
+                            <label for="id_medida" class="col-md-3 control-label">Medida</label>
+                            <select name="medida" class="form-control" required="" id="id_medida">
+                                <option value="" selected="">---------</option>
+                                {% for medida in medidas %}
+                                <option value="{{ medida.id }}">{{ medida.name }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                 </div>
