@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class CarrinhoManager(models.Manager):
 
     def add_item(self, carrinho_key, product):
@@ -31,6 +32,7 @@ class CarrinhoItem(models.Model):
 
     def __str__(self):
         return '{} [{}]'.format(self.product, self.quantidade)
+
 
 def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
