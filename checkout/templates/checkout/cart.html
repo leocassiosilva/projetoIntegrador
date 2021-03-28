@@ -4,7 +4,7 @@
 <h1 class="m-0">Carrinho de Compras</h1>
 {% endblock %}
 {% block title %}
-<title>COMA | Carrinho de Compras</title>
+<title>Coma Bem | Carrinho de Compras</title>
 {% endblock %}
 
 {% block container %}
@@ -67,7 +67,7 @@
             <p class="text-right">
                 <a href="{% url 'produtos_disponiveis' %}" class="pull-left btn btn-default">Continuar Compras</a>
                 <button type="submit" class="btn btn-success" name="button">Atualizar Carrinho</button></li>
-                <a href="" class="btn btn-info">Finalizar Compra</a>
+                <a href="{% url 'pedidos' %}" class="btn btn-info">Finalizar Compra</a>
             </p>
         </form>
     </div>

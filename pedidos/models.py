@@ -1,5 +1,17 @@
 from django.db import models
+from django.conf import settings
+from checkout.models import CarrinhoItem
 
+class PedidoManager(models.Manager):
+
+    def create_order(self, usuario, cart_items):
+        pedido = self.create(usuario=usuario)
+        for cart_item in cart_items:
+            order_item = PedidoItem.objects.create(
+                pedido=pedido, quantidade=cart_item.quantidade, product=cart_item.product,
+                preco=cart_item.preco
+            )
+        return pedido
 
 class PedidoManage(models.Model):
 
@@ -20,22 +32,26 @@ class Pedido(models.Model):
         (2, 'Agurdando Pagamento'),
     )
 
-    id = models.AutoField(primary_key=True, db_column="id_pedido")
-    usuario = models.ForeignKey("accounts.CustomUsuario", on_delete=models.CASCADE, db_column="id_usuario")
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Usuário')
     status = models.IntegerField('Situação', choices=STATUS_CHOICES, default=0, blank=True)
     data_criacao = models.DateTimeField('Criado em', auto_now_add=True)
     data_modificacao = models.DateTimeField('Modificado em', auto_now=True)
 
+<<<<<<< HEAD
+    objects = PedidoManager()
+=======
     objects = PedidoManage()
 
     def __str__(self):
         return 'Pedido #{}'.format(self.pk)
+>>>>>>> origin/main
 
     class Meta:
         verbose_name = 'Pedido'
         verbose_name_plural = 'Pedidos'
-        db_table = "Pedidos"
-        managed = True
+
+    def __str__(self):
+        return 'Pedido #{}'.format(self.pk)
 
 
 class PedidoItem(models.Model):
@@ -47,8 +63,7 @@ class PedidoItem(models.Model):
     class Meta:
         verbose_name = 'Item do pedido'
         verbose_name_plural = 'Itens do pedidos'
-        db_table = "Itens_pedido"
-        managed = True
+
 
     def __str__(self):
         return '[{}] {}'.format(self.pedido, self.product)
