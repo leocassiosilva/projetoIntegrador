@@ -60,12 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-<<<<<<< HEAD
-
     'pedidos.middleware.cart_item_middleware',
-=======
+
     'checkout.middleware.carrinho_item_middleware',
->>>>>>> origin/main
 ]
 
 ROOT_URLCONF = 'projetoIntegrador.urls'
