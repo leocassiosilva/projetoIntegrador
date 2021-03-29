@@ -52,6 +52,17 @@
                        <a href="{% url 'index' %}" class="nav-link text-white"><i class="fas fa-user"></i> Minha Conta</a>
                     </li>
 
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
+                                class="fas fa-users"></i> Meu Cadastro</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="{% url 'cadastrar' %}" class="dropdown-item ">Sou Cliente</a></li>
+                            <li><a href="{% url 'cadastrar_vendedor' %}" class="dropdown-item">Sou Vendedor</a></li>
+                            <!-- End Level two -->
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>
                             Entrar</a>
