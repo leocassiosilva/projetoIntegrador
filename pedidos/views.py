@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
 
 from checkout.models import CarrinhoItem
-from .models import Pedido
+from .models import Pedido, PedidoItem
 
 
 # Create your views here.
@@ -35,6 +35,20 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
         return pedidos
 
 
+class PedidoDetailView(TemplateView):
+    template_name = 'pedido/pedidos_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs.get("pk")
+        items_pedidos = PedidoItem.objects.filter(pedido=pk)
+        print(items_pedidos)
+        context['categorias'] = list(items_pedidos)
+        return context
+
+
 checkout = CheckoutView.as_view()
 
 pedidoList = PedidoListView.as_view()
+
+pedidoDetail = PedidoDetailView.as_view()

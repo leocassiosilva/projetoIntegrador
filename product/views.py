@@ -22,11 +22,13 @@ class CategoryCreate(CreateView):
     template_name = 'register/formCategory.html'
     success_url = reverse_lazy('index')
 
+
 class MedidaCreate(CreateView):
     model = Medida
     fields = ['name']
     template_name = 'register/formMedida.html'
     success_url = reverse_lazy('index')
+
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
     model = Product
@@ -124,10 +126,8 @@ class ProductVendedorListViewProdutos(ListView):
     template_name = 'register/vendedor_produtos_list.html'
     model = Product
     paginate_by = 6
-    
+
     def get_queryset(self):
         pk = self.kwargs.get("pk")
         produtos = Product.objects.filter(id_usuario=pk)
-        print(produtos)
-        print(pk)
         return produtos
