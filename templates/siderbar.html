@@ -17,7 +17,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
-                        <a class="nav-link">
+                        <a href="{% url 'index' %}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 {{ user.first_name }} {{ user.last_name }}
@@ -34,24 +34,33 @@
                      with font-awesome or any other icon font library -->
 
                 {% if user|has_role:'cliente' %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'meus_Pedidos' %}">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Meus Pedidos
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cart_item' %}">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                            Meu Carrinho
-                        </p>
-                    </a>
-                </li>
-                {% else %}
-
+                    <li class="nav-item menu-open">
+                        <a href="{% url 'index' %}" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt" title="Carrinho"></i>
+                                <p>
+                                    Dashboard
+                                </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'meus_Pedidos' %}">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Meus Pedidos
+                                </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart_item' %}">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                                <p>
+                                    Meu Carrinho
+                                </p>
+                        </a>
+                    </li>
+                    {% else %}
+                    {% endif %}
+                {% if user|has_role:'vendedor' %}
                 <li class="nav-item menu-open">
                     <a href="{% url 'index' %}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt" title="Carrinho"></i>
@@ -70,7 +79,7 @@
                             <span class="badge badge-info right">4</span>
                         </p>
                     </a>
-                </li>
+
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{% url 'cadastrarMedida' %}" class="nav-link">
@@ -96,9 +105,10 @@
                             <p>Lista de Produtos</p>
                         </a>
                     </li>
-                </ul>
                 </li>
+                {% else %}
                 {% endif %}
+                </ul>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

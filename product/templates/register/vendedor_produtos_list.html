@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 {%for produto in object_list%}
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                <div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <div class="thumbnail">
                     <div class="card bg-light d-flex flex-fill">
                         {% if produto.image %}
@@ -54,18 +54,18 @@
                         {% else %}
                         <img src="http://placehold.it/350x250" alt=""/>
                         {% endif %}
-                        <div class="card-header text-center border-bottom-0">
+                        <div class="card text-center border-bottom-0">
                             <h2 class="lead"><b>{{ produto.name }}</b></h2>
                         </div>
                         <div class="card-body pt-0">
                             <hr>
                             <div class="row">
-                                <div class="col-12">
-                                    <h3 class="lead">Preço</h3>
-                                    <div class="bg-gray py-2 px-3 mt-4">
-                                        <h2 class="mb-0">
-                                            R$ {{ produto.price }}
-                                        </h2>
+                                <div class="col-13">
+                                <h2 class="lead">Quantidade: {{ produto.quantity }}</h2>
+                                    <div class="bg-gray py-2 px-1 mt-3">
+                                        <h5 class="mb-0">
+                                            Preço: R$ {{ produto.price }} / {{ produto.medida }}
+                                        </h5>
                                     </div>
                                 </div>
                             </div>

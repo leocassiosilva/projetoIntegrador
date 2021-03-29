@@ -13,6 +13,7 @@ from .models import Pedido, PedidoItem
 # Create your views here.
 class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
+    allowed_roles = 'cliente'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
@@ -30,6 +31,7 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'pedido/pedidos_list.html'
     allowed_roles = 'cliente'
+    paginate_by = 7
 
     def get_queryset(self):
         pedidos = Pedido.objects.filter(usuario=self.request.user)
@@ -38,6 +40,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
 
 class PedidoDetailView(TemplateView):
     template_name = 'pedido/pedidos_detail.html'
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,6 +55,7 @@ class PedidoDetailView(TemplateView):
 
 class PedidoDetailsView(DetailView):
     template_name = 'pedido/pedidos_detail.html'
+
 
     def get_queryset(self):
         return Pedido.objects.filter(usuario=self.request.user)

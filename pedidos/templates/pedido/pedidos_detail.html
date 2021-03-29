@@ -28,17 +28,18 @@
                     Informações
                     <address>
                         <strong>Total</strong><br>
-                        R$ {{ object.total|floatformat:"2" }}<br>
+                       <h3> R$ {{ object.total|floatformat:"2" }}<br> </h3>
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     <strong>Itens do Pedido</strong><br>
-                    <address>
                         {% for item in object.items.all %}
-                        Produto: {{ item.product }}<br>
-                        Quantidade: {{ item.quantidade }}<br>
-                        Preço: R$ {{ item.preco|floatformat:"2" }}
+                            <p>
+                            Produto: {{ item.product }} </br>
+                            Preço: R$ {{ item.preco|floatformat:"2" }} / {{ item.product.medida }} </br>
+                            Quantidade: {{ item.quantidade }} </br>
+                            </p>
                         {% endfor %}
                     </address>
                 </div>
