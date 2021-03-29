@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
 
 from checkout.models import CarrinhoItem
+from product.models import Product
 from .models import Pedido, PedidoItem
 
 
@@ -42,9 +43,18 @@ class PedidoDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs.get("pk")
         items_pedidos = PedidoItem.objects.filter(pedido=pk)
-        print(items_pedidos)
-        context['categorias'] = list(items_pedidos)
+        # print(items_pedidos.product)
+        # products = Product.objects.filter(product=)
+
+        context['items'] = list(items_pedidos)
         return context
+
+
+class PedidoDetailsView(DetailView):
+    template_name = 'pedido/pedidos_detail.html'
+
+    def get_queryset(self):
+        return Pedido.objects.filter(usuario=self.request.user)
 
 
 checkout = CheckoutView.as_view()
@@ -52,3 +62,5 @@ checkout = CheckoutView.as_view()
 pedidoList = PedidoListView.as_view()
 
 pedidoDetail = PedidoDetailView.as_view()
+
+detailPeddio = PedidoDetailsView.as_view()

@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{ pedido.id }}</td>
                             <td>{{ pedido.data_criacao }}</td>
-                            <td>{{ pedido.status }}</td>
+                            <td>{{ pedido.get_status_display }}</td>
                             <td style="text-align:center;">
                                 <a class="btn" style="color:black;"
                                    href="{%url 'pedidos_detalhe' pedido.id %}"><i class="fas fa-eye"
