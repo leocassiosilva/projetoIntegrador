@@ -164,5 +164,6 @@ EMAIL_PORT = 587
 THUMBNAIL_ALIASES = {
     '': {
         'product_image': {'size': (600, 600), 'crop': True},
+        'banca_image': {'size': (350, 250), 'crop': True},
     },
 }

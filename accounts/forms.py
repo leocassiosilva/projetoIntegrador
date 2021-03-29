@@ -35,7 +35,7 @@ class FormVendedor(UserCreationForm):
     class Meta:
         model = CustomUsuario
         fields = (
-        'username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro', 'numero', 'nome_banca')
+        'username', 'first_name', 'last_name', 'telefone', 'cep', 'cidade', 'rua', 'bairro', 'logadouro', 'numero', 'nome_banca', 'image')
 
     def save(self, commit=True):
         user = super().save(commit=False)
