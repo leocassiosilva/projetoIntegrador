@@ -20,14 +20,14 @@ class CategoryCreate(CreateView):
     model = Category
     fields = ['name']
     template_name = 'register/formCategory.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('cadastrarCategoria')
 
 
 class MedidaCreate(CreateView):
     model = Medida
     fields = ['name']
     template_name = 'register/formMedida.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('cadastrarMedida')
 
 
 class ProductCreate(LoginRequiredMixin, HasRoleMixin, CreateView):
