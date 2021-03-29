@@ -39,15 +39,30 @@
                         <a href="{% url 'home' %}" class="nav-link text-white"><i class="fas fa-home "></i> Home</a>
                     </li>
                     <!--
-                   <li class="nav-item">
-                       <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
-                   </li> -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white"><i class="fas fa-info"></i> Sobre Nos</a>
+                    </li>
+                    -->
                     <li class="nav-item">
                          <a href="{% url 'vendedor_banca' %}" class="nav-link text-white"><i class="nav-icon fas fa-store"></i> Bancas</a>
                     </li>
 
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                        <a href="{% url 'index' %}" class="nav-link text-white"><i class="fas fa-user"></i> Minha Conta</a>
+                    </li>
+                    {% else %}
+                    {% endif %}
+
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
+                                class="fas fa-users"></i> Meu Cadastro</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="{% url 'cadastrar' %}" class="dropdown-item ">Sou Cliente</a></li>
+                            <li><a href="{% url 'cadastrar_vendedor' %}" class="dropdown-item">Sou Vendedor</a></li>
+                            <!-- End Level two -->
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -56,8 +71,6 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
     </nav>
     <!-- /.navbar -->
