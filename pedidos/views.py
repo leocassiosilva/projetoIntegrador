@@ -13,6 +13,7 @@ from .models import Pedido, PedidoItem
 # Create your views here.
 class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
+    allowed_roles = 'cliente'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
