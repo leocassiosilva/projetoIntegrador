@@ -1,5 +1,6 @@
 {% extends 'cadastro_user.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block title %}Coma Bem | Cadastro do Produtor{% endblock title %}
 {% block login %}<a href="/accounts/login/">Entrar</a>{% endblock login %}
 
@@ -13,8 +14,7 @@
             <div class="card-body">
 
                 <h4 class="text-center">Registre-se</h4>
-
-                <form method="post">
+                <form method="POST" enctype="multipart/form-data">
                     {%csrf_token%}
                     <h4>Informações Pessoais</h4>
                     <hr>
@@ -136,6 +136,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group col-lg-6 mb-3">
                             <div class="form-group">
                                 <label for="id_image" class="col-md-6 control-label">Imagem da Banca</label>
@@ -145,7 +146,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <h4>Informações de Endereço</h4>
                     <hr>

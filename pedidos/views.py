@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView, DetailView
+from django.views.generic import RedirectView, TemplateView, ListView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
 
 from checkout.models import CarrinhoItem
-from .models import Pedido, PedidoItem
+from .models import Pedido
 
 
 # Create your views here.
@@ -35,21 +35,6 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
         return pedidos
 
 
-class PedidoDetailView(TemplateView):
-    model = PedidoItem
-    template_name = 'pedido/pedidos_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pk = self.kwargs.get("pk")
-        item_pedido = PedidoItem.objects.filter(pedido=pk)
-        print(item_pedido)
-        context['itemPedido'] = list(item_pedido)
-        return context
-
-
 checkout = CheckoutView.as_view()
 
 pedidoList = PedidoListView.as_view()
-
-pedidoDetail = PedidoDetailView.as_view()
