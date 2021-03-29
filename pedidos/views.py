@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 from django.shortcuts import render
->>>>>>> 931cef972eee12711603757d170bf49312cc3157
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import RedirectView, TemplateView, ListView
 from django.contrib import messages
@@ -39,8 +36,6 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
 
 
 checkout = CheckoutView.as_view()
-
-<<<<<<< HEAD
 pedidoList = PedidoListView.as_view()
-=======
->>>>>>> 931cef972eee12711603757d170bf49312cc3157
+
+
