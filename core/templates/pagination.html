@@ -1,11 +1,9 @@
-<div class="row">
-    <div class="col-md-12">
-        <nav>
-          <ul class="pagination">
+<div class="clearfix">
+          <ul class="pagination pagination-sm m-0 float-left">
               {% for page in paginator.page_range %}
-              <li{% if page_obj.number == page %} class="active"{% endif %}><a href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
+                  <li class="page-item"><a class="page-link" href="#">«</a></li>
+                  <li{% if page_obj.number == page %} class="page-item active"{% endif %}><a  class="page-link" href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
+                  <li class="page-item"><a class="page-link" href="#">»</a></li>
               {% endfor %}
           </ul>
-        </nav>
-    </div>
 </div>
