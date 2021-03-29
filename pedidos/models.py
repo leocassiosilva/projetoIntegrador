@@ -30,7 +30,7 @@ class Pedido(models.Model):
         verbose_name = 'Pedido'
         verbose_name_plural = 'Pedidos'
 
-    def __str__(self):
+    def _str_(self):
         return 'Pedido #{}'.format(self.pk)
 
 
@@ -45,5 +45,5 @@ class PedidoItem(models.Model):
         verbose_name_plural = 'Itens do pedidos'
 
 
-    def __str__(self):
+    def _str_(self):
         return '[{}] {}'.format(self.pedido, self.product)

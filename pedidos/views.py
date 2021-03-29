@@ -1,19 +1,19 @@
+<<<<<<< HEAD
+=======
 from django.shortcuts import render
+>>>>>>> 931cef972eee12711603757d170bf49312cc3157
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView
-from django.forms import modelformset_factory
+from django.views.generic import RedirectView, TemplateView, ListView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-
-from product.models import Product
+from rolepermissions.mixins import HasRoleMixin
 
 from checkout.models import CarrinhoItem
 from .models import Pedido
 
-# Create your views here.
-class CheckoutView(LoginRequiredMixin, TemplateView):
 
+# Create your views here.
+class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
 
     def get(self, request, *args, **kwargs):
@@ -28,5 +28,19 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
 
         return super(CheckoutView, self).get(request, *args, **kwargs)
 
+
+class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
+    template_name = 'pedido/pedidos_list.html'
+    allowed_roles = 'cliente'
+
+    def get_queryset(self):
+        pedidos = Pedido.objects.filter(usuario=self.request.user)
+        return pedidos
+
+
 checkout = CheckoutView.as_view()
 
+<<<<<<< HEAD
+pedidoList = PedidoListView.as_view()
+=======
+>>>>>>> 931cef972eee12711603757d170bf49312cc3157
