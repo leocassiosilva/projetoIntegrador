@@ -1,5 +1,5 @@
 <div class="clearfix">
-          <ul class="pagination pagination-sm m-0 float-left">
+          <ul class="pagination pagination-sm m-0 float-right">
               {% for page in paginator.page_range %}
                   <li class="page-item"><a class="page-link" href="#">«</a></li>
                   <li{% if page_obj.number == page %} class="page-item active"{% endif %}><a  class="page-link" href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
