@@ -25,7 +25,7 @@
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="background-color:#60ad3b;">
         <div class="container">
             <a href="{% url 'home' %}" class="navbar-brand">
-                <img src="{% static '/img/PNG.png' %}"  style="max-height: 40px;">
+                <img src="{% static '/img/PNG.png' %}" style="max-height: 40px;">
             </a>
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,12 +44,14 @@
                     </li>
                     -->
                     <li class="nav-item">
-                         <a href="{% url 'vendedor_banca' %}" class="nav-link text-white"><i class="nav-icon fas fa-store"></i> Bancas</a>
+                        <a href="{% url 'vendedor_banca' %}" class="nav-link text-white"><i
+                                class="nav-icon fas fa-store"></i> Bancas</a>
                     </li>
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                       <a href="{% url 'index' %}" class="nav-link text-white"><i class="fas fa-user"></i> Minha Conta</a>
+                        <a href="{% url 'logout' %}" class="nav-link text-white"><i
+                                class="fas fa-sign-in-alt"></i> Minha Conta</a>
                     </li>
                     {% else %}
                     {% endif %}
@@ -77,7 +79,6 @@
     <div class="container" style="margin-top: 70px;">
 
         {% block messages %}
-
 
 
         {% endblock messages%}
@@ -113,6 +114,7 @@
 <script>
 
     $('#id_telefone').mask('(00) 0000-00009');
+
 
 
 </script>

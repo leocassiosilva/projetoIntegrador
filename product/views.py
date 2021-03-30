@@ -127,7 +127,14 @@ class ProductVendedorListViewProdutos(ListView):
     model = Product
     paginate_by = 6
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
         pk = self.kwargs.get("pk")
+        context = super().get_context_data(**kwargs)
         produtos = Product.objects.filter(id_usuario=pk)
-        return produtos
+        context['produtos'] = list(produtos)
+        # if self.request.user.is_authenticated:
+        #   print("LOgado")
+        #  context['base'] = 'base.html'
+        # else:
+        #   context['base'] = 'webpage.html'
+        return context
