@@ -14,7 +14,6 @@ from .models import Pedido, PedidoItem
 class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
     allowed_roles = 'cliente'
-    allowed_roles = 'vendedor'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
@@ -32,7 +31,6 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'pedido/pedidos_list.html'
     allowed_roles = 'cliente'
-    allowed_roles = 'vendedor'
     paginate_by = 7
 
     def get_queryset(self):
