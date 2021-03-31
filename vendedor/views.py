@@ -25,17 +25,8 @@ class MinhasVendasListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
-        print(produto)
-
-        pd = PedidoItem.objects.filter(product__in=produto)
-
-        print(pd)
         pedido = [pedido for pedido in Pedido.objects.all()]
-
-        pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido))
+        pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
         context['pedidos_items'] = pedidos_items
-        print(pedidos_items)
         return context
