@@ -9,13 +9,13 @@
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h4>{{ qtd_pedidos }}</h4>
+                    <h4>{{ pedidos_mes }}</h4>
 
-                    <p>Total de Pedidos</p>
+                    <p>Pedidos do Mês</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -24,13 +24,13 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
                     <h4>R$ {{ valor_vendido.preco__sum }}</h4>
 
-                    <p>Valor vendido</p>
+                    <p>Valor Vendido do Mês</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -38,33 +38,17 @@
                 <a class="small-box-footer"><br></a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h4>{{ qtd_produtos.quantidade__sum }}</h4>
-
-                    <p>Produtos vendidos</p>
+                    <p>Produtos Vendidos no Mês</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
                 <a class="small-box-footer"><br></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>120</h3>
-
-                    <p>Ainda a definir</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
