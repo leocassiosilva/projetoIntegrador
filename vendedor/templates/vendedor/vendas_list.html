@@ -1,6 +1,53 @@
-{%for pedidos_items in pedidos_items%}
+{% extends 'base.html' %}
+{% block contentPagina %}
+{% load widget_tweaks %}
+
+{% endblock %}
+{% block title %}
+<title>Coma Bem | Lista de Pedidos</title>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        {% if object_list %}
+        <h1 class="m-0">Lista de Pedidos</h1>
+        <div class="card">
+
+            <div class="card-header">
+                <h3 class="card-title">Minhas Vendas</h3>
+                <div class="card-tools">
+                    <form role="search" action="{% url 'produtos_lista' %}">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input name="term" type="text" class="form-control float-right" placeholder="Pesquisar...">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0 ">
+                <div style="text-align:center;">
+                    {%for pedidos_items in pedidos_items%}
 
 
-    {{pedidos_items.product}}
+                    {{pedidos_items.product}}
 
-{% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        {% else %}
+        <h3 class="text-center">Você não possui vendas!</h3>
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
