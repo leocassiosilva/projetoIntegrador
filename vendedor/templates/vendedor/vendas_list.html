@@ -55,7 +55,7 @@
                             <td>{{pedidos_items.pedido.get_status_display}}</td>
                             <td style="text-align:center;">
                                 <a class="btn" style="color:black;"
-                                   href="#"><i class="fas fa-eye"
+                                   href="{%url 'vendas_detalhe' pedidos_items.pedido.id%}"><i class="fas fa-eye"
                                                title="Detalhes do Pedidos"></i></a>
                             </td>
                         </tr>

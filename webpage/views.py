@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -22,7 +23,11 @@ class IndexView(LoginRequiredMixin, TemplateView):
         pedido = [pedido for pedido in Pedido.objects.all()]
         pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
 
+        valor_vendido = PedidoItem.objects.filter(pedido__in=pedido, product__in=produto).aggregate(Sum('preco'))
+        context['valor_vendido'] = valor_vendido
+        qtd_produtos = PedidoItem.objects.filter(pedido__in=pedido, product__in=produto).aggregate(Sum('quantidade'))
         qtd_pedidos = PedidoItem.objects.filter(pedido__in=pedido).count()
+        context['qtd_produtos'] = qtd_produtos
         context['qtd_pedidos'] = qtd_pedidos
         context['pedidos_items'] = pedidos_items
         return context

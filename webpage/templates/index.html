@@ -13,14 +13,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>{{ qtd_pedidos }}</h3>
+                    <h4>{{ qtd_pedidos }}</h4>
 
                     <p>Total de Pedidos</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
+                <a class="small-box-footer"><br></a>
             </div>
         </div>
         <!-- ./col -->
@@ -28,28 +28,28 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h4>R$ {{ valor_vendido.preco__sum }}</h4>
 
-                    <p>Produtos Vendidos</p>
+                    <p>Valor vendido</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
+                <a class="small-box-footer"><br></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h4>{{ qtd_produtos.quantidade__sum }}</h4>
 
-                    <p>Pedidos do mes</p>
+                    <p>Produtos vendidos</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
+                <a class="small-box-footer"><br></a>
             </div>
         </div>
         <!-- ./col -->

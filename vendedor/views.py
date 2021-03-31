@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from accounts.models import CustomUsuario
 from pedidos.models import Pedido, PedidoItem
@@ -30,3 +30,8 @@ class MinhasVendasListView(ListView):
         pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
         context['pedidos_items'] = pedidos_items
         return context
+
+
+class MinhasVendasDetails(DetailView):
+    template_name = 'vendedor/vendas_detalhe.html'
+    model = Pedido
