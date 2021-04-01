@@ -3,6 +3,7 @@ beautifulsoup4==4.9.3
 dj-static==0.0.6
 Django==3.1.7
 django-bootstrap4==2.3.1
+django-chartjs==2.2.1
 django-discover-runner==1.0
 django-role-permissions==3.1.1
 django-stdimage==5.2.0

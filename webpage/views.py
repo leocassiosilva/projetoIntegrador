@@ -45,7 +45,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
         total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(Sum('quantidade'))
 
         print(total_vendido)
-        context['total_produtos'] = pedidos_mes
+        context['total_produtos'] = total_produtos
         context['pedidos_mes'] = pedidos_mes
         context['qtd_produtos'] = qtd_produtos
         context['qtd_pedidos'] = qtd_pedidos
