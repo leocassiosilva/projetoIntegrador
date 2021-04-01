@@ -1,8 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from datetime import datetime
 
 # Create your views here.
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView
+from rolepermissions.mixins import HasRoleMixin
 
 from accounts.models import CustomUsuario
 from pedidos.models import Pedido, PedidoItem
@@ -47,3 +50,5 @@ class MinhasVendasDetails(DetailView):
         context['data_atual'] = data_atual
         context['pedidos_items'] = pedidos_items
         return context
+
+

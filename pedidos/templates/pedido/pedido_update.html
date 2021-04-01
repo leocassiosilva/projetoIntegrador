@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block contentPagina %}
+{% load widget_tweaks %}
+
+{% endblock %}
+{% block title %}
+<title>Coma Bem | Lista de Pedidos</title>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="m-0">Lista de Pedidos</h1>
+
+        <div class="card ">
+            <div class="card-header">
+                <h3 class="card-title">Status do Pedido</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form method="post">
+                {%csrf_token%}
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="id_status">Situação</label>
+
+                        <select class="form-control" name="status" id="id_status" required>
+                            {% for field in form.status %}
+                            <tr>
+                                <td>{{field}}</td>
+                            </tr>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

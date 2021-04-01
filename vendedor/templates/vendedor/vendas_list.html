@@ -57,6 +57,10 @@
                                 <a class="btn" style="color:black;"
                                    href="{%url 'vendas_detalhe' pedidos_items.pedido.id%}"><i class="fas fa-eye"
                                                title="Detalhes do Pedidos"></i></a>
+
+                                <a class="btn" style="color:black;"
+                                   href="{%url 'pedidos_update' pedidos_items.pedido.id %}"><i class="fas fa-eye"
+                                               title="Detalhes do Pedidos"></i></a>
                             </td>
                         </tr>
                         {% endfor %}

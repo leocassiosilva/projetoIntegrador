@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import RedirectView, TemplateView, ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import RedirectView, TemplateView, ListView, DetailView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
@@ -41,7 +42,6 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
 class PedidoDetailView(TemplateView):
     template_name = 'pedido/pedidos_detail.html'
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs.get("pk")
@@ -56,9 +56,16 @@ class PedidoDetailView(TemplateView):
 class PedidoDetailsView(DetailView):
     template_name = 'pedido/pedidos_detail.html'
 
-
     def get_queryset(self):
         return Pedido.objects.filter(usuario=self.request.user)
+
+
+class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
+    model = Pedido
+    fields = ['status']
+    allowed_roles = 'vendedor'
+    template_name = 'pedido/pedido_update.html'
+    success_url = reverse_lazy('vendedor_vendas')
 
 
 checkout = CheckoutView.as_view()
@@ -68,3 +75,5 @@ pedidoList = PedidoListView.as_view()
 pedidoDetail = PedidoDetailView.as_view()
 
 detailPeddio = PedidoDetailsView.as_view()
+
+pedidoUpdate = PedidoUpdate.as_view()

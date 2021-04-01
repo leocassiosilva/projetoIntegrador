@@ -17,9 +17,10 @@ class PedidoManager(models.Manager):
 
 class Pedido(models.Model):
     STATUS_CHOICES = (
-        (0, 'Concluido'),
-        (1, 'Cancelado'),
-        (2, 'Agurdando Pagamento'),
+        (0, 'Pedido Efetuado'),
+        (1, 'Pedido Enviado'),
+        (2, 'Pedido Cancelado'),
+        (3, 'Pedido Finalizado')
     )
 
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Usuário')
