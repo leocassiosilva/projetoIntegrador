@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import datetime
 
 # Create your views here.
 from django.views.generic import ListView, DetailView
@@ -35,3 +36,14 @@ class MinhasVendasListView(ListView):
 class MinhasVendasDetails(DetailView):
     template_name = 'vendedor/vendas_detalhe.html'
     model = Pedido
+
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get("pk")
+        context = super().get_context_data(**kwargs)
+        produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
+        pedidos_items = PedidoItem.objects.filter(pedido=pk, product__in=produto)
+        print(pedidos_items)
+        data_atual = datetime.now()
+        context['data_atual'] = data_atual
+        context['pedidos_items'] = pedidos_items
+        return context

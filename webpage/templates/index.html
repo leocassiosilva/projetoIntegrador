@@ -9,11 +9,11 @@
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-4 col-6">
+        <div class="col-lg-4 col-12">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h4>{{ pedidos_mes }}</h4>
+                    <h3>{{ pedidos_mes }}</h3>
 
                     <p>Pedidos do Mês</p>
                 </div>
@@ -24,11 +24,11 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-4 col-6">
+        <div class="col-lg-4 col-12">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h4>R$ {{ valor_vendido.preco__sum }}</h4>
+                    <h3>R$ {{ valor_vendido.preco__sum }}</h3>
 
                     <p>Valor Vendido do Mês</p>
                 </div>
@@ -38,11 +38,11 @@
                 <a class="small-box-footer"><br></a>
             </div>
         </div>
-        <div class="col-lg-4 col-6">
+        <div class="col-lg-4 col-12">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h4>{{ qtd_produtos.quantidade__sum }}</h4>
+                    <h3>{{ qtd_produtos.quantidade__sum }}</h3>
                     <p>Produtos Vendidos no Mês</p>
                 </div>
                 <div class="icon">
@@ -380,8 +380,8 @@
                 <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Inventory</span>
-                    <span class="info-box-number">5,200</span>
+                    <span class="info-box-text">Total vendido</span>
+                    <span class="info-box-number">{{ total_vendido.preco__sum }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -390,32 +390,11 @@
                 <span class="info-box-icon"><i class="far fa-heart"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Mentions</span>
-                    <span class="info-box-number">92,050</span>
+                    <span class="info-box-text">Quantidade de produtos vendidos</span>
+                    <span class="info-box-number">{{total_produtos}}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-danger">
-                <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Downloads</span>
-                    <span class="info-box-number">114,381</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-info">
-                <span class="info-box-icon"><i class="far fa-comment"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Direct Messages</span>
-                    <span class="info-box-number">163,921</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-
         </div>
         <!-- /.card -->
     </div>

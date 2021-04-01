@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block contentPagina %}
+{% load widget_tweaks %}
 
-</body>
-</html>
+{% endblock %}
+{% block title %}
+<title>Coma Bem | Detalhe Pedido</title>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="m-0">Detalhe do Pedido</h1>
+        <div class="card">
+
+            <div class="invoice p-3 mb-3">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                            Informações do Pedido
+                            <small class="float-right">Date: {{data_atual}}</small>
+                        </h4>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                {%for pedidos_items in pedidos_items%}
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        <address>
+                            <strong>Comprador</strong><br>
+                            {{ pedidos_items.pedido.usuario.first_name }} {{ pedidos_items.pedido.usuario.last_name }}<br>
+                            {{ pedidos_items.pedido.usuario.cidade }}, {{ pedidos_items.pedido.usuario.rua }}, {{ pedidos_items.pedido.usuario.numero }},<br>
+                            Telefone: {{ pedidos_items.pedido.usuario.telefone }}<br>
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <address>
+                            <strong>Produtos</strong><br>
+                            {{pedidos_items.product}}<br>
+                            {{pedidos_items.quantidade}}<br>
+                            {{pedidos_items.preco}}<br>
+                        </address>
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <b>N° Pedido - {{pedidos_items.pedido.id}}</b><br>
+                        {{pedidos_items.pedido.data_criacao}}<br>
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                {% endfor %}
+
+
+                <!-- this row will not appear when printing -->
+                <div class="row no-print">
+                    <div class="col-12">
+                        <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                                class="fas fa-print"></i> Print</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+</div>
+</div>
+
+{% endblock %}

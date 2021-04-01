@@ -36,10 +36,21 @@ class IndexView(LoginRequiredMixin, TemplateView):
         # valor quantidade de produtos do mes
         qtd_produtos = PedidoItem.objects.filter(pedido__in=pedido, product__in=produto).aggregate(Sum('quantidade'))
         qtd_pedidos = PedidoItem.objects.filter(pedido__in=pedido).count()
-
+        # pedidos do mes
         pedidos_mes = Pedido.objects.filter(data_criacao__month=now.month).count()
+        todos_pedidos = [pedido for pedido in Pedido.objects.all()]
+        total_vendido = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(Sum('preco'))
+        context['total_vendido'] = total_vendido
+
+        total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(Sum('quantidade'))
+
+        print(total_vendido)
+        context['total_produtos'] = pedidos_mes
         context['pedidos_mes'] = pedidos_mes
         context['qtd_produtos'] = qtd_produtos
         context['qtd_pedidos'] = qtd_pedidos
         context['pedidos_items'] = pedidos_items
+        #Fim pedidos do mês
+
+
         return context
