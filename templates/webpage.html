@@ -49,18 +49,10 @@
                     </li>
 
                     {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a id="dropdownSubMenu2" href="#" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false" class="nav-link dropdown-toggle text-white"><i class="fas fa-user"></i>
-                            Minhas Compras</a>
-                        <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                            <li><a href="{% url 'cart_item' %}" class="dropdown-item"><i class="fas fa-shopping-cart"></i> Meu Carrinho</a></li>
-                            <li><a href="{% url 'meus_Pedidos' %}" class="dropdown-item"><i class="fas fa-clipboard-list"></i> Meus Pedidos</a></li>
-
-                            <!-- End Level two -->
-                        </ul>
-                    </li>
-
+                        <li class="nav-item">
+                            <a href="{% url 'index' %}" class="nav-link text-white"><i
+                                class="nav-icon fas fa-user"></i> Minha Conta</a>
+                        </li>
                     {% else %}
                         <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
