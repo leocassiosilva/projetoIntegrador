@@ -11,7 +11,7 @@ from rolepermissions.checkers import has_permission
 from rolepermissions.mixins import HasRoleMixin
 from django.db import models
 
-from .forms import ProductForm
+from .forms import ProductForm, ProductFormUpdate
 from .models import Product, Category, Medida
 from django.urls import reverse_lazy, reverse
 
@@ -66,7 +66,7 @@ class ProductListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
 
 class ProductUpdateView(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Product
-    form_class = ProductForm
+    form_class = ProductFormUpdate
     template_name = 'register/product_update.html'
     allowed_roles = 'vendedor'
 

@@ -31,11 +31,17 @@ class Medida(models.Model):
 
 
 class Product(models.Model):
+    STATUS_CHOICES = (
+        (0, 'Disponivel'),
+        (1, 'Indisponivel')
+    )
+
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('product.Category', verbose_name='Categoria', on_delete=models.CASCADE)
     medida = models.ForeignKey('product.Medida', verbose_name='Medida', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField('Quantidade', default=1)
+    status = models.IntegerField('Situação', choices=STATUS_CHOICES, default=0, blank=True)
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
     image = models.ImageField(

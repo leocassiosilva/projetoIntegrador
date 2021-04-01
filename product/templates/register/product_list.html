@@ -42,6 +42,7 @@
                         <th>Quantidade</th>
                         <th>Medida</th>
                         <th>Preço</th>
+                        <th>Situação</th>
                         <th>Data Entrega</th>
                         <th style="text-align:center;">Ações</th>
                     </tr>
@@ -55,6 +56,7 @@
                         <td>{{ produto.quantity }}</td>
                         <td>{{ produto.medida }}</td>
                         <td>R$ {{ produto.price }}</td>
+                        <td>{{ produto.get_status_display }}</td>
                         <td>{{ produto.data_entrega }}</td>
                         <td style="text-align:center;">
                                <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
