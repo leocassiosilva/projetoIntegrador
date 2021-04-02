@@ -22,6 +22,7 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
             cart_items = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_items)
+
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')

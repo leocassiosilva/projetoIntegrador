@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.db.models import Sum
+from django.db.models import Sum, Count, Min
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -25,6 +25,9 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         now = datetime.now()
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
+        pd = Product.objects.filter(pk=1)
+
+
 
         pedido = [pedido for pedido in Pedido.objects.filter(data_criacao__month=now.month)]
 
@@ -58,14 +61,17 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
     def product_chart(request):
         produto = Product.objects.filter(id_usuario=request.user.id)
-        print(produto)
+
+        produtos = PedidoItem.objects.filter(product__in=produto).values('product__name').annotate(Sum('quantidade'))[:5]
+
+        print(produtos)
         labels = []
         data = []
 
-        for set in produto:
-            print("isso", set.name)
-            labels.append(set.name)
-            data.append(set.quantity)
+        for cont in produtos:
+            labels.append(cont['product__name'])
+            data.append(cont['quantidade__sum'])
+
 
         return JsonResponse(data={
             'labelsR': labels,
