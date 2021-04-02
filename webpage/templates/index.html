@@ -30,7 +30,7 @@
                 <div class="inner">
                     {% if valor_vendido.preco__sum %}
                     <h3>R$ {{ valor_vendido.preco__sum }}</h3>
-                     {% else %}
+                    {% else %}
                     <h3>R$ 0</h3>
                     {% endif %}
 
@@ -48,7 +48,7 @@
                 <div class="inner">
                     {% if qtd_produtos.quantidade__sum %}
                     <h3>{{ qtd_produtos.quantidade__sum }}</h3>
-                     {% else %}
+                    {% else %}
                     <h3>0</h3>
                     {% endif %}
                     <p>Produtos Vendidos no Mês</p>
@@ -97,8 +97,8 @@
                                 <div class=""></div>
                             </div>
                         </div>
-                        <canvas id="sales-chart" height="400" style="display: block; width: 464px; height: 200px;"
-                                width="928" class="chartjs-render-monitor"></canvas>
+                        <canvas id="id_product" height="400" style="display: block; width: 464px; height: 200px;"
+                                width="928" class="chartjs-render-monitor" data-url="{% url 'productChart'%}"></canvas>
                     </div>
 
                     <div class="d-flex flex-row justify-content-end">
@@ -124,7 +124,7 @@
                     <span class="info-box-text">Total vendido</span>
                     {% if total_vendido.preco__sum %}
                     <span class="info-box-number">R$ {{ total_vendido.preco__sum }}</span>
-                     {% else %}
+                    {% else %}
                     <span class="info-box-number">R$ 0</span>
                     {% endif %}
                 </div>
@@ -138,7 +138,7 @@
                     <span class="info-box-text">Quantidade de produtos vendidos</span>
                     {% if total_produtos.quantidade__sum %}
                     <span class="info-box-number">{{ total_produtos.quantidade__sum }}</span>
-                     {% else %}
+                    {% else %}
                     <span class="info-box-number">0</span>
                     {% endif %}
                 </div>
@@ -152,5 +152,5 @@
 </div>
 </div>
 
-
 {% endblock %}
+
