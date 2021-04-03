@@ -4,6 +4,7 @@
 {% load pagination %}
 {% block contentPagina %}
 {% load widget_tweaks %}
+{% load permission_tags %}
 <h1 class="m-0">Lista de Produtos</h1>
 {% endblock %}
 {% block title %}
@@ -45,7 +46,7 @@
     <div class="content" style="margin-top:100px;">
         <div class="container">
             <div class="row">
-                {%for produto in object_list%}
+                {%for produto in produtos%}
                 <div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <div class="thumbnail">
                     <div class="card bg-light d-flex flex-fill">
@@ -70,6 +71,7 @@
                                 </div>
                             </div>
                         </div>
+                    {% if user|has_role:'cliente' %}
                         <div class="card-footer">
                             <div class="text-right">
                                 <a href="#" class="btn btn-sm bg-teal">
@@ -80,6 +82,8 @@
                                 </a>
                             </div>
                         </div>
+                    {% else %}
+                    {% endif %}
                     </div>
                 </div>
                 </div>

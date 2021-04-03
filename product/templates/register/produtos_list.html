@@ -4,6 +4,7 @@
 {% load pagination %}
 {% block contentPagina %}
 {% load widget_tweaks %}
+{% load permission_tags %}
 <h1 class="m-0">Lista de Produtos</h1>
 {% endblock %}
 {% block title %}
@@ -71,6 +72,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card-footer">
                             <div class="text-right">
                                 <a href="#" class="btn btn-sm bg-teal">
@@ -81,6 +83,7 @@
                                 </a>
                             </div>
                         </div>
+                    
                     </div>
                 </div>
                 </div>

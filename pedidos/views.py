@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
 
+
 from checkout.models import CarrinhoItem
 from product.models import Product
 from .models import Pedido, PedidoItem
@@ -22,9 +23,20 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
             cart_items = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_items)
+
+
+
+            prod = list(cart_items)
+            pd = [produto for produto in Product.objects.filter(pk__in=prod)]
+            print(pd)
+
+
+
+
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
+
 
         return super(CheckoutView, self).get(request, *args, **kwargs)
 

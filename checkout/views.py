@@ -5,6 +5,8 @@ from django.contrib import messages
 from product.models import Product
 from .models import CarrinhoItem
 from django.forms import modelformset_factory
+from django.db.models import Sum
+from django import forms
 
 
 class CreateCarrinhoItemView(RedirectView):
