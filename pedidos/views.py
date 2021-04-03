@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -11,23 +12,31 @@ from product.models import Product
 from .models import Pedido, PedidoItem
 
 
-# Create your views here.
 class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
     allowed_roles = 'cliente'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
+        print(session_key)
         if session_key and CarrinhoItem.objects.filter(carrinho_key=session_key).exists():
             cart_items = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_items)
 
+            for est in cart_items:
+                # print(est.product.id)
+                sub_qtd = Product.objects.filter(id=est.product.id)
+                for qtd in sub_qtd:
+                    total = qtd.quantity - est.quantidade
+                    print(total)
+                    Product.objects.filter(id=est.product.id).update(quantity=total)
+
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
 
-        return super(CheckoutView, self).get(request, *args, **kwargs)
+        return redirect('meus_Pedidos')
 
 
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
