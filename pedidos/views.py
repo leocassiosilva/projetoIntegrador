@@ -20,32 +20,20 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
         if session_key and CarrinhoItem.objects.filter(carrinho_key=session_key).exists():
-            cart_items = CarrinhoItem.objects.filter(carrinho_key=session_key)
+            cart_item = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
-                usuario=request.user, cart_items=cart_items)
-
-
-
-
-            prod = list(cart_items)
-            pd = [produto for produto in Product.objects.filter(pk__in=prod)]
-            print(pd)
-
-
-
-
+                usuario=request.user, cart_items=cart_item)
+            print(session_key)
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
-
-
-        return super(CheckoutView, self).get(request, *args, **kwargs)
+        return redirect('meus_Pedidos')
 
 
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'pedido/pedidos_list.html'
     allowed_roles = 'cliente'
-    paginate_by = 7
+    paginate_by = 10
 
     def get_queryset(self):
         pedidos = Pedido.objects.filter(usuario=self.request.user)

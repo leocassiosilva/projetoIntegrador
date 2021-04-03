@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from checkout.models import CarrinhoItem
 from product.models import Product
 
 
