@@ -22,27 +22,22 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
         if session_key and CarrinhoItem.objects.filter(carrinho_key=session_key).exists():
             cart_item = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
-<<<<<<< HEAD
                 usuario=request.user, cart_items=cart_item)
-            print(session_key)
-        else:
-            messages.info(request, 'Não há itens no carrinho de compras')
-            return redirect('cart_item')
-=======
-                usuario=request.user, cart_items=cart_items)
+
 
             for est in cart_items:
                 # print(est.product.id)
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
                     total = qtd.quantity - est.quantidade
+                    print(total)
                     Product.objects.filter(id=est.product.id).update(quantity=total)
+
 
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
 
->>>>>>> 2e6066093fdcc7e16e4d5bba4d75fc3f8d0a1a53
         return redirect('meus_Pedidos')
 
 
