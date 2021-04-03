@@ -20,6 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', include('webpage.urls')),
+    path('relatorio/', include('relatorio.urls')),
     path('core/', include('core.urls')),
     path('pedidos/', include('pedidos.urls')),
     path('vendedor/', include('vendedor.urls')),
