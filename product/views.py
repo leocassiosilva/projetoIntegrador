@@ -137,4 +137,5 @@ class ProductVendedorListViewProdutos(ListView):
         #  context['base'] = 'base.html'
         # else:
         #   context['base'] = 'webpage.html'
+        print(produtos)
         return context

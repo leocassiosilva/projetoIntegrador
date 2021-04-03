@@ -29,7 +29,6 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
                     total = qtd.quantity - est.quantidade
-                    print(total)
                     Product.objects.filter(id=est.product.id).update(quantity=total)
 
         else:
@@ -45,7 +44,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     paginate_by = 7
 
     def get_queryset(self):
-        pedidos = Pedido.objects.filter(usuario=self.request.user)
+        pedidos = Pedido.objects.order_by("data_criacao").filter(usuario=self.request.user)
         return pedidos
 
 
