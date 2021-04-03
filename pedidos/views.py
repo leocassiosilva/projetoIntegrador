@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -6,27 +7,42 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
 
-
 from checkout.models import CarrinhoItem
 from product.models import Product
 from .models import Pedido, PedidoItem
 
 
-# Create your views here.
 class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
     allowed_roles = 'cliente'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
+        print(session_key)
         if session_key and CarrinhoItem.objects.filter(carrinho_key=session_key).exists():
             cart_item = CarrinhoItem.objects.filter(carrinho_key=session_key)
             pedido = Pedido.objects.create_order(
+<<<<<<< HEAD
                 usuario=request.user, cart_items=cart_item)
             print(session_key)
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
+=======
+                usuario=request.user, cart_items=cart_items)
+
+            for est in cart_items:
+                # print(est.product.id)
+                sub_qtd = Product.objects.filter(id=est.product.id)
+                for qtd in sub_qtd:
+                    total = qtd.quantity - est.quantidade
+                    Product.objects.filter(id=est.product.id).update(quantity=total)
+
+        else:
+            messages.info(request, 'Não há itens no carrinho de compras')
+            return redirect('cart_item')
+
+>>>>>>> 2e6066093fdcc7e16e4d5bba4d75fc3f8d0a1a53
         return redirect('meus_Pedidos')
 
 
@@ -36,7 +52,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        pedidos = Pedido.objects.filter(usuario=self.request.user)
+        pedidos = Pedido.objects.order_by("data_criacao").filter(usuario=self.request.user)
         return pedidos
 
 
