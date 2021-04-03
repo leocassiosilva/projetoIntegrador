@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from django.db.models import Sum
+from django.db.models import Sum, Count, Min
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,13 +25,16 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         now = datetime.now()
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
+        pd = Product.objects.filter(pk=1)
+
+
 
         pedido = [pedido for pedido in Pedido.objects.filter(data_criacao__month=now.month)]
 
-        #Quantidade de pedidos do mês
+        # Quantidade de pedidos do mês
         pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
         context['pedidos_items'] = pedidos_items
-        #valor vendido do mês
+        # valor vendido do mês
         valor_vendido = PedidoItem.objects.filter(pedido__in=pedido, product__in=produto).aggregate(Sum('preco'))
         context['valor_vendido'] = valor_vendido
         # valor quantidade de produtos do mes
@@ -42,7 +46,8 @@ class IndexView(LoginRequiredMixin, TemplateView):
         total_vendido = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(Sum('preco'))
         context['total_vendido'] = total_vendido
 
-        total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(Sum('quantidade'))
+        total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(
+            Sum('quantidade'))
 
         print(total_vendido)
         context['total_produtos'] = total_produtos
@@ -50,7 +55,25 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context['qtd_produtos'] = qtd_produtos
         context['qtd_pedidos'] = qtd_pedidos
         context['pedidos_items'] = pedidos_items
-        #Fim pedidos do mês
-
+        # Fim pedidos do mês
 
         return context
+
+    def product_chart(request):
+        produto = Product.objects.filter(id_usuario=request.user.id)
+
+        produtos = PedidoItem.objects.filter(product__in=produto).values('product__name').annotate(Sum('quantidade'))[:5]
+
+        print(produtos)
+        labels = []
+        data = []
+
+        for cont in produtos:
+            labels.append(cont['product__name'])
+            data.append(cont['quantidade__sum'])
+
+
+        return JsonResponse(data={
+            'labelsR': labels,
+            'dataR': data,
+        })

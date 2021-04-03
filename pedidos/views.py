@@ -26,6 +26,7 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
 
 
 
+
             prod = list(cart_items)
             pd = [produto for produto in Product.objects.filter(pk__in=prod)]
             print(pd)

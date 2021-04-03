@@ -49,12 +49,12 @@
                     </li>
 
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a href="{% url 'index' %}" class="nav-link text-white"><i
+                    <li class="nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-white"><i
                                 class="nav-icon fas fa-user"></i> Minha Conta</a>
-                        </li>
+                    </li>
                     {% else %}
-                        <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false" class="nav-link dropdown-toggle text-white"><i
                                 class="fas fa-users"></i> Meu Cadastro</a>
@@ -109,10 +109,5 @@
 <script src="{% static '/admin/dist/js/demo.js' %}"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-
-<script type="text/javascript">
-
-
-</script>
 </body>
 </html>
