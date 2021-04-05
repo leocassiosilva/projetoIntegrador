@@ -71,7 +71,8 @@
                                 </div>
                             </div>
                         </div>
-                    {% if user|has_role:'cliente' %}
+                    {% if user|has_role:'vendedor' %}
+                    {% else %}
                         <div class="card-footer">
                             <div class="text-right">
                                 <a href="#" class="btn btn-sm bg-teal">
@@ -82,7 +83,6 @@
                                 </a>
                             </div>
                         </div>
-                    {% else %}
                     {% endif %}
                     </div>
                 </div>
