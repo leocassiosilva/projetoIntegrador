@@ -24,8 +24,7 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_item)
 
-
-            for est in cart_items:
+            for est in cart_item:
                 # print(est.product.id)
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
