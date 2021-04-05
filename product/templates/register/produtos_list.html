@@ -72,8 +72,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card-footer">
+                        {% if user|has_role:'vendedor' %}
+                        {% else %}
+                            <div class="card-footer">
                             <div class="text-right">
                                 <a href="#" class="btn btn-sm bg-teal">
                                     <i class="fas fa-comments"></i>
@@ -83,7 +84,7 @@
                                 </a>
                             </div>
                         </div>
-                    
+                        {% endif %}
                     </div>
                 </div>
                 </div>
