@@ -46,7 +46,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        pedidos = Pedido.objects.order_by("data_criacao").filter(usuario=self.request.user)
+        pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
         return pedidos
 
 

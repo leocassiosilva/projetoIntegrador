@@ -2,6 +2,7 @@ from itertools import product
 from secrets import token_urlsafe
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q, Sum
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import generic
@@ -130,12 +131,8 @@ class ProductVendedorListViewProdutos(ListView):
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get("pk")
         context = super().get_context_data(**kwargs)
-        produtos = Product.objects.filter(id_usuario=pk)
+        produtos = Product.objects.annotate(country_quantity=Sum('quantity')).filter(id_usuario=pk, status=0,
+                                                                                     country_quantity__gt=0)
         context['produtos'] = list(produtos)
-        # if self.request.user.is_authenticated:
-        #   print("LOgado")
-        #  context['base'] = 'base.html'
-        # else:
-        #   context['base'] = 'webpage.html'
         print(produtos)
         return context
