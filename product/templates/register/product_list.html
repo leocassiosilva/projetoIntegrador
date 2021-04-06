@@ -31,45 +31,45 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0 ">
-            <div style="text-align:center;">
-                <table class="table table-hover text-nowrap">
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
+                <div style="text-align:center;">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
 
-                        <th>Categoria</th>
-                        <th>Descrição</th>
-                        <th>Quantidade</th>
-                        <th>Medida</th>
-                        <th>Preço</th>
-                        <th>Situação</th>
-                        <th>Data Entrega</th>
-                        <th style="text-align:center;">Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {%for produto in object_list%}
-                    <tr>
-                        <td>{{ produto.name }}</td>
-                        <td>{{ produto.category }}</td>
-                        <td>{{ produto.description }}</td>
-                        <td>{{ produto.quantity }}</td>
-                        <td>{{ produto.medida }}</td>
-                        <td>R$ {{ produto.price }}</td>
-                        <td>{{ produto.get_status_display }}</td>
-                        <td>{{ produto.data_entrega }}</td>
-                        <td style="text-align:center;">
-                               <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
+                            <th>Categoria</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Medida</th>
+                            <th>Preço</th>
+                            <th>Situação</th>
+                            <th>Data Entrega</th>
+                            <th style="text-align:center;">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {%for produto in object_list%}
+                        <tr>
+                            <td>{{ produto.name }}</td>
+                            <td>{{ produto.category }}</td>
+                            <td>{{ produto.description }}</td>
+                            <td>{{ produto.quantity }}</td>
+                            <td>{{ produto.medida }}</td>
+                            <td>R$ {{ produto.price }}</td>
+                            <td>{{ produto.get_status_display }}</td>
+                            <td>{{ produto.data_entrega }}</td>
+                            <td style="text-align:center;">
+                                <a class="btn" style="color:black;" href="{%url 'produto_delete' produto.id%}">
                                     <i class="fas fa-trash-alt" title="Excluir Produto"></i></a>
-                              <a class="btn" style="color:black;"
+                                <a class="btn" style="color:black;"
                                    href="{%url 'produto_update' produto.id%}"><i class="fas fa-edit"
                                                                                  title="Editar Produto"></i></a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
