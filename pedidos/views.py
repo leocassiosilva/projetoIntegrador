@@ -6,15 +6,12 @@ from django.views.generic import RedirectView, TemplateView, ListView, DetailVie
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rolepermissions.mixins import HasRoleMixin
-
 from checkout.models import CarrinhoItem
 from product.models import Product
 from .models import Pedido, PedidoItem
 
-
-class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
+class CheckoutView(LoginRequiredMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
-    allowed_roles = 'cliente'
 
     def get(self, request, *args, **kwargs):
         session_key = request.session.session_key
@@ -25,6 +22,7 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
                 usuario=request.user, cart_items=cart_item)
 
             for est in cart_item:
+
                 # print(est.product.id)
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
@@ -32,13 +30,10 @@ class CheckoutView(LoginRequiredMixin, HasRoleMixin, TemplateView):
                     print(total)
                     Product.objects.filter(id=est.product.id).update(quantity=total)
 
-
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
-
         return redirect('meus_Pedidos')
-
 
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'pedido/pedidos_list.html'
@@ -48,7 +43,6 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     def get_queryset(self):
         pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
         return pedidos
-
 
 class PedidoDetailView(TemplateView):
     template_name = 'pedido/pedidos_detail.html'
@@ -63,13 +57,11 @@ class PedidoDetailView(TemplateView):
         context['items'] = list(items_pedidos)
         return context
 
-
 class PedidoDetailsView(DetailView):
     template_name = 'pedido/pedidos_detail.html'
 
     def get_queryset(self):
         return Pedido.objects.filter(usuario=self.request.user)
-
 
 class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Pedido
@@ -78,13 +70,8 @@ class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     template_name = 'pedido/pedido_update.html'
     success_url = reverse_lazy('vendedor_vendas')
 
-
 checkout = CheckoutView.as_view()
-
 pedidoList = PedidoListView.as_view()
-
 pedidoDetail = PedidoDetailView.as_view()
-
 detailPeddio = PedidoDetailsView.as_view()
-
 pedidoUpdate = PedidoUpdate.as_view()
