@@ -2,6 +2,7 @@ from django.db.models import Sum
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.views import generic
 from django.views.generic import RedirectView, TemplateView, ListView, DetailView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -37,18 +38,14 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         return redirect('meus_Pedidos')
 
 
-class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
+class PedidoListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
     template_name = 'pedido/pedidos_lists.html'
     allowed_roles = 'cliente'
     model = Pedido
     paginate_by = 10
 
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-        pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
-        context['pedidos'] = list(pedidos)
-        return context
+    def get_queryset(self):
+        return Pedido.objects.filter(usuario=self.request.user)
 
 
 class PedidoDetailView(TemplateView):
