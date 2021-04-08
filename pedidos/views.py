@@ -41,7 +41,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'pedido/pedidos_lists.html'
     allowed_roles = 'cliente'
     model = Pedido
-    paginate_by = 10
+    paginate_by = 6
 
     def get_context_data(self, **kwargs):
 

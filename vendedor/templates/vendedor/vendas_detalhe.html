@@ -36,19 +36,22 @@
                         </address>
                     </div>
                     <!-- /.col -->
-                    <div class="col-sm-4 invoice-col">
+                    <div class="col-sm-3 invoice-col">
                         <address>
-                            <strong>Produtos</strong><br>
-                            {{pedidos_items.product}}<br>
-                            {{pedidos_items.quantidade}}<br>
-                            {{pedidos_items.preco}}<br>
+                            <strong>Pedido</strong><br>
+                            <p>
+                            Produto: {{pedidos_items.product}}<br>
+                            Quantidade: {{pedidos_items.quantidade}}<br>
+                            Valor: R$ {{pedidos_items.preco}} / {{ pedidos_items.product.medida }}<br>
+                            </p>
                         </address>
 
                     </div>
+
                     <!-- /.col -->
-                    <div class="col-sm-4 invoice-col">
+                    <div class="col-sm-3 invoice-col">
                         <b>N° Pedido - {{pedidos_items.pedido.id}}</b><br>
-                        {{pedidos_items.pedido.data_criacao}}<br>
+                        Data do Pedido: <p>{{pedidos_items.pedido.data_criacao}}</p><br>
 
                     </div>
                     <!-- /.col -->
@@ -58,12 +61,6 @@
 
 
                 <!-- this row will not appear when printing -->
-                <div class="row no-print">
-                    <div class="col-12">
-                        <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
-                                class="fas fa-print"></i> Print</a>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- /.card-body -->
