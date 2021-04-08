@@ -13,8 +13,6 @@ class LoginViewTesteCase(TestCase):
         self.user.set_password('123')
         self.user.save()
 
-    '''
-
     def tearDown(self):
         self.user.delete()
 
@@ -29,5 +27,3 @@ class LoginViewTesteCase(TestCase):
         print(redirect_url)
         self.assertRedirects(response, redirect_url)
         self.assertTrue(response.wsgi_request.user.is_authenticated())
-
-'''
