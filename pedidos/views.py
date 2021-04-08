@@ -21,7 +21,11 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_item)
 
+<<<<<<< HEAD
             for est in cart_items:
+=======
+            for est in cart_item:
+>>>>>>> d8c33ca81b627a4d516f9e9ce2adda1c765f2f7f
                 # print(est.product.id)
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
@@ -40,7 +44,7 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        pedidos = Pedido.objects.order_by("data_criacao").filter(usuario=self.request.user)
+        pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
         return pedidos
 
 class PedidoDetailView(TemplateView):

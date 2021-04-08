@@ -10,9 +10,6 @@
 {% block content %}
 <div class="card card-primary">
     <div class="card-body">
-
-        <h4 class="text-center">Registre-se</h4>
-
         <form method="post">
             {%csrf_token%}
             <h4>Informações Pessoais</h4>
@@ -55,7 +52,7 @@
                 <div class="form-group col-lg-6 mb-3">
                     <label for="cidade">Cidade</label>
                     <input class="form-control" id="cidade" name="cidade"
-                           type="text" value="{{ form.telefone.cidade }}"
+                           type="text" value="{{ form.cidade.value }}"
                            placeholder="Digite sua cidade" required>
                 </div>
             </div>
@@ -89,7 +86,7 @@
                            placeholder="Digite o numero">
                 </div>
             </div>
-            <input class="btn btn-info" type="submit" value="Atualizar">
+            <input class="btn btn-primary" type="submit" value="Atualizar">
         </form>
     </div>
 </div>

@@ -76,7 +76,7 @@
                                 {% endif %}</label>
                             <input type="text" class="form-control" id="id_telefone" name="telefone"
                                    data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask=""
-                                   inputmode="text" value="{{request.POST.telefone}}">
+                                   inputmode="text" value="{{request.POST.telefone}}" placeholder="Digite o telefone">
                             <div class="form-row text-danger small">
                                 {% if form.telefone.errors %}
                                 <strong>Telefone é um campo obrigatório.</strong>
@@ -198,7 +198,7 @@
                         </div>
                     </div>
 
-                    <input class="btn btn-info" type="submit" value="Cadastrar">
+                    <input class="btn btn-primary" type="submit" value="Cadastrar">
                 </form>
             </div>
         </div>

@@ -27,8 +27,6 @@ class IndexView(LoginRequiredMixin, TemplateView):
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
         pd = Product.objects.filter(pk=1)
 
-
-
         pedido = [pedido for pedido in Pedido.objects.filter(data_criacao__month=now.month)]
 
         # Quantidade de pedidos do mês
@@ -49,7 +47,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
         total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(
             Sum('quantidade'))
 
-        print(total_vendido)
+        # print(total_vendido)
         context['total_produtos'] = total_produtos
         context['pedidos_mes'] = pedidos_mes
         context['qtd_produtos'] = qtd_produtos
@@ -62,7 +60,8 @@ class IndexView(LoginRequiredMixin, TemplateView):
     def product_chart(request):
         produto = Product.objects.filter(id_usuario=request.user.id)
 
-        produtos = PedidoItem.objects.filter(product__in=produto).values('product__name').annotate(Sum('quantidade'))[:5]
+        produtos = PedidoItem.objects.filter(product__in=produto).values('product__name').annotate(Sum('quantidade'))[
+                   :5]
 
         print(produtos)
         labels = []
@@ -71,7 +70,6 @@ class IndexView(LoginRequiredMixin, TemplateView):
         for cont in produtos:
             labels.append(cont['product__name'])
             data.append(cont['quantidade__sum'])
-
 
         return JsonResponse(data={
             'labelsR': labels,

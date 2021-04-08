@@ -37,7 +37,7 @@ class UpdateUsuario(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('index')
 
 
 class UserLogin(SuccessMessageMixin, LoginView):

@@ -34,24 +34,24 @@
                      with font-awesome or any other icon font library -->
 
                 {% if user|has_role:'cliente' %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'meus_Pedidos' %}">
-                            <i class="nav-icon fas fa-shopping-bag"></i>
-                                <p>
-                                    Meus Pedidos
-                                </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart_item' %}">
-                            <i class="nav-icon fas fa-shopping-cart"></i>
-                                <p>
-                                    Meu Carrinho
-                                </p>
-                        </a>
-                    </li>
-                    {% else %}
-                    {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'meus_Pedidos' %}">
+                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <p>
+                            Meus Pedidos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart_item' %}">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Meu Carrinho
+                        </p>
+                    </a>
+                </li>
+                {% else %}
+                {% endif %}
                 {% if user|has_role:'vendedor' %}
                 <li class="nav-item menu-open">
                     <a href="{% url 'index' %}" class="nav-link active">
@@ -71,44 +71,70 @@
                         </p>
                     </a>
 
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{% url 'cadastrarMedida' %}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>Cadastrar Medidas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'cadastrarCategoria' %}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>Cadastrar Categorias</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'cadastrarProduto' %}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>Cadastrar Produtos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'produtos_lista' %}" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
-                            <p>Lista de Produtos</p>
-                        </a>
-                    </li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'cadastrarMedida' %}" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>Cadastrar Medidas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'cadastrarCategoria' %}" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>Cadastrar Categorias</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'cadastrarProduto' %}" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>Cadastrar Produtos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'produtos_lista' %}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>Lista de Produtos</p>
+                            </a>
+                        </li>
+                        </li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'vendedor_vendas' %}">
+                        <i class="nav-icon fas  fa-shopping-basket"></i>
+                        <p>
+                            Minhas Vendas
+                        </p>
+                    </a>
                 </li>
-                </ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'vendedor_vendas' %}">
-                            <i class="nav-icon fas  fa-shopping-basket"></i>
-                                <p>
-                                    Minhas Vendas
-                                </p>
-                        </a>
-                    </li>
-                {% else %}
-                {% endif %}
-            </ul>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Relatorio de Pedidos
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'gerar_relatorio' %}" class="nav-link" target="_blank">
+                                <i class="nav-icon fas fa-eye"></i>
+                                <p>Visualizar Relatorio do Mês</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'gerar_relatorio' %}" class="nav-link" download>
+
+                                <i class="nav-icon fas fa-download"></i>
+                                <p>Baixar Relatorio do Mês</p>
+                            </a>
+                        </li>
+                        </li>
+
+                        {% else %}
+                        {% endif %}
+                    </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

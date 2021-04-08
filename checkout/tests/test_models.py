@@ -1,9 +1,5 @@
-# coding=utf-8
-
 from django.test import TestCase
-
 from model_mommy import mommy
-
 from checkout.models import CarrinhoItem
 
 
