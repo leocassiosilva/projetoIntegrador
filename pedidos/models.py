@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from product.models import Product
 
-
 class PedidoManager(models.Manager):
     def create_order(self, usuario, cart_items):
         pedido = self.create(usuario=usuario)
@@ -12,7 +11,6 @@ class PedidoManager(models.Manager):
                 preco=cart_item.preco
             )
         return pedido
-
 
 class Pedido(models.Model):
     STATUS_CHOICES = (
@@ -48,7 +46,6 @@ class Pedido(models.Model):
             )
         )
         return tota_produtos['total']
-
 
 class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, verbose_name='Pedido', on_delete=models.CASCADE, related_name='items')
