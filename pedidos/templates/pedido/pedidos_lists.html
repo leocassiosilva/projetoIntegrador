@@ -10,7 +10,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-10 offset-md-1">
-        {% if object_list %}
+        {% if pedidos %}
         <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
@@ -26,7 +26,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {%for pedido in object_list%}
+                        {%for pedido in pedidos%}
                         <tr>
                             <td>{{ pedido.id }}</td>
                             <td>{{ pedido.data_criacao }}</td>

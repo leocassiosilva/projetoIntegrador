@@ -10,6 +10,7 @@ from checkout.models import CarrinhoItem
 from product.models import Product
 from .models import Pedido, PedidoItem
 
+
 class CheckoutView(LoginRequiredMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
 
@@ -35,14 +36,20 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
             return redirect('cart_item')
         return super(CheckoutView, self).get(request, *args, **kwargs)
 
+
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
-    template_name = 'pedido/pedidos_list.html'
+    template_name = 'pedido/pedidos_lists.html'
     allowed_roles = 'cliente'
+    model = Pedido
     paginate_by = 10
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
         pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
-        return pedidos
+        context['pedidos'] = list(pedidos)
+        return context
+
 
 class PedidoDetailView(TemplateView):
     template_name = 'pedido/pedidos_detail.html'
@@ -57,11 +64,13 @@ class PedidoDetailView(TemplateView):
         context['items'] = list(items_pedidos)
         return context
 
+
 class PedidoDetailsView(DetailView):
     template_name = 'pedido/pedidos_detail.html'
 
     def get_queryset(self):
         return Pedido.objects.filter(usuario=self.request.user)
+
 
 class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Pedido
@@ -69,6 +78,7 @@ class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     allowed_roles = 'vendedor'
     template_name = 'pedido/pedido_update.html'
     success_url = reverse_lazy('vendedor_vendas')
+
 
 checkout = CheckoutView.as_view()
 pedidoList = PedidoListView.as_view()
