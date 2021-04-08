@@ -23,21 +23,23 @@ class VendedoresListView(ListView):
         return vendedor
 
 
-class MinhasVendasListView(ListView):
+class MinhasVendasListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'vendedor/vendas_list.html'
     model = Pedido
+    allowed_roles = 'vendedor'
+    paginate_by = 5
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_queryset(self, **kwargs):
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
         pedido = [pedido for pedido in Pedido.objects.order_by("-data_criacao").all()]
         pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
-        context['pedidos_items'] = pedidos_items
-        return context
+        # context['pedidos_items'] = pedidos_items
+        return pedidos_items
 
 
-class MinhasVendasDetails(DetailView):
+class MinhasVendasDetails(LoginRequiredMixin, HasRoleMixin, DetailView):
     template_name = 'vendedor/vendas_detalhe.html'
+    allowed_roles = 'vendedor'
     model = Pedido
 
     def get_context_data(self, **kwargs):
@@ -50,5 +52,3 @@ class MinhasVendasDetails(DetailView):
         context['data_atual'] = data_atual
         context['pedidos_items'] = pedidos_items
         return context
-
-

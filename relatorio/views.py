@@ -21,7 +21,8 @@ class TemplateRelatorio(LoginRequiredMixin, HasRoleMixin, TemplateView):
     allowed_roles = 'vendedor'
 
 
-class GeneratePdf(View):
+class GeneratePdf(LoginRequiredMixin, HasRoleMixin, View):
+    allowed_roles = 'vendedor'
 
     def get(self, request, *args, **kwargs):
         now = datetime.now()
