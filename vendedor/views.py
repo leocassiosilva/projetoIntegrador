@@ -27,7 +27,7 @@ class MinhasVendasListView(LoginRequiredMixin, HasRoleMixin, ListView):
     template_name = 'vendedor/vendas_list.html'
     model = Pedido
     allowed_roles = 'vendedor'
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self, **kwargs):
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]

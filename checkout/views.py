@@ -24,7 +24,6 @@ class CreateCarrinhoItemView(RedirectView):
             messages.success(self.request, 'Produto atualizado com sucesso')
         return reverse('cart_item')
 
-
 create_cartitem = CreateCarrinhoItemView.as_view()
 
 

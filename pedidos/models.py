@@ -51,7 +51,7 @@ class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, verbose_name='Pedido', on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='Produto',related_name='produtos')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
-    preco = models.DecimalField('Preco', decimal_places=3, max_digits=13)
+    preco = models.DecimalField('Preco', decimal_places=2, max_digits=8)
 
     class Meta:
         verbose_name = 'Item do pedido'

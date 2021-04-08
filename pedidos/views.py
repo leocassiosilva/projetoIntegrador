@@ -1,4 +1,3 @@
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.db.models import Sum
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
@@ -45,26 +44,10 @@ class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
     paginate_by = 10
 
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
-        pedidos = list(Pedido.objects.order_by("status").filter(usuario=self.request.user))
-        ped = Pedido.objects.order_by("status").filter(id=111)
-        print(ped)
-        context['pedidos'] = pedidos
-
-        paginator = Paginator(pedidos, 5)
-
-        try:
-            page = int(self.request.GET.get('page', '1'))
-        except ValueError:
-            page = 1
-
-        try:
-            object_list = paginator.page(page)
-        except (EmptyPage, InvalidPage):
-            object_list = paginator.page(paginator.num_pages)
-        context['object_list'] = object_list
-        context['pedidos'] = pedidos
-        
+        pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
+        context['pedidos'] = list(pedidos)
         return context
 
 
