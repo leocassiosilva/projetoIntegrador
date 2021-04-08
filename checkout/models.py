@@ -21,7 +21,7 @@ class CarrinhoItem(models.Model):
     carrinho_key = models.CharField('Chave do Carrinho', max_length=40, db_index=True)
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='Produto')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
-    preco = models.DecimalField('Preco', decimal_places=3, max_digits=13)
+    preco = models.DecimalField('Preco', decimal_places=2, max_digits=8)
 
     objects = CarrinhoManager()
 

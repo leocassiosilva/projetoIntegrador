@@ -17,7 +17,6 @@
                 <div class="col-12">
                     <h4>
                         Pedido N° {{pedido.pk}}
-                        <small class="float-right">Data do Pedido: {{object.data_criacao|date:"d/m/Y H:i" }}</small>
                     </h4>
                 </div>
                 <!-- /.col -->
@@ -44,15 +43,14 @@
                     </address>
                 </div>
                 <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                    <b>Ação</b><br>
-                    <div class="row no-print">
-                        <div class="col-12">
-                            <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
-                                    class="fas fa-print"></i> Print</a>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        <p><small class="float-left">Data do Pedido:<h3>{{object.data_criacao|date:"d/m/Y H:i" }}</h3>
+                    </h4>
                 </div>
+                <!-- /.col -->
+            </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
