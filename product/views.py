@@ -96,7 +96,8 @@ class ProductListViewProdutos(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        produtos = Product.objects.all()
+        produtos = Product.objects.annotate(country_quantity=Sum('quantity')).filter(status=0,
+                                                          country_quantity__gt=0)
         return produtos
 
 

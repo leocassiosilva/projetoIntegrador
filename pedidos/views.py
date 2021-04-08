@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.db.models import Sum
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
@@ -9,6 +10,7 @@ from rolepermissions.mixins import HasRoleMixin
 from checkout.models import CarrinhoItem
 from product.models import Product
 from .models import Pedido, PedidoItem
+
 
 class CheckoutView(LoginRequiredMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
@@ -35,14 +37,36 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
             return redirect('cart_item')
         return redirect('meus_Pedidos')
 
+
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, ListView):
-    template_name = 'pedido/pedidos_list.html'
+    template_name = 'pedido/pedidos_lists.html'
     allowed_roles = 'cliente'
+    model = Pedido
     paginate_by = 10
 
-    def get_queryset(self):
-        pedidos = Pedido.objects.order_by("status").filter(usuario=self.request.user)
-        return pedidos
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pedidos = list(Pedido.objects.order_by("status").filter(usuario=self.request.user))
+        ped = Pedido.objects.order_by("status").filter(id=111)
+        print(ped)
+        context['pedidos'] = pedidos
+
+        paginator = Paginator(pedidos, 5)
+
+        try:
+            page = int(self.request.GET.get('page', '1'))
+        except ValueError:
+            page = 1
+
+        try:
+            object_list = paginator.page(page)
+        except (EmptyPage, InvalidPage):
+            object_list = paginator.page(paginator.num_pages)
+        context['object_list'] = object_list
+        context['pedidos'] = pedidos
+        
+        return context
+
 
 class PedidoDetailView(TemplateView):
     template_name = 'pedido/pedidos_detail.html'
@@ -57,11 +81,13 @@ class PedidoDetailView(TemplateView):
         context['items'] = list(items_pedidos)
         return context
 
+
 class PedidoDetailsView(DetailView):
     template_name = 'pedido/pedidos_detail.html'
 
     def get_queryset(self):
         return Pedido.objects.filter(usuario=self.request.user)
+
 
 class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     model = Pedido
@@ -69,6 +95,7 @@ class PedidoUpdate(LoginRequiredMixin, HasRoleMixin, UpdateView):
     allowed_roles = 'vendedor'
     template_name = 'pedido/pedido_update.html'
     success_url = reverse_lazy('vendedor_vendas')
+
 
 checkout = CheckoutView.as_view()
 pedidoList = PedidoListView.as_view()

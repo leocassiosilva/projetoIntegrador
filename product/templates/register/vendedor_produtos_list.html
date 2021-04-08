@@ -17,7 +17,7 @@
 
         <div class="container-fluid">
             <div class="text-center">
-                <img src="{% static '/img/PNG2.png' %}"   style="width:43%;">
+                <img src="{% static '/img/PNG2.png' %}" style="width:43%;">
             </div>
             <h6 class="text-center display-10">Pesquise pelo produto de sua preferência</h6>
             <div class="row">
@@ -49,47 +49,50 @@
                 {%for produto in produtos%}
                 <div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <div class="thumbnail">
-                    <div class="card bg-light d-flex flex-fill">
-                        {% if produto.image %}
-                        <img src="{{ produto.image|thumbnail_url:'product_image' }}"/>
-                        {% else %}
-                        <img src="http://placehold.it/350x250" alt=""/>
-                        {% endif %}
-                        <div class="card text-center border-bottom-0">
-                            <h2 class="lead"><b>{{ produto.name }}</b></h2>
-                        </div>
-                        <div class="card-body pt-0">
-                            <hr>
-                            <div class="row">
-                                <div class="col-13">
-                                <h2 class="lead">Quantidade: {{ produto.quantity }}</h2>
-                                    <div class="bg-gray py-2 px-1 mt-3">
-                                        <h5 class="mb-0">
-                                            Preço: R$ {{ produto.price }} / {{ produto.medida }}
-                                        </h5>
+                        <div class="card bg-light d-flex flex-fill">
+                            {% if produto.image %}
+                            <img src="{{ produto.image|thumbnail_url:'product_image' }}"/>
+                            {% else %}
+                            <img src="http://placehold.it/350x250" alt=""/>
+                            {% endif %}
+                            <div class="card text-center border-bottom-0">
+                                <h2 class="lead"><b>{{ produto.name }}</b></h2>
+                            </div>
+                            <div class="card-body pt-0">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-13">
+                                        <h2 class="lead">Quantidade: {{ produto.quantity }}</h2>
+                                        <div class="bg-gray py-2 px-1 mt-3">
+                                            <h5 class="mb-0">
+                                                Preço: R$ {{ produto.price }} / {{ produto.medida }}
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% if user|has_role:'vendedor' %}
-                    {% else %}
-                        <div class="card-footer">
-                            <div class="text-right">
-                                <a href="#" class="btn btn-sm bg-teal">
-                                    <i class="fas fa-comments"></i>
-                                </a>
-                                <a href="{% url 'criar_carrinhoitem' produto.slug %}" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-cart-plus"></i> Adicionar
-                                </a>
+                            {% if user|has_role:'vendedor' %}
+                            {% else %}
+                            <div class="card-footer">
+                                <div class="text-right">
+                                    <a href="#" class="btn btn-sm bg-teal">
+                                        <i class="fas fa-comments"></i>
+                                    </a>
+                                    <a href="{% url 'criar_carrinhoitem' produto.slug %}"
+                                       class="btn btn-sm btn-primary">
+                                        <i class="fas fa-cart-plus"></i> Adicionar
+                                    </a>
+                                </div>
                             </div>
+                            {% endif %}
                         </div>
-                    {% endif %}
                     </div>
-                </div>
                 </div>
                 {% endfor %}
             </div>
-        {% pagination request paginator page_obj %}
+            {% if produtos %}
+            {% pagination request paginator page_obj %}
+            {% endif %}
         </div>
     </div>
 </div>
