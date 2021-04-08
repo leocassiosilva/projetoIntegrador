@@ -31,11 +31,11 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
                     total = qtd.quantity - est.quantidade
                     print(total)
                     Product.objects.filter(id=est.product.id).update(quantity=total)
-
+            cart_item.delete()
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('cart_item')
-        return redirect('meus_Pedidos')
+        return super(CheckoutView, self).get(request, *args, **kwargs)
 
 
 class PedidoListView(LoginRequiredMixin, HasRoleMixin, generic.ListView):
