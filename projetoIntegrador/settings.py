@@ -47,10 +47,15 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'widget_tweaks',
     'easy_thumbnails',
+    'rest_framework',
+    'rest_framework_swagger',
 ]
 
 AUTH_USER_MODEL = "accounts.CustomUsuario"
-
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+}
 ROLEPERMISSIONS_MODULE = 'projetoIntegrador.roles'
 
 MIDDLEWARE = [
