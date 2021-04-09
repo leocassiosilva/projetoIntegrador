@@ -24,6 +24,7 @@ class CadastraViewTesteCase(TestCase):
     def test_cadastro_error(self):
         data = {'name': 'Feijão',
                 'category': 'Legume',
+                'medida': 'Kg',
                 'quantity': '10',
                 'description': 'Feijão Carióca',
                 'price': '15'
@@ -38,6 +39,7 @@ class CadastraViewTesteCase(TestCase):
     def test_cadastro_sucess(self):
         data = {'name': 'Feijão',
                 'category': 'Legume',
+                'medida': 'Kg',
                 'quantity': '10',
                 'description': 'Feijão Carióca',
                 'price': '15'
