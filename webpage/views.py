@@ -47,7 +47,12 @@ class IndexView(LoginRequiredMixin, TemplateView):
         total_produtos = PedidoItem.objects.filter(pedido__in=todos_pedidos, product__in=produto).aggregate(
             Sum('quantidade'))
 
-        # print(total_vendido)
+
+
+        pr = Product.objects.all().annotate(country_quantity=Sum('quantity')).filter(status=0,
+                                                          country_quantity__gt=10)[:8]
+        print(pr)
+        context['produtos'] = pr
         context['total_produtos'] = total_produtos
         context['pedidos_mes'] = pedidos_mes
         context['qtd_produtos'] = qtd_produtos

@@ -1,149 +1,202 @@
 {% extends 'base.html' %}
 {% block title %}
-    {% load permission_tags %}
+{% load thumbnail %}
+{% load permission_tags %}
 <title>Coma Bem | Dashboard</title>
 {% endblock %}
 
 {% block content %}
 
 {% if user|has_role:'cliente' %}
-
-{% else %}
-{% endif %}
-
-{% if user|has_role:'vendedor' %}
 <div class="container-fluid">
-    <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-4 col-12">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>{{ pedidos_mes }}</h3>
-
-                    <p>Pedidos do Mês</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a class="small-box-footer"><br></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-12">
-            <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                    {% if valor_vendido.preco__sum %}
-                    <h3>R$ {{ valor_vendido.preco__sum }}</h3>
-                    {% else %}
-                    <h3>R$ 0</h3>
-                    {% endif %}
-
-                    <p>Valor Vendido do Mês</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
-                <a class="small-box-footer"><br></a>
-            </div>
-        </div>
-        <div class="col-lg-4 col-12">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    {% if qtd_produtos.quantidade__sum %}
-                    <h3>{{ qtd_produtos.quantidade__sum }}</h3>
-                    {% else %}
-                    <h3>0</h3>
-                    {% endif %}
-                    <p>Produtos Vendidos no Mês</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
-                <a class="small-box-footer"><br></a>
-            </div>
-        </div>
-        <!-- ./col -->
-    </div>
-
-
-    <div class="row">
-        <!-- Left col -->
-
-
-        <div class="col-lg-8">
-            <div class="card card-danger">
-                <div class="card-header">
-                    <h3 class="card-title">Produtos Mais Vendidos</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
+        <div class="content" style="margin-top:20px;">
+            <div class="container">
+                <div class="row">
+                    {%for produto in produtos%}
+                    <div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                        <div class="thumbnail">
+                            <div class="card bg-light d-flex flex-fill">
+                                {% if produto.image %}
+                                <img src="{{ produto.image|thumbnail_url:'product_image' }}"/>
+                                {% else %}
+                                <img src="http://placehold.it/350x250" alt=""/>
+                                {% endif %}
+                                <div class="card text-center border-bottom-0">
+                                    <h2 class="lead"><b>{{ produto.name }}</b></h2>
+                                </div>
+                                <a style="text-align: center">Nome da Banca</a>
+                                <div class="card-body pt-0">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-13">
+                                            <h2 class="lead">Quantidade: {{ produto.quantity }}</h2>
+                                            <div class="bg-gray py-2 px-1 mt-3">
+                                                <h5 class="mb-0">
+                                                    Preço: R$ {{ produto.price }} / {{ produto.medida }}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if user|has_role:'vendedor' %}
+                                {% else %}
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="#" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments"></i>
+                                        </a>
+                                        <a href="{% url 'criar_carrinhoitem' produto.slug %}"
+                                           class="btn btn-sm btn-primary">
+                                            <i class="fas fa-cart-plus"></i> Adicionar
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                    <canvas id="id_product"
-                            style="min-height: 150px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 364px;"
-                            width="928" height="500" class="chartjs-render-monitor" data-url="{% url 'productChart'%}"></canvas>
-
-
+                    {% endfor %}
                 </div>
-                <!-- /.card-body -->
+            </div>
+
+            {% else %}
+            {% endif %}
+
+            {% if user|has_role:'vendedor' %}
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ pedidos_mes }}</h3>
+
+                                <p>Pedidos do Mês</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a class="small-box-footer"><br></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                {% if valor_vendido.preco__sum %}
+                                <h3>R$ {{ valor_vendido.preco__sum }}</h3>
+                                {% else %}
+                                <h3>R$ 0</h3>
+                                {% endif %}
+
+                                <p>Valor Vendido do Mês</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a class="small-box-footer"><br></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                {% if qtd_produtos.quantidade__sum %}
+                                <h3>{{ qtd_produtos.quantidade__sum }}</h3>
+                                {% else %}
+                                <h3>0</h3>
+                                {% endif %}
+                                <p>Produtos Vendidos no Mês</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a class="small-box-footer"><br></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+
+
+                <div class="row">
+                    <!-- Left col -->
+
+
+                    <div class="col-lg-8">
+                        <div class="card card-danger">
+                            <div class="card-header">
+                                <h3 class="card-title">Produtos Mais Vendidos</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <canvas id="id_product"
+                                        style="min-height: 150px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 364px;"
+                                        width="928" height="500" class="chartjs-render-monitor"
+                                        data-url="{% url 'productChart'%}"></canvas>
+
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Info Boxes Style 2 -->
+                        <div class="info-box mb-3 bg-warning">
+                            <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total vendido</span>
+                                {% if total_vendido.preco__sum %}
+                                <span class="info-box-number">R$ {{ total_vendido.preco__sum }}</span>
+                                {% else %}
+                                <span class="info-box-number">R$ 0</span>
+                                {% endif %}
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box mb-3 bg-success">
+                            <span class="info-box-icon"><i class="far fa-heart"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Quantidade de produtos vendidos</span>
+                                {% if total_produtos.quantidade__sum %}
+                                <span class="info-box-number">{{ total_produtos.quantidade__sum }}</span>
+                                {% else %}
+                                <span class="info-box-number">0</span>
+                                {% endif %}
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
             </div>
         </div>
-
-        <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box mb-3 bg-warning">
-                <span class="info-box-icon"><i class="fas fa-tag"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Total vendido</span>
-                    {% if total_vendido.preco__sum %}
-                    <span class="info-box-number">R$ {{ total_vendido.preco__sum }}</span>
-                    {% else %}
-                    <span class="info-box-number">R$ 0</span>
-                    {% endif %}
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box mb-3 bg-success">
-                <span class="info-box-icon"><i class="far fa-heart"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Quantidade de produtos vendidos</span>
-                    {% if total_produtos.quantidade__sum %}
-                    <span class="info-box-number">{{ total_produtos.quantidade__sum }}</span>
-                    {% else %}
-                    <span class="info-box-number">0</span>
-                    {% endif %}
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-        </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col -->
-</div>
-</div>
-</div>
-{% else %}
-{% endif %}
+    {% else %}
+    {% endif %}
 
-{% endblock %}
+    {% endblock %}
 
