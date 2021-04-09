@@ -23,7 +23,7 @@
     </div>
 </div>
 {% endif %}
-
+<div style="height: 100vh;">
 <div class="row" style="margin-top:10px;">
     <div class="col-md-6 offset-md-3">
         <div class="card card-outline">
@@ -79,10 +79,12 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                <p><button type="submit" class="btn btn-primary">Entrar</button></p>
+                    <p>Esqueceu sua senha?<a href="{% url 'password-reset' %}">Recupere aqui!</a></p>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
