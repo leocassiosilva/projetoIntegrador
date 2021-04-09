@@ -6,7 +6,6 @@
 {% block title %}
 <title>Coma Bem | Finalizando Compras</title>
 {% endblock %}
-
 {% block content %}
 <div class="row">
     <div class="col-12">
@@ -21,33 +20,4 @@
         </div>
     </div>
 </div>
-
-
-    <div class="row">
-
-    <div class="col-md-12">
-
-        <div class="invoice p-3 mb-3">
-            <!-- title row -->
-            <div class="row">
-                <div class="col-12">
-                    <h4>
-                        Pedido N° {{pedido.pk}}
-                    </h4>
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- info row -->
-            <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                    Informações
-                    <address>
-                        <strong>Total</strong><br>
-                       <h3> R$ {{ object.total|floatformat:"2" }}<br> </h3>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
 {% endblock %}

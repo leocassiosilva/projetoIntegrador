@@ -59,15 +59,17 @@
                 </div>
             </div>
             <!-- /.card-body -->
-            {% pagination request paginator page_obj %}
+
 
         </div>
+            {% pagination request paginator page_obj %}
         <!-- /.card -->
         {% else %}
         <h3 class="text-center">Você não possui vendas!</h3>
 
         {% endif %}
     </div>
+
 </div>
 
 {% endblock %}

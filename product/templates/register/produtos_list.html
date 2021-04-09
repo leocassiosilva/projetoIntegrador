@@ -58,7 +58,8 @@
                             <div class="card text-center border-bottom-0">
                                 <h2 class="lead"><b>{{ produto.name }}</b></h2>
                             </div>
-                            <a style="text-align: center">Nome da Banca</a>
+                            <a style="text-align: center"><h5>{{ produto.id_usuario.nome_banca }}</h5></a>
+
                             <div class="card-body pt-0">
                                 <hr>
                                 <div class="row">
@@ -76,9 +77,9 @@
                             {% else %}
                             <div class="card-footer">
                                 <div class="text-right">
-                                    <a href="#" class="btn btn-sm bg-teal">
+                                     <!-- <a href="#" class="btn btn-sm bg-teal">
                                         <i class="fas fa-comments"></i>
-                                    </a>
+                                    </a> -->
                                     <a href="{% url 'criar_carrinhoitem' produto.slug %}"
                                        class="btn btn-sm btn-primary">
                                         <i class="fas fa-cart-plus"></i> Adicionar
@@ -91,9 +92,7 @@
                 </div>
                 {% endfor %}
             </div>
-            {% if object_list %}
             {% pagination request paginator page_obj %}
-            {% endif %}
         </div>
     </div>
 </div>
