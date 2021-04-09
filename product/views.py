@@ -93,7 +93,7 @@ class ProductDetailView(LoginRequiredMixin, HasRoleMixin, DetailView):
 class ProductListViewProdutos(ListView):
     template_name = 'register/produtos_list.html'
     model = Product
-    paginate_by = 6
+    paginate_by = 8
 
     def get_queryset(self):
         produtos = Product.objects.annotate(country_quantity=Sum('quantity')).filter(status=0,
@@ -104,7 +104,7 @@ class ProductListViewProdutos(ListView):
 class ProdutoSeach(ListView):
     model = Product
     template_name = 'register/produtos_list.html'
-    paginate_by = 6
+    paginate_by = 8
 
     def get_queryset(self):
         queryset = Product.objects.all()
@@ -127,7 +127,7 @@ def product(request, slug):
 class ProductVendedorListViewProdutos(ListView):
     template_name = 'register/vendedor_produtos_list.html'
     model = Product
-    paginate_by = 6
+    paginate_by = 100
 
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get("pk")
@@ -135,5 +135,4 @@ class ProductVendedorListViewProdutos(ListView):
         produtos = Product.objects.annotate(country_quantity=Sum('quantity')).filter(id_usuario=pk, status=0,
                                                                                      country_quantity__gt=0)
         context['produtos'] = list(produtos)
-        print(produtos)
         return context
