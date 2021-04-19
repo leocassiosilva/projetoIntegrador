@@ -11,8 +11,6 @@
 <div class="row">
     <div class="col-12">
         <h1 class="m-0">Detalhe do Pedido - {{numero_pedido}}</h1>
-        <div class="card">
-
             <div class="invoice p-3 mb-3">
                 <!-- title row -->
                 <div class="row">
@@ -26,7 +24,7 @@
                 </div>
                 <!-- info row -->
 
-                <div class="row invoice-info">
+                <div class="p-3 col-12">
                     {%for pedidos_items in pedidos_items%}
                         {% ifchanged %}
                             <div class="row invoice-info">
@@ -38,26 +36,21 @@
                                             Telefone: {{ pedidos_items.pedido.usuario.telefone }}<br>
                                         </address>
                                     </div>
-
                                     <div class="col-sm-6 invoice-col">
                                         <b>Data do Pedido</b> - {{pedidos_items.pedido.data_criacao}}<br>
                                     </div>
                             </div>
                         {% endifchanged %}
-                        <div class="col-sm-3 invoice-col">
                             <address>
                                 <strong>Produto</strong> - {{pedidos_items.product}}<br>
-
                                 <p>
                                 Quantidade: {{pedidos_items.quantidade}}<br>
                                 Valor: R$ {{pedidos_items.preco}} / {{ pedidos_items.product.medida }}<br>
                                 </p>
                             </address>
-                        </div>
                     {% endfor %}
                 </div>
             </div>
-        </div>
         <!-- /.card-body -->
     </div>
 </div>
