@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from product.models import Product
 
+
 class PedidoManager(models.Manager):
     def create_order(self, usuario, cart_items):
         pedido = self.create(usuario=usuario)
@@ -11,6 +12,7 @@ class PedidoManager(models.Manager):
                 preco=cart_item.preco
             )
         return pedido
+
 
 class Pedido(models.Model):
     STATUS_CHOICES = (
@@ -24,6 +26,7 @@ class Pedido(models.Model):
     status = models.IntegerField('Situação', choices=STATUS_CHOICES, default=0, blank=True)
     data_criacao = models.DateTimeField('Criado em', auto_now_add=True)
     data_modificacao = models.DateTimeField('Modificado em', auto_now=True)
+    # itens
 
     objects = PedidoManager()
 
@@ -47,9 +50,11 @@ class Pedido(models.Model):
         )
         return tota_produtos['total']
 
+
 class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, verbose_name='Pedido', on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='Produto',related_name='produtos')
+    product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='Produto',
+                                related_name='produtos')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
     preco = models.DecimalField('Preco', decimal_places=2, max_digits=8)
 

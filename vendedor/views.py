@@ -31,10 +31,9 @@ class MinhasVendasListView(LoginRequiredMixin, HasRoleMixin, ListView):
 
     def get_queryset(self, **kwargs):
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
-        pedido = [pedido for pedido in Pedido.objects.order_by("-data_criacao").all()]
-        pedidos_items = list(PedidoItem.objects.filter(pedido__in=pedido, product__in=produto))
+        pedido = Pedido.objects.order_by("-data_criacao").all()
         # context['pedidos_items'] = pedidos_items
-        return pedidos_items
+        return pedido
 
 
 class MinhasVendasDetails(LoginRequiredMixin, HasRoleMixin, DetailView):
@@ -47,8 +46,11 @@ class MinhasVendasDetails(LoginRequiredMixin, HasRoleMixin, DetailView):
         context = super().get_context_data(**kwargs)
         produto = [produto.id for produto in Product.objects.filter(id_usuario=self.request.user)]
         pedidos_items = PedidoItem.objects.filter(pedido=pk, product__in=produto)
+
+
         print(pedidos_items)
         data_atual = datetime.now()
+        context['numero_pedido'] = pk
         context['data_atual'] = data_atual
-        context['pedidos_items'] = pedidos_items
+        context['pedidos_items'] = list(pedidos_items)
         return context

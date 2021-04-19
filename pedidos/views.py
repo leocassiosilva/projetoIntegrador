@@ -20,11 +20,11 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         print(session_key)
         if session_key and CarrinhoItem.objects.filter(carrinho_key=session_key).exists():
             cart_item = CarrinhoItem.objects.filter(carrinho_key=session_key)
+
             pedido = Pedido.objects.create_order(
                 usuario=request.user, cart_items=cart_item)
 
             for est in cart_item:
-
                 # print(est.product.id)
                 sub_qtd = Product.objects.filter(id=est.product.id)
                 for qtd in sub_qtd:
