@@ -80,3 +80,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
             'labelsR': labels,
             'dataR': data,
         })
+
+
+class SomosView(TemplateView):
+    template_name = 'somos.html'
