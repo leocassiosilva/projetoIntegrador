@@ -83,4 +83,4 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
 
 class SomosView(TemplateView):
-    template_name = 'somos.html'
+    template_name = 'sobre.html'
