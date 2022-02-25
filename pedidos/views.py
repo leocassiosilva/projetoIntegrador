@@ -12,6 +12,10 @@ from product.models import Product
 from .models import Pedido, PedidoItem
 
 
+def test():
+    return "ola"
+
+
 class CheckoutView(LoginRequiredMixin, TemplateView):
     template_name = 'pedido/pedidos.html'
 

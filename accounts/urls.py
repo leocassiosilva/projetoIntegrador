@@ -1,6 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 
+from pedidos.views import test
 from .api.viewsets import UsuarioViewSet
 from .views import CriarUsuario, UserLogin, LogoutView, IndexView, UpdateUsuario, PasswordReset, PasswordResetDone, \
     PasswordResetConfirm, PasswordResetCompleteView, PasswordChange, CriarVendedor
